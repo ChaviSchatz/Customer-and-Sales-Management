@@ -8,5 +8,6 @@ namespace Dal.Services
 {
     partial class UserService
     {
+        public int MyProperty { get; set; }
     }
 }
