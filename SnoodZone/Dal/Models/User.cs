@@ -8,6 +8,7 @@ partial class User
     public string PhoneNumber { get; set; }
     public Address Address { get; set; }
     public string StoreName { get; set; }
+    public string EmailAddress { get; set; }
     public List<Order> Orders { get; set; }
 }
 
