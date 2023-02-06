@@ -3,6 +3,9 @@ partial class User
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
+    public string ObjId { get; set; }
+
+    //has to be protected 
     public string Id { get; set; }
     public string Name { get; set; }
     public string PhoneNumber { get; set; }
