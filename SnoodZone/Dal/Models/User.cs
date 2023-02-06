@@ -1,5 +1,5 @@
 ﻿
-partial class User
+public class User
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
