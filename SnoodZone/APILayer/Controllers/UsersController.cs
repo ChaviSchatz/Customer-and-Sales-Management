@@ -10,6 +10,11 @@ public class UsersController : ControllerBase
         _userActions = userActions;
     }
 
+    [HttpGet]
+    public async Task<List<User>> GetAllUsers()
+    {
+        return await _userActions.GetAllUsers();
+    }
     [HttpPost]
     public async void Create(User user)
     {

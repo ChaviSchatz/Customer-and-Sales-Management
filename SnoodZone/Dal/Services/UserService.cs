@@ -12,7 +12,7 @@
 
     public async Task<User> GetUserById(string id)
     {
-        var result = await _users.FindAsync(u => u.Id == id);
+        var result = await _users.FindAsync(u => u.UniqId == id);
         return result.FirstOrDefault();
     }
 
@@ -23,7 +23,7 @@
 
     public Task UpdateUser(User user)
     {
-        var filter = Builders<User>.Filter.Eq(field: "Id", user.Id);
+        var filter = Builders<User>.Filter.Eq(field: "Id", user.UniqId);
         return _users.ReplaceOneAsync(filter, user, options: new ReplaceOptions { IsUpsert = true });
     }
 

@@ -13,6 +13,10 @@ public class UserActions : IUserActions
         return _userService.CreateUser(user);
     }
 
+    public Task<List<User>> GetAllUsers()
+    {
+        return _userService.GetUsersAsync();
+    }
     //public async Task<bool> CheckId(string id)
     //{
     //    var users = await _userService.GetUsersAsync();
