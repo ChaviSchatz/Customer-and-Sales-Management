@@ -2,6 +2,8 @@
 public class DBConnection : IDBConnection
 {
     private readonly IMongoDatabase _db;
+
+    ///פה נוסיף כל פעם עוד אוספים
     public string UsersCollectionName { get; private set; } = "users";
 
     public string DbName { get; private set; }

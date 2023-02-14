@@ -1,9 +1,9 @@
-﻿public class UserService
-    {
+﻿public class UserService : IUserService
+{
     private readonly IMongoCollection<User> _users;
     public UserService(IDBConnection db)
     {
-        _users = db.UsersCollection;     
+        _users = db.UsersCollection;
     }
     public async Task<List<User>> GetUsersAsync()
     {
@@ -12,7 +12,7 @@
 
     public async Task<User> GetUserById(string id)
     {
-        var result =  await _users.FindAsync(u => u.Id == id);
+        var result = await _users.FindAsync(u => u.Id == id);
         return result.FirstOrDefault();
     }
 

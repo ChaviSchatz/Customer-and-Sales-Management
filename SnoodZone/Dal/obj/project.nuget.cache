@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "tyjUTotNLV6MgPQf+19cFmZDdkKhI32Z78AnZxawhfb8B9Zd6V+9MpsFHzxkX31SWtX9vWC7ozXsRbVa7PYLxQ==",
+  "dgSpecHash": "iCSvsK0e6EWkiFiU7LTRwv7rhjnANJxFPlgaTgocd+vBfneIO68pvRhz3ZaVgBMgtY4N++RpXXUlySxp/ppgIQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\Dal\\Dal.csproj",
+  "projectFilePath": "C:\\Users\\WIN-10\\source\\repos\\project1\\SnoodZone\\Dal\\Dal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\WIN-10\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\WIN-10\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
