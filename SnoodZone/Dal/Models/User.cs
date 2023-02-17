@@ -1,10 +1,13 @@
 ﻿
+using MongoDB.Bson.Serialization.Attributes;
+
 public class User
 {
     private static int index = 0;
+    public ObjectId Id { get;private set; }
+    //public string UniqId { get; private set; }
     public string Password { get; set; }
-    //has to be protected 
-    public string UniqId { get;}
+    //public Guid UniqId { get; private set; }
     public string Name { get; set; }
     public string PhoneNumber { get; set; }
     public Address Address { get; set; }
@@ -16,7 +19,7 @@ public class User
     ///ולא לשכוח לעדכן את כל המקומות
     //public User()
     //{
-    //    UniqId = 
+    //    UniqId = ;
     //}
 }
 
