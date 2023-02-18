@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 public class User
 {
     private static int index = 0;
-    public ObjectId Id { get;private set; }
+    public ObjectId Id { get; private set; }
     //public string UniqId { get; private set; }
     public string Password { get; set; }
     //public Guid UniqId { get; private set; }

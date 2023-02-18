@@ -19,8 +19,27 @@ public class UsersController : ControllerBase
     public async void Create(User user)
     {
         await _userActions.CreateNewUser(user);
-    } 
-    
+    }
+
+    [HttpPut]
+    public async void UpdateUser(User user)
+    {
+        await _userActions.UpdateUser(user);
+    }
+
+    [Route("/login")]
+    [HttpGet]
+    public async Task<bool> GetUserAuthentication(string email, string password)
+    {
+       return await _userActions.UserAuthentication(email, password);
+    }
+
+    [Route("/userDetails")]
+    [HttpGet]
+    public async Task<User> GetUserByEmailAndPassword(string email, string password)
+    {
+        return await _userActions.GetUserByEmailAndPassword(email, password);
+    }
 
     }
 

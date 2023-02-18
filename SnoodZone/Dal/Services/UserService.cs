@@ -16,14 +16,14 @@
     //    return result.FirstOrDefault();
     //}
 
-    public Task CreateUser(User user)
+    public Task CreateUser(User user)//לזכור הצפנת סיסמה
     {
         return _users.InsertOneAsync(user);
     }
 
     public Task UpdateUser(User user)
     {
-        var filter = Builders<User>.Filter.Eq(field: "Id", user.Id);
+        var filter = Builders<User>.Filter.Eq(u => u.Password , user.Password);
         return _users.ReplaceOneAsync(filter, user, options: new ReplaceOptions { IsUpsert = true });
     }
 
