@@ -1,7 +1,7 @@
 import React from "react";
 import './login.css';
-import {useForm} from "react-hook-form";
-
+import { useForm } from "react-hook-form";
+import * as Yup from 'yup';
 
 
 
@@ -15,16 +15,17 @@ export function Login() {
             required: "Password is required",
             minLength: {
                 value: 8,
-                message: "Password must have at least 8 characters"
-            }
+                message: " Password must have at least 8 characters"
+            },
+
         }
     };
 
     return (
         <>
             --------------------- React hook form ---------------------
-        <form className="form" onSubmit={handleSubmit(handleRegistration)}>
-            
+            <form className="form" onSubmit={handleSubmit(handleRegistration)}>
+
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example1">Email</label>
                     <input id="form2Example1" class="form-control"
@@ -33,10 +34,10 @@ export function Login() {
                         {...register('email', registerOptions.email)}
                     />
                     <small className="text-danger">
-                        {errors ?.email && errors.email.message}
+                        {errors?.email && errors.email.message}
                     </small>
                 </div>
-                
+
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example2">Password</label>
                     <input id="form2Example2" class="form-control"
@@ -45,7 +46,7 @@ export function Login() {
                         {...register('password', registerOptions.password)}
                     />
                     <small className="text-danger">
-                        {errors ?.password && errors.password.message}
+                        {errors?.password && errors.password.message}
                     </small>
                 </div>
                 <button class="btn btn-primary btn-block mb-4">Submit</button>
