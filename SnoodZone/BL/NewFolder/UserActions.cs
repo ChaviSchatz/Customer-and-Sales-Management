@@ -1,44 +1,70 @@
 ﻿
+using AutoMapper;
+
 public class UserActions : IUserActions
 {
     private readonly IUserService _userService;
 
+
+
+    private IMapper iMapperFromUserDTOToUser;
+    private IMapper iMapperFromUserToUserDTO;
+
     public UserActions(IUserService userService)
     {
         _userService = userService;
+
+        var configFromUserDTOToUser = new MapperConfiguration(cfg => {
+            cfg.CreateMap<UserDTO, User>();
+        });
+        iMapperFromUserDTOToUser = configFromUserDTOToUser.CreateMapper();
+
+        var configFromUserToUserDTO = new MapperConfiguration(cfg => {
+            cfg.CreateMap<User, UserDTO>();
+        });
+        iMapperFromUserToUserDTO = configFromUserToUserDTO.CreateMapper();
     }
 
-    public Task CreateNewUser(User user)
-    {
-        return _userService.CreateUser(user);
+    public Task CreateNewUser(UserDTO user)
+    { 
+        User userForDal = iMapperFromUserDTOToUser.Map<UserDTO, User>(user);
+        return _userService.CreateUser(userForDal);
     }
 
-    public Task<List<User>> GetAllUsers()
+    public async Task<List<UserDTO>> GetAllUsers()
     {
-        return _userService.GetUsersAsync();
+        List<User> results = await _userService.GetUsersAsync();
+        List<UserDTO> users = new();
+        foreach (User item in results)
+        {
+            users.Add(iMapperFromUserToUserDTO.Map<User, UserDTO>(item));
+        }
+        return users;
     }
 
-    public Task UpdateUser(User user)///לשאול את המורה אם להחזיר ערך וכיצד לעשות זאת
+    public Task UpdateUser(UserDTO user)///לשאול את המורה אם להחזיר ערך וכיצד לעשות זאת
     {
-       return _userService.UpdateUser(user);
+        User userForDal = iMapperFromUserDTOToUser.Map<UserDTO, User>(user);
+        return _userService.UpdateUser(userForDal);
     }
 
     public async Task<bool> UserAuthentication(string email, string password)
     {
         var usersList = await _userService.GetUsersAsync();
-        var result = usersList.Where(u => u.EmailAddress == email && u.Password== password).FirstOrDefault();
+        var result = usersList.Where(u => u.EmailAddress == email && u.Password == password).FirstOrDefault();
         if (result == null) return false;
         return true;
     }
 
-    public async Task<User> GetUserByEmailAndPassword(string email, string password)
+    public async Task<UserDTO> GetUserByEmailAndPassword(string email, string password)
     {
         var usersList = await _userService.GetUsersAsync();
         var result = usersList
             .Where(u => u.EmailAddress == email && u.Password == password)
             .FirstOrDefault();
         if (result == null) return null;
-        return result;
+
+        return iMapperFromUserToUserDTO.Map<User, UserDTO>(result);
     }
 
 

@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "Tip0Td0DwVSEA93p3PcAszR9zk6cSeybM65GM6WfpZ5yrOit4boDMn4XZSFLGA2XQ5Bq8yzfxMXHg2NRloHJ5w==",
+  "dgSpecHash": "gw1NOEggiGOYQfUA973fpMD8VOfZyTvQAVf6CXZQrqi+0PZgUfVCMb/RAcUSeL77zQ9UBHKaaciFlabTgiknLQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\שץ חוה\\source\\repos\\project3\\SnoodZone\\BL\\BL.csproj",
+  "projectFilePath": "C:\\Users\\שץ חוה\\Source\\Repos\\project\\SnoodZone\\BL\\BL.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\שץ חוה\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\שץ חוה\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\שץ חוה\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
     "C:\\Users\\שץ חוה\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\שץ חוה\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\שץ חוה\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\שץ חוה\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
     "C:\\Users\\שץ חוה\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",

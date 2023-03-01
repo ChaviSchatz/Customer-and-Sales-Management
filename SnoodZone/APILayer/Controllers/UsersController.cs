@@ -11,35 +11,35 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<List<User>> GetAllUsers()
+    public async Task<List<UserDTO>> GetAllUsers()
     {
         return await _userActions.GetAllUsers();
     }
     [HttpPost]
-    public async void Create(User user)
+    public async void Create(UserDTO user)
     {
         await _userActions.CreateNewUser(user);
     }
 
     [HttpPut]
-    public async void UpdateUser(User user)
+    public async void UpdateUser(UserDTO user)
     {
         await _userActions.UpdateUser(user);
     }
 
-    [Route("/login")]
-    [HttpGet]
-    public async Task<bool> GetUserAuthentication(string email, string password)
-    {
-       return await _userActions.UserAuthentication(email, password);
-    }
+    //[Route("/login")]
+    //[HttpGet]
+    //public async Task<bool> GetUserAuthentication(string email, string password)
+    //{
+    //   return await _userActions.UserAuthentication(email, password);
+    //}
 
-    [Route("/userDetails")]
+    [Route("/userDetails")]//לשנות את ה url חובה!!!!!
     [HttpGet]
-    public async Task<User> GetUserByEmailAndPassword(string email, string password)
+    public async Task<UserDTO> GetUserByEmailAndPassword(string email, string password)
     {
         return await _userActions.GetUserByEmailAndPassword(email, password);
     }
 
-    }
+}
 

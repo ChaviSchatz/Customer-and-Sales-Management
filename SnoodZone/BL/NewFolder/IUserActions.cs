@@ -1,9 +1,9 @@
 ﻿public interface IUserActions
 {
-    Task CreateNewUser(User user);
-    Task<List<User>> GetAllUsers();
-    public Task UpdateUser(User user);
+    Task CreateNewUser(UserDTO user);
+    Task<List<UserDTO>> GetAllUsers();
+    public Task UpdateUser(UserDTO user);
     public Task<bool> UserAuthentication(string email, string password);
-    public Task<User> GetUserByEmailAndPassword(string email, string password);
+    public Task<UserDTO> GetUserByEmailAndPassword(string email, string password);
 
 }
