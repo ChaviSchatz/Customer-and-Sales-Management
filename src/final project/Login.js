@@ -1,7 +1,7 @@
 import React from "react";
 import './login.css';
 import { useForm } from "react-hook-form";
-import * as Yup from 'yup';
+
 
 
 
@@ -13,10 +13,10 @@ export function Login() {
         email: { required: "Email is required" },
         password: {
             required: "Password is required",
-            minLength: {
-                value: 8,
-                message: " Password must have at least 8 characters"
-            },
+            // minLength: {
+            //     value: 8,
+            //     message: " Password must have at least 8 characters"
+            // },
 
         }
     };
