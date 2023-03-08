@@ -3,8 +3,6 @@ import './login.css';
 import { useForm } from "react-hook-form";
 
 
-
-
 export function Login() {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
