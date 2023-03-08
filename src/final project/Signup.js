@@ -1,41 +1,49 @@
-import React from "react";
 // import './signup.css'; need to create
+import React from "react";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+    firstName: yup.string().required(),
+    lastName: yup.string().required(),
+    storeName: yup.string(),
+    city: yup.string().required(),
+    street: yup.string().required(),
+    houseNumber: yup.string().required(),
+    floor: yup.number().required(),
+    email: yup.string().email().required(),
+    password: yup
+        .string()
+        .min(8, 'Password must be at least 8 characters long')
+        .matches(/\d/, 'Password must contain at least one number')
+        .required(),
+});
+
+
+
 export function Singup() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const handleRegistration = (data) => console.log(data);
-    const registerOptions = {
-        email: { required: "Email is required" },
-        password: {
-            required: "Password is required",
-            minLength: {
-                value: 8,
-                message: " Password must have at least 8 characters"
-            },
-
-        },
-        firstName: { required: "First name is required" },
-        lastName: { required: "Last name is required" },
-        storeName: { required: "Store name is required" },
-        city: { required: "City name is required" },
-        street: { required: "street name is required" },
-        houseNumber: { required: "House number is required" },
-        floor: { required: "floor number is required" },
-
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+        resolver: yupResolver(schema),
+    });
+    const onSubmit = (data) => {
+        console.log(data);
+        reset();
     }
+
     return (
         <>
-            <form className="form" onSubmit={handleSubmit(handleRegistration)}>
+            <form className="form" onSubmit={handleSubmit(onSubmit)}>
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example1">First name</label>
                     <input id="form2Example1" class="form-control"
                         type="text"
                         name="firstName"
-                        {...register('firstName', registerOptions.firstName)}
+                        {...register('firstName')}
                         placeholder="Your first name"
                     />
                     <small className="text-danger">
-                        {errors?.firstName && errors.firstName.message}
+                        {errors ?.firstName && errors.firstName.message}
                     </small>
                 </div>
                 <div class="form-outline mb-4">
@@ -43,11 +51,11 @@ export function Singup() {
                     <input id="form2Example1" class="form-control"
                         type="text"
                         name="lastName"
-                        {...register('lastName', registerOptions.lastName)}
+                        {...register('lastName')}
                         placeholder="Your last name"
                     />
                     <small className="text-danger">
-                        {errors?.lastName && errors.lastName.message}
+                        {errors ?.lastName && errors.lastName.message}
                     </small>
                 </div>
                 <div class="form-outline mb-4">
@@ -55,26 +63,26 @@ export function Singup() {
                     <input id="form2Example1" class="form-control"
                         type="text"
                         name="storeName"
-                        {...register('storeName', registerOptions.storeName)}
+                        {...register('storeName')}
                         placeholder="Your store name"
                     />
                     <small className="text-danger">
-                        {errors?.storeName && errors.storeName.message}
+                        {errors ?.storeName && errors.storeName.message}
                     </small>
                 </div>
 
-        <h3>Shipping address details</h3>
-                <div style={{'border': '1px solid black','padding': '20px'}}>
+                <h3>Shipping address details</h3>
+                <div style={{ 'border': '1px solid black', 'padding': '20px' }}>
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form2Example1">City</label>
                         <input id="form2Example1" class="form-control"
                             type="text"
                             name="city"
-                            {...register('city', registerOptions.city)}
-                            // Maybe to add a placeHolder
+                            {...register('city')}
+                        // Maybe to add a placeHolder
                         />
                         <small className="text-danger">
-                            {errors?.city && errors.city.message}
+                            {errors ?.city && errors.city.message}
                         </small>
                     </div>
                     <div class="form-outline mb-4">
@@ -82,11 +90,11 @@ export function Singup() {
                         <input id="form2Example1" class="form-control"
                             type="text"
                             name="street"
-                            {...register('street', registerOptions.street)}
-                            //Maybe to add a placeHolder
+                            {...register('street')}
+                        //Maybe to add a placeHolder
                         />
                         <small className="text-danger">
-                            {errors?.street && errors.street.message}
+                            {errors ?.street && errors.street.message}
                         </small>
                     </div>
                     <div class="form-outline mb-4">
@@ -94,11 +102,11 @@ export function Singup() {
                         <input id="form2Example1" class="form-control"
                             type="text"
                             name="houseNumber"
-                            {...register('houseNumber', registerOptions.houseNumber)}
+                            {...register('houseNumber')}
                             placeholder="House/Apt"
                         />
                         <small className="text-danger">
-                            {errors?.houseNumber && errors.houseNumber.message}
+                            {errors ?.houseNumber && errors.houseNumber.message}
                         </small>
                     </div>
                     <div class="form-outline mb-4">
@@ -106,10 +114,10 @@ export function Singup() {
                         <input id="form2Example1" class="form-control"
                             type="number"
                             name="floor"
-                            {...register('floor', registerOptions.floor)}
+                            {...register('floor')}
                         />
                         <small className="text-danger">
-                            {errors?.floor && errors.floor.message}
+                            {errors ?.floor && errors.floor.message}
                         </small>
                     </div>
                 </div>
@@ -121,10 +129,10 @@ export function Singup() {
                     <input id="form2Example1" class="form-control"
                         type="email"
                         name="email"
-                        {...register('email', registerOptions.email)}
+                        {...register('email')}
                     />
                     <small className="text-danger">
-                        {errors?.email && errors.email.message}
+                        {errors ?.email && errors.email.message}
                     </small>
                 </div>
 
@@ -133,10 +141,10 @@ export function Singup() {
                     <input id="form2Example2" class="form-control"
                         type="password"
                         name="password"
-                        {...register('password', registerOptions.password)}
+                        {...register('password')}
                     />
                     <small className="text-danger">
-                        {errors?.password && errors.password.message}
+                        {errors ?.password && errors.password.message}
                     </small>
                 </div>
                 <button class="btn btn-primary btn-block mb-4">Submit</button>
