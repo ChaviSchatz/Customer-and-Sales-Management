@@ -8,10 +8,12 @@ const schema = yup.object().shape({
     firstName: yup.string().required(),
     lastName: yup.string().required(),
     storeName: yup.string(),
-    city: yup.string().required(),
-    street: yup.string().required(),
-    houseNumber: yup.string().required(),
-    floor: yup.number().required(),
+    address: yup.object().shape({
+        city: yup.string().required("city is required"),
+        street: yup.string().required("street is required"),
+        houseNumber: yup.string().required("houseNumber is required"),
+        floor: yup.number().required("floor is required"),
+    }),
     email: yup.string().email().required(),
     password: yup
         .string()
@@ -78,11 +80,11 @@ export function Singup() {
                         <input id="form2Example1" class="form-control"
                             type="text"
                             name="city"
-                            {...register('city')}
+                            {...register('address.city')}
                         // Maybe to add a placeHolder
                         />
                         <small className="text-danger">
-                            {errors ?.city && errors.city.message}
+                            {errors.address?.city && errors.address.city.message}
                         </small>
                     </div>
                     <div class="form-outline mb-4">
@@ -90,11 +92,11 @@ export function Singup() {
                         <input id="form2Example1" class="form-control"
                             type="text"
                             name="street"
-                            {...register('street')}
+                            {...register('address.street')}
                         //Maybe to add a placeHolder
                         />
                         <small className="text-danger">
-                            {errors ?.street && errors.street.message}
+                            {errors.address?.street && errors.address.street.message}
                         </small>
                     </div>
                     <div class="form-outline mb-4">
@@ -102,11 +104,11 @@ export function Singup() {
                         <input id="form2Example1" class="form-control"
                             type="text"
                             name="houseNumber"
-                            {...register('houseNumber')}
+                            {...register('address.houseNumber')}
                             placeholder="House/Apt"
                         />
                         <small className="text-danger">
-                            {errors ?.houseNumber && errors.houseNumber.message}
+                            {errors.address?.houseNumber && errors.address.houseNumber.message}
                         </small>
                     </div>
                     <div class="form-outline mb-4">
@@ -114,10 +116,10 @@ export function Singup() {
                         <input id="form2Example1" class="form-control"
                             type="number"
                             name="floor"
-                            {...register('floor')}
+                            {...register('address.floor')}
                         />
                         <small className="text-danger">
-                            {errors ?.floor && errors.floor.message}
+                            {errors.address?.floor && errors.address.floor.message}
                         </small>
                     </div>
                 </div>

@@ -13,19 +13,12 @@ export function Login() {
         email: { required: "Email is required" },
         password: {
             required: "Password is required",
-            // minLength: {
-            //     value: 8,
-            //     message: " Password must have at least 8 characters"
-            // },
-
         }
     };
 
     return (
         <>
-            --------------------- React hook form ---------------------
             <form className="form" onSubmit={handleSubmit(handleRegistration)}>
-
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example1">Email</label>
                     <input id="form2Example1" class="form-control"
