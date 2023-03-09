@@ -3,10 +3,14 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import axios, { AxiosResponse } from 'axios';
+import { urlUsers } from "./endpoints.ts";
+import { async } from "q";
+
+// import { response } from "express";
 
 const schema = yup.object().shape({
-    firstName: yup.string().required(),
-    lastName: yup.string().required(),
+    fullName: yup.string().required(),
     storeName: yup.string(),
     address: yup.object().shape({
         city: yup.string().required("city is required"),
@@ -28,7 +32,24 @@ export function Singup() {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema),
     });
-    const onSubmit = (data) => {
+
+     const onSubmit = async (data) => {
+        const json = JSON.stringify(data);
+        const res = await axios.post(urlUsers, json,
+            {
+            headers: {
+                // Overwrite Axios's automatically set Content-Type
+                'Content-Type': 'text/json'
+              }}
+              )
+        // .then((response: AxiosResponse<any>) => {
+        //     console.log(response.data);
+        // })
+        // .then(function (response) {
+        //     console.log(response);
+        //   })
+        
+
         console.log(data);
         reset();
     }
@@ -37,29 +58,18 @@ export function Singup() {
         <>
             <form className="form" onSubmit={handleSubmit(onSubmit)}>
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example1">First name</label>
+                    <label class="form-label" for="form2Example1">Full name</label>
                     <input id="form2Example1" class="form-control"
                         type="text"
-                        name="firstName"
-                        {...register('firstName')}
+                        name="fullName"
+                        {...register('fullName')}
                         placeholder="Your first name"
                     />
                     <small className="text-danger">
-                        {errors ?.firstName && errors.firstName.message}
+                        {errors ?.fullName && errors.fullName.message}
                     </small>
                 </div>
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example1">Last name</label>
-                    <input id="form2Example1" class="form-control"
-                        type="text"
-                        name="lastName"
-                        {...register('lastName')}
-                        placeholder="Your last name"
-                    />
-                    <small className="text-danger">
-                        {errors ?.lastName && errors.lastName.message}
-                    </small>
-                </div>
+
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example1">Store name</label>
                     <input id="form2Example1" class="form-control"
@@ -69,7 +79,7 @@ export function Singup() {
                         placeholder="Your store name"
                     />
                     <small className="text-danger">
-                        {errors ?.storeName && errors.storeName.message}
+                        {errors?.storeName && errors.storeName.message}
                     </small>
                 </div>
 
