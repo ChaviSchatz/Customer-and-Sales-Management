@@ -7,16 +7,17 @@ import axios, { AxiosResponse } from 'axios';
 import { urlUsers } from "./endpoints.ts";
 import { async } from "q";
 
-// import { response } from "express";
 
 const schema = yup.object().shape({
-    fullName: yup.string().required(),
+    name: yup.string().required(),
     storeName: yup.string(),
+    phoneNumber: yup.string().required(),
     address: yup.object().shape({
         city: yup.string().required("city is required"),
         street: yup.string().required("street is required"),
         houseNumber: yup.string().required("houseNumber is required"),
         floor: yup.number().required("floor is required"),
+        remarks: yup.string()
     }),
     email: yup.string().email().required(),
     password: yup
@@ -33,25 +34,28 @@ export function Singup() {
         resolver: yupResolver(schema),
     });
 
-     const onSubmit = async (data) => {
-        const json = JSON.stringify(data);
-        const res = await axios.post(urlUsers, json,
-            {
-            headers: {
-                // Overwrite Axios's automatically set Content-Type
-                'Content-Type': 'text/json'
-              }}
-              )
+    const onSubmit = async (data) => {
+        data.id = "";
+        data.orders = [{}];
+        var form_data = new FormData();
+
+        for (var key in data) {
+            form_data.append(key, data[key]);
+        }
+
+        var options = { content: form_data };
+        
+        const res = axios.post(urlUsers, options
+            , {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+        )
         // .then((response: AxiosResponse<any>) => {
         //     console.log(response.data);
         // })
-        // .then(function (response) {
-        //     console.log(response);
-        //   })
-        
-
-        console.log(data);
-        reset();
+        // reset();
     }
 
     return (
@@ -61,12 +65,25 @@ export function Singup() {
                     <label class="form-label" for="form2Example1">Full name</label>
                     <input id="form2Example1" class="form-control"
                         type="text"
-                        name="fullName"
-                        {...register('fullName')}
+                        name="name"
+                        {...register('name')}
                         placeholder="Your first name"
                     />
                     <small className="text-danger">
-                        {errors ?.fullName && errors.fullName.message}
+                        {errors ?.name && errors.name.message}
+                    </small>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form2Example1">Phone number</label>
+                    <input id="form2Example1" class="form-control"
+                        type="text"
+                        name="phoneNumber"
+                        {...register('phoneNumber')}
+                        placeholder="Your first name"
+                    />
+                    <small className="text-danger">
+                        {errors ?.phoneNumber && errors.phoneNumber.message}
                     </small>
                 </div>
 
@@ -79,7 +96,7 @@ export function Singup() {
                         placeholder="Your store name"
                     />
                     <small className="text-danger">
-                        {errors?.storeName && errors.storeName.message}
+                        {errors ?.storeName && errors.storeName.message}
                     </small>
                 </div>
 
@@ -94,7 +111,7 @@ export function Singup() {
                         // Maybe to add a placeHolder
                         />
                         <small className="text-danger">
-                            {errors.address?.city && errors.address.city.message}
+                            {errors.address ?.city && errors.address.city.message}
                         </small>
                     </div>
                     <div class="form-outline mb-4">
@@ -106,7 +123,7 @@ export function Singup() {
                         //Maybe to add a placeHolder
                         />
                         <small className="text-danger">
-                            {errors.address?.street && errors.address.street.message}
+                            {errors.address ?.street && errors.address.street.message}
                         </small>
                     </div>
                     <div class="form-outline mb-4">
@@ -118,7 +135,7 @@ export function Singup() {
                             placeholder="House/Apt"
                         />
                         <small className="text-danger">
-                            {errors.address?.houseNumber && errors.address.houseNumber.message}
+                            {errors.address ?.houseNumber && errors.address.houseNumber.message}
                         </small>
                     </div>
                     <div class="form-outline mb-4">
@@ -129,7 +146,19 @@ export function Singup() {
                             {...register('address.floor')}
                         />
                         <small className="text-danger">
-                            {errors.address?.floor && errors.address.floor.message}
+                            {errors.address ?.floor && errors.address.floor.message}
+                        </small>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example1">Remarks</label>
+                        <input id="form2Example1" class="form-control"
+                            type="text"
+                            name="remarks"
+                            {...register('remarks')}
+                        />
+                        <small className="text-danger">
+                            {errors ?.remarks && errors.remarks.message}
                         </small>
                     </div>
                 </div>
