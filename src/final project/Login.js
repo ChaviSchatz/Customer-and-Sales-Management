@@ -1,12 +1,23 @@
 import React from "react";
 import './login.css';
 import { useForm } from "react-hook-form";
-
+import axios, { AxiosResponse } from 'axios';
+import { urlUsers } from "./endpoints.ts";
 
 export function Login() {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const handleRegistration = (data) => console.log(data);
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const handleRegistration = async (data) => {
+        console.log(data.password);
+        const res = await axios.get(urlUsers + "/userDetails", {
+            body : JSON.stringify({
+                email : data.email,
+                password : data.password
+            })
+        })
+        console.log(res.data);
+    }
+    
     const registerOptions = {
         email: { required: "Email is required" },
         password: {

@@ -9,6 +9,8 @@ import { async } from "q";
 
 
 const schema = yup.object().shape({
+    id : yup.string(),
+    orders : yup.array(yup.object()),
     name: yup.string().required(),
     storeName: yup.string(),
     phoneNumber: yup.string().required(),
@@ -16,10 +18,10 @@ const schema = yup.object().shape({
         city: yup.string().required("city is required"),
         street: yup.string().required("street is required"),
         houseNumber: yup.string().required("houseNumber is required"),
-        floor: yup.number().required("floor is required"),
+        floor: yup.number().integer().required("floor is required"),
         remarks: yup.string()
     }),
-    email: yup.string().email().required(),
+    emailAddress: yup.string().email().required(),
     password: yup
         .string()
         .min(8, 'Password must be at least 8 characters long')
@@ -36,20 +38,15 @@ export function Singup() {
 
     const onSubmit = async (data) => {
         data.id = "";
-        data.orders = [{}];
-        var form_data = new FormData();
-
-        for (var key in data) {
-            form_data.append(key, data[key]);
-        }
-
-        var options = { content: form_data };
+        data.orders = [];
+        console.log(data);
         
-        const res = axios.post(urlUsers, options
-            , {
+        const res = await axios.post(urlUsers, 
+             {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+                    'Content-Type': 'application/json'
+                },
+                body : data
             }
         )
         // .then((response: AxiosResponse<any>) => {
@@ -155,10 +152,10 @@ export function Singup() {
                         <input id="form2Example1" class="form-control"
                             type="text"
                             name="remarks"
-                            {...register('remarks')}
+                            {...register('address.remarks')}
                         />
                         <small className="text-danger">
-                            {errors ?.remarks && errors.remarks.message}
+                        {errors.address ?.remarks && errors.address.remarks.message}
                         </small>
                     </div>
                 </div>
@@ -169,11 +166,11 @@ export function Singup() {
                     <label class="form-label" for="form2Example1">Email</label>
                     <input id="form2Example1" class="form-control"
                         type="email"
-                        name="email"
-                        {...register('email')}
+                        name="emailAddress"
+                        {...register('emailAddress')}
                     />
                     <small className="text-danger">
-                        {errors ?.email && errors.email.message}
+                        {errors ?.emailAddress && errors.emailAddress.message}
                     </small>
                 </div>
 
