@@ -1,8 +1,8 @@
 ﻿
     public class Snood
     {
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
+    //[BsonId]
+    //[BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
     public string Code { get; set; }
     public string Description { get; set; }
