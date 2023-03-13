@@ -15,6 +15,7 @@ public class UsersController : ControllerBase
     {
         return await _userActions.GetAllUsers();
     }
+
     [HttpPost]
     public async void Create(UserDTO user)
     {
