@@ -9,6 +9,6 @@
 
     public async Task<List<Order>> GetOrdersByUserAsync(string id)
     {
-        return await _orders.Where
+        return await _orders.Where(o => o.UserId == id).ToListAsync();
     }
 }
