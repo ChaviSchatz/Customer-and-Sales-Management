@@ -1,27 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "i76h5gMPp9eNFDNkHJ6StFALGSjDQOT8LfAENsTmBxQGXLrBZm068lrGOO+Y6Ewwck0rtnEW7PEZB75PDduzgA==",
+  "dgSpecHash": "UYky0Nz7PZbSgrPY35pR4CNsrZwh4m6mujke/OrgWVv/KnggM6TmgRT/zu9cG8A4O7I9VGT9CuoK5Mfe+yUCZQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\שץ חוה\\Source\\Repos\\project\\SnoodZone\\Dal\\Dal.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\mongodb.bson\\2.19.0\\mongodb.bson.2.19.0.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\mongodb.driver\\2.19.0\\mongodb.driver.2.19.0.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\mongodb.driver.core\\2.19.0\\mongodb.driver.core.2.19.0.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\mongodb.libmongocrypt\\1.7.0\\mongodb.libmongocrypt.1.7.0.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\snappier\\1.0.0\\snappier.1.0.0.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
-    "C:\\Users\\שץ חוה\\.nuget\\packages\\zstdsharp.port\\0.6.2\\zstdsharp.port.0.6.2.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

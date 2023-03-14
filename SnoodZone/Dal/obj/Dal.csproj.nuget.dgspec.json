@@ -44,20 +44,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "Microsoft.Extensions.DependencyInjection.Abstractions": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            },
-            "MongoDB.Bson": {
-              "target": "Package",
-              "version": "[2.19.0, )"
-            },
-            "MongoDB.Driver": {
-              "target": "Package",
-              "version": "[2.19.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -68,11 +54,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }

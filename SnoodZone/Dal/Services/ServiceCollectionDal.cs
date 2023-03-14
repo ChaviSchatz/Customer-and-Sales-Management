@@ -8,6 +8,7 @@ public static class ServiceCollectionDal
     {
         services.AddSingleton<IDBConnection, DBConnection>();
         services.AddSingleton<IUserService, UserService>();
+        services.AddSingleton<IOrderService, OrderService>();
     }
 }
 
