@@ -276,3 +276,13 @@ C:\Users\WIN-10\source\repos\projectkkk\SnoodZone\APILayer\obj\Debug\net6.0\refi
 C:\Users\WIN-10\source\repos\projectkkk\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.pdb
 C:\Users\WIN-10\source\repos\projectkkk\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.genruntimeconfig.cache
 C:\Users\WIN-10\source\repos\projectkkk\SnoodZone\APILayer\obj\Debug\net6.0\ref\APILayer.dll
+C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.csproj.AssemblyReference.cache
+C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.AssemblyInfoInputs.cache
+C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.AssemblyInfo.cs
+C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.csproj.CoreCompileInputs.cache
+C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.dll
+C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\ref\APILayer.dll
+C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.pdb

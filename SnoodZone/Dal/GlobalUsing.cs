@@ -2,3 +2,4 @@
 global using MongoDB.Bson;
 global using MongoDB.Driver;
 global using Dal.Models;
+global using Microsoft.Extensions.DependencyInjection;
