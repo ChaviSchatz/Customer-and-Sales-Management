@@ -1,4 +1,6 @@
 ﻿
+using MongoDB.Driver;
+
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
@@ -40,6 +42,13 @@ public class UsersController : ControllerBase
     public async Task<UserDTO> GetUserByEmailAndPassword(string email, string password)
     {
         return await _userActions.GetUserByEmailAndPassword(email, password);
+    }
+
+    [Route("/order")]
+    [HttpPut]
+    public async Task<UpdateResult> AddOrder(string id, UserOrderDTO newOrder)
+    {
+        return await _userActions.InsertNewOrderToUsersOrdersList(id, newOrder);
     }
 
 }

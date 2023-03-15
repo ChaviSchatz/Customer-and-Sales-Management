@@ -746,25 +746,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ימין בת שבע\\.nuget\\packages\\": {},
+    "C:\\Users\\שץ חוה\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ימין בת שבע\\Source\\Repos\\project\\SnoodZone\\Dal\\Dal.csproj",
+      "projectUniqueName": "C:\\Users\\שץ חוה\\Source\\Repos\\project\\SnoodZone\\Dal\\Dal.csproj",
       "projectName": "Dal",
-      "projectPath": "C:\\Users\\ימין בת שבע\\Source\\Repos\\project\\SnoodZone\\Dal\\Dal.csproj",
-      "packagesPath": "C:\\Users\\ימין בת שבע\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ימין בת שבע\\Source\\Repos\\project\\SnoodZone\\Dal\\obj\\",
+      "projectPath": "C:\\Users\\שץ חוה\\Source\\Repos\\project\\SnoodZone\\Dal\\Dal.csproj",
+      "packagesPath": "C:\\Users\\שץ חוה\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\שץ חוה\\Source\\Repos\\project\\SnoodZone\\Dal\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ימין בת שבע\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\שץ חוה\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -819,7 +819,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.107\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

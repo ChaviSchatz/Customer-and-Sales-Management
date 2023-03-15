@@ -1,11 +1,9 @@
 ﻿
-using AutoMapper;
+
 
 public class UserActions : IUserActions
 {
     private readonly IUserService _userService;
-
-
 
     private IMapper iMapperFromUserDTOToUser;
     private IMapper iMapperFromUserToUserDTO;
@@ -67,6 +65,11 @@ public class UserActions : IUserActions
         return iMapperFromUserToUserDTO.Map<User, UserDTO>(result);
     }
 
+    public async Task<UpdateResult> InsertNewOrderToUsersOrdersList(string userId, UserOrderDTO newOrder)
+    {
+        UserOrder orderForDal = iMapperFromUserDTOToUser.Map<UserOrderDTO, UserOrder>(newOrder);
+        return await _userService.InsertNewOrder(userId, orderForDal);
+    }
 
 
 }
