@@ -9,8 +9,8 @@ import { async } from "q";
 
 
 const schema = yup.object().shape({
-    id : yup.string(),
-    orders : yup.array(yup.object()),
+    id: yup.string(),
+    orders: yup.array(yup.object()),
     name: yup.string().required(),
     storeName: yup.string(),
     phoneNumber: yup.string().required(),
@@ -40,19 +40,12 @@ export function Singup() {
         data.id = "";
         data.orders = [];
         console.log(data);
-        
-        const res = await axios.post(urlUsers, 
-             {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body : data
-            }
-        )
+
+        const res = await axios.post(urlUsers, data)
         // .then((response: AxiosResponse<any>) => {
         //     console.log(response.data);
         // })
-        // reset();
+        reset();
     }
 
     return (
@@ -67,7 +60,7 @@ export function Singup() {
                         placeholder="Your first name"
                     />
                     <small className="text-danger">
-                        {errors ?.name && errors.name.message}
+                        {errors?.name && errors.name.message}
                     </small>
                 </div>
 
@@ -80,7 +73,7 @@ export function Singup() {
                         placeholder="Your first name"
                     />
                     <small className="text-danger">
-                        {errors ?.phoneNumber && errors.phoneNumber.message}
+                        {errors?.phoneNumber && errors.phoneNumber.message}
                     </small>
                 </div>
 
@@ -93,7 +86,7 @@ export function Singup() {
                         placeholder="Your store name"
                     />
                     <small className="text-danger">
-                        {errors ?.storeName && errors.storeName.message}
+                        {errors?.storeName && errors.storeName.message}
                     </small>
                 </div>
 
@@ -108,7 +101,7 @@ export function Singup() {
                         // Maybe to add a placeHolder
                         />
                         <small className="text-danger">
-                            {errors.address ?.city && errors.address.city.message}
+                            {errors.address?.city && errors.address.city.message}
                         </small>
                     </div>
                     <div class="form-outline mb-4">
@@ -120,7 +113,7 @@ export function Singup() {
                         //Maybe to add a placeHolder
                         />
                         <small className="text-danger">
-                            {errors.address ?.street && errors.address.street.message}
+                            {errors.address?.street && errors.address.street.message}
                         </small>
                     </div>
                     <div class="form-outline mb-4">
@@ -132,7 +125,7 @@ export function Singup() {
                             placeholder="House/Apt"
                         />
                         <small className="text-danger">
-                            {errors.address ?.houseNumber && errors.address.houseNumber.message}
+                            {errors.address?.houseNumber && errors.address.houseNumber.message}
                         </small>
                     </div>
                     <div class="form-outline mb-4">
@@ -143,7 +136,7 @@ export function Singup() {
                             {...register('address.floor')}
                         />
                         <small className="text-danger">
-                            {errors.address ?.floor && errors.address.floor.message}
+                            {errors.address?.floor && errors.address.floor.message}
                         </small>
                     </div>
 
@@ -155,7 +148,7 @@ export function Singup() {
                             {...register('address.remarks')}
                         />
                         <small className="text-danger">
-                        {errors.address ?.remarks && errors.address.remarks.message}
+                            {errors.address?.remarks && errors.address.remarks.message}
                         </small>
                     </div>
                 </div>
@@ -170,7 +163,7 @@ export function Singup() {
                         {...register('emailAddress')}
                     />
                     <small className="text-danger">
-                        {errors ?.emailAddress && errors.emailAddress.message}
+                        {errors?.emailAddress && errors.emailAddress.message}
                     </small>
                 </div>
 
@@ -182,7 +175,7 @@ export function Singup() {
                         {...register('password')}
                     />
                     <small className="text-danger">
-                        {errors ?.password && errors.password.message}
+                        {errors?.password && errors.password.message}
                     </small>
                 </div>
                 <button class="btn btn-primary btn-block mb-4">Submit</button>

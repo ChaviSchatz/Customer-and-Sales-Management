@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Login></Login>
-        {/* <Singup></Singup> */}
+        {/* <Login></Login> */}
+        <Singup></Singup>
       </header>
     </div>
   );
