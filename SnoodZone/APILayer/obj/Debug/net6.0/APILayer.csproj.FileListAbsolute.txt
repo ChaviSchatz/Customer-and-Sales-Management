@@ -86,7 +86,6 @@ C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\obj\Debug\net6.0\s
 C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\obj\Debug\net6.0\scopedcss\bundle\APILayer.styles.css
 C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.csproj.CopyComplete
 C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.dll
-C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\obj\Debug\net6.0\refint\APILayer.dll
 C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.pdb
 C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.genruntimeconfig.cache
 C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\obj\Debug\net6.0\ref\APILayer.dll
@@ -286,3 +285,6 @@ C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\APILayer\obj\Debug\
 C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.dll
 C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\ref\APILayer.dll
 C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.pdb
+C:\Users\שץ חוה\source\repos\project1\SnoodZone\APILayer\bin\Debug\net6.0\ref\APILayer.dll
+C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

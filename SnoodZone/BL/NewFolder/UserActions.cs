@@ -5,27 +5,18 @@ public class UserActions : IUserActions
 {
     private readonly IUserService _userService;
 
-    private IMapper iMapperFromUserDTOToUser;
-    private IMapper iMapperFromUserToUserDTO;
+    private IMapper mapper;
 
-    public UserActions(IUserService userService)
+
+    public UserActions(IUserService userService, IMapper mapper)
     {
         _userService = userService;
-
-        var configFromUserDTOToUser = new MapperConfiguration(cfg => {
-            cfg.CreateMap<UserDTO, User>();
-        });
-        iMapperFromUserDTOToUser = configFromUserDTOToUser.CreateMapper();
-
-        var configFromUserToUserDTO = new MapperConfiguration(cfg => {
-            cfg.CreateMap<User, UserDTO>();
-        });
-        iMapperFromUserToUserDTO = configFromUserToUserDTO.CreateMapper();
+        this.mapper = mapper;
     }
 
     public Task CreateNewUser(UserDTO user)
     { 
-        User userForDal = iMapperFromUserDTOToUser.Map<UserDTO, User>(user);
+        User userForDal = mapper.Map<UserDTO, User>(user);
         return _userService.CreateUser(userForDal);
     }
 
@@ -35,14 +26,14 @@ public class UserActions : IUserActions
         List<UserDTO> users = new();
         foreach (User item in results)
         {
-            users.Add(iMapperFromUserToUserDTO.Map<User, UserDTO>(item));
+            users.Add(mapper.Map<User, UserDTO>(item));
         }
         return users;
     }
 
     public Task UpdateUser(UserDTO user)///לשאול את המורה אם להחזיר ערך וכיצד לעשות זאת
     {
-        User userForDal = iMapperFromUserDTOToUser.Map<UserDTO, User>(user);
+        User userForDal = mapper.Map<UserDTO, User>(user);
         return _userService.UpdateUser(userForDal);
     }
 
@@ -62,12 +53,12 @@ public class UserActions : IUserActions
             .FirstOrDefault();
         if (result == null) return null;
 
-        return iMapperFromUserToUserDTO.Map<User, UserDTO>(result);
+        return mapper.Map<User, UserDTO>(result);
     }
 
     public async Task<UpdateResult> InsertNewOrderToUsersOrdersList(string userId, UserOrderDTO newOrder)
     {
-        UserOrder orderForDal = iMapperFromUserDTOToUser.Map<UserOrderDTO, UserOrder>(newOrder);
+        UserOrder orderForDal = mapper.Map<UserOrderDTO, UserOrder>(newOrder);
         return await _userService.InsertNewOrder(userId, orderForDal);
     }
 

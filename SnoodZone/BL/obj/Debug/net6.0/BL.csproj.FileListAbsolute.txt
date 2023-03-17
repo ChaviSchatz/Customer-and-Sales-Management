@@ -27,7 +27,6 @@ C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\BL\obj\Debug\net6.0\BL.Asse
 C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\BL\obj\Debug\net6.0\BL.csproj.CoreCompileInputs.cache
 C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\BL\obj\Debug\net6.0\BL.csproj.CopyComplete
 C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\BL\obj\Debug\net6.0\BL.dll
-C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\BL\obj\Debug\net6.0\refint\BL.dll
 C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\BL\obj\Debug\net6.0\BL.pdb
 C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\BL\obj\Debug\net6.0\ref\BL.dll
 C:\Users\WIN-10\source\repos\project2\SnoodZone\BL\obj\Debug\net6.0\BL.csproj.AssemblyReference.cache
@@ -110,3 +109,4 @@ C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\BL\obj\Debug\net6.0
 C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\BL\obj\Debug\net6.0\BL.dll
 C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\BL\obj\Debug\net6.0\ref\BL.dll
 C:\Users\ימין בת שבע\Source\Repos\project\SnoodZone\BL\obj\Debug\net6.0\BL.pdb
+C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\BL\bin\Debug\net6.0\ref\BL.dll
