@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IU43C4ps4F3w7xUxwteecapQvFmPT2JY8IDUUNAUDSZ3kW12KG31O7OfsB8Rfu6uzLfWZaxqF8E/tVrj87ze6g==",
+  "dgSpecHash": "h91O9/mCXwINAgRoY8++EYa5qVUQazh5nI4vdXKSAUMMYMBFxBZUtvf5wspB4aS8YOk9trPpviXiADwuMWhUoA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\שץ חוה\\Source\\Repos\\project1\\SnoodZone\\BL\\BL.csproj",
+  "projectFilePath": "C:\\Users\\שץ חוה\\Source\\Repos\\project12\\SnoodZone\\BL\\BL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\שץ חוה\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\שץ חוה\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

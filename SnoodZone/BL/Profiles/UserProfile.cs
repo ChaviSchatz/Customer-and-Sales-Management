@@ -3,19 +3,14 @@
     {
     public UserProfile()
     {
-        CreateMap<User, UserDTO>()
+        CreateMap<UserDTO , User>()
                .ForMember(u => u.Address,
                            option =>
                            option.MapFrom(src => new AddressProfile()))
                .ForMember(u => u.Orders,
                             option =>
-                            option.MapFrom(src => new UserOrderProfile()));
-      //.ReverseMap().ForMember(u => u.Address,
-      //                     option =>
-      //                     option.MapFrom(src => new AddressProfile()))
-      //         .ForMember(u => u.Orders,
-      //                      option =>
-      //                      option.MapFrom(src => new UserOrderProfile()));
+                            option.MapFrom(src => new UserOrderProfile()))
+        .ReverseMap();
     }
 }
 
