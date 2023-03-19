@@ -7,14 +7,15 @@ import { urlUsers } from "./endpoints.ts";
 export function Login() {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const handleRegistration = async (data) => {
-        console.log(data.password);
-        const res = await axios.get(urlUsers + "/userDetails", {
-            body : JSON.stringify({
-                email : data.email,
-                password : data.password
-            })
-        })
+    const handleRegistration = async (d) => {
+        console.log(d.password);
+        const postUrl = urlUsers + "/userDetails";
+        console.log(postUrl);
+        const res = await axios.post(urlUsers,
+            {
+                email : d.email ,
+                password : d.password
+           });
         console.log(res.data);
     }
     
