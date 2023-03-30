@@ -6,10 +6,10 @@
         CreateMap<UserDTO , User>()
                .ForMember(u => u.Address,
                            option =>
-                           option.MapFrom(src => new AddressProfile()))
+                           option.MapFrom(src => src.Address))
                .ForMember(u => u.Orders,
                             option =>
-                            option.MapFrom(src => new UserOrderProfile()))
+                            option.MapFrom(src => src.Orders))
         .ReverseMap();
     }
 }

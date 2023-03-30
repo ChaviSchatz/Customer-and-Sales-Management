@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\שץ חוה\\Source\\Repos\\project12\\SnoodZone\\Dal\\Dal.csproj": {}
+    "C:\\Users\\WIN-10\\source\\repos\\project11\\SnoodZone\\Dal\\Dal.csproj": {}
   },
   "projects": {
-    "C:\\Users\\שץ חוה\\Source\\Repos\\project12\\SnoodZone\\Dal\\Dal.csproj": {
+    "C:\\Users\\WIN-10\\source\\repos\\project11\\SnoodZone\\Dal\\Dal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\שץ חוה\\Source\\Repos\\project12\\SnoodZone\\Dal\\Dal.csproj",
+        "projectUniqueName": "C:\\Users\\WIN-10\\source\\repos\\project11\\SnoodZone\\Dal\\Dal.csproj",
         "projectName": "Dal",
-        "projectPath": "C:\\Users\\שץ חוה\\Source\\Repos\\project12\\SnoodZone\\Dal\\Dal.csproj",
-        "packagesPath": "C:\\Users\\שץ חוה\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\שץ חוה\\Source\\Repos\\project12\\SnoodZone\\Dal\\obj\\",
+        "projectPath": "C:\\Users\\WIN-10\\source\\repos\\project11\\SnoodZone\\Dal\\Dal.csproj",
+        "packagesPath": "C:\\Users\\WIN-10\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\WIN-10\\source\\repos\\project11\\SnoodZone\\Dal\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\שץ חוה\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\WIN-10\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,7 +59,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -73,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
