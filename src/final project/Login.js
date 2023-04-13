@@ -3,20 +3,23 @@ import './login.css';
 import { useForm } from "react-hook-form";
 import axios, { AxiosResponse } from 'axios';
 import { urlUsers } from "./endpoints.ts";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux'
 
 export function Login() {
-
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const handleRegistration = async (d) => {
-        console.log(d.password);
         const postUrl = urlUsers + "/userDetails";
-        console.log(postUrl);
-        const res = await axios.post(urlUsers,
-            {
-                email : d.email ,
-                password : d.password
-           });
+        const obj = {
+            password : d.password,
+            email : d.email
+            }
+        console.log(obj);
+        const res = await axios.post(postUrl, obj);
         console.log(res.data);
+        navigate("/home");
+
     }
     
     const registerOptions = {
@@ -54,6 +57,7 @@ export function Login() {
                 </div>
                 <button class="btn btn-primary btn-block mb-4">Submit</button>
             </form>
+            
         </>
     );
 }
