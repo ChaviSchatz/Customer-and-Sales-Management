@@ -1,5 +1,9 @@
 ﻿
+using MongoDB.Bson.IO;
+using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Dynamic;
+using System.Text.Json;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -37,11 +41,11 @@ public class UsersController : ControllerBase
     //   return await _userActions.UserAuthentication(email, password);
     //}
 
-    [Route("/userDetails")]//לשנות את ה url חובה!!!!!
-    [HttpGet]
-    public async Task<UserDTO> GetUserByEmailAndPassword(string email, string password)
+    [Route("userDetails")]//לשנות את ה url חובה!!!!!
+    [HttpPost]
+    public async Task<UserDTO> GetUserByEmailAndPassword(UserSimpleModel user)
     {
-        return await _userActions.GetUserByEmailAndPassword(email, password);
+        return await _userActions.GetUserByEmailAndPassword(user.Email, user.Password);
     }
 
     [Route("/order")]
