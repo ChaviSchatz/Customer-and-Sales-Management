@@ -6,6 +6,9 @@ import * as yup from "yup";
 import axios, { AxiosResponse } from 'axios';
 import { urlUsers } from "./endpoints.ts";
 import { async } from "q";
+import { useDispatch } from "react-redux";
+import { pushNewUser } from "./redax/actions/usersActions";
+import { useSelector } from "react-redux";
 
 
 const schema = yup.object().shape({
@@ -36,15 +39,15 @@ export function Singup() {
         resolver: yupResolver(schema),
     });
 
+    const dispatch = useDispatch();
+    const users = useSelector((state) => state.usersReducer);
+
     const onSubmit = async (data) => {
         data.id = "";
         data.orders = [];
-        console.log(data);
-
-        const res = await axios.post(urlUsers, data)
-        // .then((response: AxiosResponse<any>) => {
-        //     console.log(response.data);
-        // })
+        dispatch(pushNewUser(data.emailAddress, data.password));
+        console.log(users);
+        const res = await axios.post(urlUsers, data);
         reset();
     }
 

@@ -1,6 +1,7 @@
 import {createStore} from 'redux';
-import {usersReducer} from './reducers/usersReducer';
+import { allReducers } from './reducers/combineReducers';
+
 export const store = createStore(
-    usersReducer,
+    allReducers
 );
 store.getState();

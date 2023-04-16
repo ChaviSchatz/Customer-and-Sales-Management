@@ -2,24 +2,28 @@ import React from "react";
 import './login.css';
 import { useForm } from "react-hook-form";
 import axios, { AxiosResponse } from 'axios';
-import { urlUsers } from "./endpoints.ts";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from "react-router-dom";
 
 export function Login() {
     const navigate = useNavigate();
+    const users = useSelector((state) => state.usersReducer);
+    
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const handleRegistration = async (d) => {
-        const postUrl = urlUsers + "/userDetails";
-        const obj = {
-            password : d.password,
-            email : d.email
-            }
-        console.log(obj);
-        const res = await axios.post(postUrl, obj);
-        console.log(res.data);
-        navigate("/home");
 
+    const findIndexBydetails = (email, password) => {
+        return users.findIndex(o => o.email == email && o.password == password);
+    }
+
+    const handleRegistration = async (d) => {
+       var index = findIndexBydetails(d.email, d.password);
+       if(index!=-1){
+        navigate(`/home/${index}`);
+       }
+       else{
+        
+       }
     }
     
     const registerOptions = {
@@ -56,6 +60,7 @@ export function Login() {
                     </small>
                 </div>
                 <button class="btn btn-primary btn-block mb-4">Submit</button>
+                <Link to="Signup">משתמש חדש? הרשם כאן</Link>
             </form>
             
         </>

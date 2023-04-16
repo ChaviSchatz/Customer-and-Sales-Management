@@ -1,13 +1,8 @@
-export const getUserDetails = (index) => {
+
+export const pushNewUser = (email, password) => {
     return{
-        type: "GETUSERSDETAILS",
-        payload: index
+        type: "PUSHNEWUSER",
+        payload: {email, password}
     };
 }
 
-// export const addQty = (id) => {
-//     return{
-//         type: "GETUSERSDETAILS",
-//         payload: id
-//     };
-// }
