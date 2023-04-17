@@ -41,7 +41,7 @@ public class UsersController : ControllerBase
     //   return await _userActions.UserAuthentication(email, password);
     //}
 
-    [Route("userDetails")]//לשנות את ה url חובה!!!!!
+    [Route("{name}")]//לשנות את ה url חובה!!!!!
     [HttpPost]
     public async Task<UserDTO> GetUserByEmailAndPassword(UserSimpleModel user)
     {
