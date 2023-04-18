@@ -1,4 +1,4 @@
-const inititialState = [{ email: "chavi@gmail.com", password: "0548450195" }];
+const inititialState = [{ email: "c@gmail.com", password: "55" }];
 
 export const usersReducer = (state = inititialState, action) => {
     switch (action.type) {

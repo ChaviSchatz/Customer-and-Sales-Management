@@ -13,8 +13,13 @@ export function Home(state) {
     const user = users[index];
     const [details, setdetails] = useState(null);
 
+    useEffect(() => {
+        func();
+    },[]);
+
     const func = () => {
-        const res = axios.post(postUrl, user)
+        // axios.post(postUrl, user)
+        axios.post(postUrl, user)
             .then((response) => {
                 console.log(response.status);
                 if (response.status < 300) {
@@ -30,14 +35,10 @@ export function Home(state) {
             })
             .catch((error) => console.log(error));
     }
-    
-    useEffect(() => {
-       func();
-    }, []);
 
     return (
         <>
-        <HomeChild userData = {details}></HomeChild>
+            <HomeChild details={details} />
         </>
     );
 }
