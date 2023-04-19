@@ -7,7 +7,7 @@ import axios, { AxiosResponse } from 'axios';
 import { urlUsers } from "./endpoints.ts";
 import { async } from "q";
 import { useDispatch ,useSelector} from "react-redux";
-import { pushNewUser } from "./redax/actions/usersActions";
+import {  updateUser } from "./redax/actions/usersActions";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -46,11 +46,17 @@ export function Update(prop) {
     const users = useSelector((state) => state.usersReducer);
 
     const onSubmit = async (data) => {
-        data.id = "";
-        data.orders = [];
-        dispatch(pushNewUser(data.emailAddress, data.password));
-        console.log(users);
-        const res = await axios.post(urlUsers, data);
+        data.id = prop.details.id;
+        const res = axios.put(putUrl, data)
+                .then((response) => {
+                    if(response.status < 299){
+                        debugger
+                        dispatch(updateUser(prop.details.emailAddress, prop.details.password
+                            ,data.emailAddress, data.password));
+                    }
+                    console.log(response.data)
+                })
+                .catch((error) => console.log(error));
         reset();
     }
     const { index } = useParams();
@@ -59,17 +65,7 @@ export function Update(prop) {
     const user = userDetail[index];
     const [details, setDetails] = useState(null);
 
-    useEffect(() => {
-        const innerFunc = () => {
-            const res = axios.put(putUrl, user)
-                .then((response) => {setDetails(response.data);
-                    console.log(response.data)
-                })
-                .catch((error) => console.log(error));
-            console.log(details);
-        }
-        innerFunc();
-    }, []);
+  
 
 
     return (

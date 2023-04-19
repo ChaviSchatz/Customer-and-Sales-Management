@@ -18,6 +18,7 @@ export function Login() {
     }
 
     const handleRegistration = async (d) => {
+        debugger
         var index = findIndexBydetails(d.email, d.password);
         if (index != -1) {
             navigate(`/home/${index}`);

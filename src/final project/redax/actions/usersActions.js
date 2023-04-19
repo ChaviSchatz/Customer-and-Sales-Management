@@ -6,3 +6,10 @@ export const pushNewUser = (email, password) => {
     };
 }
 
+export const updateUser = (email, password, newEmail, newPassword) => {
+    return{
+        type: "UPDATEUSER",
+        payload: {email, password, newEmail, newPassword}
+    };
+}
+
