@@ -13,13 +13,13 @@
     {
         User userWithMongoId = new User() { Name = user.Name, Password = user.Password,
             Address = user.Address,EmailAddress = user.EmailAddress,
-            Orders = user.Orders, PhoneNumber = user.PhoneNumber, StoreName = user.StoreName};
+             PhoneNumber = user.PhoneNumber, StoreName = user.StoreName};
         return _users.InsertOneAsync(userWithMongoId);
     }
 
     public Task UpdateUser(User user)
     {
-        var filter = Builders<User>.Filter.Eq(u => u.Password , user.Password);
+        var filter = Builders<User>.Filter.Eq(u => u.Id , user.Id);
         _users.DeleteOneAsync(filter);
         return CreateUser(user);
     }
@@ -31,13 +31,13 @@
     /// <param name="userId"></param>
     /// <param name="newOrder"></param>
     /// <returns></returns>
-    public async Task<UpdateResult> InsertNewOrder(string userId, UserOrder newOrder)
-    {
-        var filter = Builders<User>.Filter.Where(u => u.Id == userId);
-        var data = Builders<User>.Update.Push(f =>
-        f.Orders, newOrder);
-        return await _users.UpdateOneAsync(filter, data);
+    //public Task<UpdateResult> InsertNewOrder(string userId, UserOrder newOrder)
+    //{
+    //    var filter = Builders<User>.Filter.Where(u => u.Id == userId);
+    //    var data = Builders<User>.Update.Push(f =>
+    //    f.Orders, newOrder);
+    //    return _users.UpdateOneAsync(filter, data);
 
-    }
+    //}
 }
 

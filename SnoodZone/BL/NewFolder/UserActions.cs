@@ -56,11 +56,11 @@ public class UserActions : IUserActions
         return mapper.Map<User, UserDTO>(result);
     }
 
-    public async Task<UpdateResult> InsertNewOrderToUsersOrdersList(string userId, UserOrderDTO newOrder)
-    {
-        UserOrder orderForDal = mapper.Map<UserOrderDTO, UserOrder>(newOrder);
-        return await _userService.InsertNewOrder(userId, orderForDal);
-    }
+    //public async Task<UpdateResult> InsertNewOrderToUsersOrdersList(string userId, UserOrderDTO newOrder)
+    //{
+    //    UserOrder orderForDal = mapper.Map<UserOrderDTO, UserOrder>(newOrder);
+    //    return await _userService.InsertNewOrder(userId, orderForDal);
+    //}
 
 
 }

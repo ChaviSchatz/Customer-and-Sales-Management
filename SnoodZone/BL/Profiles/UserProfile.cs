@@ -7,9 +7,9 @@
                .ForMember(u => u.Address,
                            option =>
                            option.MapFrom(src => src.Address))
-               .ForMember(u => u.Orders,
-                            option =>
-                            option.MapFrom(src => src.Orders))
+               //.ForMember(u => u.Orders,
+               //             option =>
+               //             option.MapFrom(src => src.Orders))
         .ReverseMap();
     }
 }

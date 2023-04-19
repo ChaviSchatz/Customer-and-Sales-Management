@@ -48,12 +48,12 @@ public class UsersController : ControllerBase
         return await _userActions.GetUserByEmailAndPassword(user.Email, user.Password);
     }
 
-    [Route("/order")]
-    [HttpPut]
-    public async Task<UpdateResult> AddOrder(string id, UserOrderDTO newOrder)
-    {
-        return await _userActions.InsertNewOrderToUsersOrdersList(id, newOrder);
-    }
+    //[Route("/order")]
+    //[HttpPut]
+    //public async Task<UpdateResult> AddOrder(string id, UserOrderDTO newOrder)
+    //{
+    //    return await _userActions.InsertNewOrderToUsersOrdersList(id, newOrder);
+    //}
 
 }
 

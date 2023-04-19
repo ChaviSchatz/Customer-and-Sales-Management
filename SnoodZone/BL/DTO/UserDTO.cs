@@ -10,6 +10,6 @@ public class UserDTO
     public AddressDTO Address { get; set; }
     public string StoreName { get; set; }
     public string EmailAddress { get; set; }
-    public List<UserOrderDTO> Orders { get; set; }
+    //public List<UserOrderDTO> Orders { get; set; }
 }
 
