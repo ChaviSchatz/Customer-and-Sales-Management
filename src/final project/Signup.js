@@ -43,6 +43,7 @@ export function Singup() {
     const users = useSelector((state) => state.usersReducer);
 
     const onSubmit = async (data) => {
+        debugger
         data.id = "";
         data.orders = [];
         dispatch(pushNewUser(data.emailAddress, data.password));

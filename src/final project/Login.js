@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './login.css';
 import { useForm } from "react-hook-form";
 import axios, { AxiosResponse } from 'axios';
@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 export function Login() {
     const navigate = useNavigate();
     const users = useSelector((state) => state.usersReducer);
-    
+    const [UserAuthentication, setUserAuthentication] = useState(true);
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const findIndexBydetails = (email, password) => {
@@ -17,15 +18,16 @@ export function Login() {
     }
 
     const handleRegistration = async (d) => {
-       var index = findIndexBydetails(d.email, d.password);
-       if(index!=-1){
-        navigate(`/home/${index}`);
-       }
-       else{
-        
-       }
+        var index = findIndexBydetails(d.email, d.password);
+        if (index != -1) {
+            navigate(`/home/${index}`);
+
+        }
+        else {
+            setUserAuthentication(false);
+        }
     }
-    
+
     const registerOptions = {
         email: { required: "Email is required" },
         password: {
@@ -60,9 +62,14 @@ export function Login() {
                     </small>
                 </div>
                 <button class="btn btn-primary btn-block mb-4">Submit</button>
+                {UserAuthentication == false &&
+                    <small className="text-danger">
+                        שם משתמש או סיסמא שגויים, נסה שוב
+                    </small>}
+                    <br></br>
                 <Link to="Signup">משתמש חדש? הרשם כאן</Link>
             </form>
-            
+
         </>
     );
 }
