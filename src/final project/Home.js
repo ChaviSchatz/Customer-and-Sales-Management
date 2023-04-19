@@ -15,47 +15,60 @@ export function Home(state) {
     const users = useSelector((state) => state.usersReducer);
     const user = users[index];
     const [details, setdetails] = useState(null);
-    const [ServerError, setServerError] = useState(false);
+    const [serverError, setserverError] = useState(false);
+    const [navToUpdate, setnavToUpdate] = useState(false);
 
 
-    const func = async () => { await axios.post(postUrl, user)
-    .then((response) => {
-        console.log("kkkk", response.data);
-        if (response.status < 300) {
-            const userData = response.data;
-            setdetails(userData);
-        }
-        else {
-            setServerError(true);
-            console.log("the http request faild");
 
-        }
-    })
-    .catch((error) => console.log(error));}
-    
+    const func = async () => {
+        await axios.post(postUrl, user)
+            .then((response) => {
+               
+                if (response.status < 300) {
+                    const userData = response.data;
+                    setdetails(userData);
+                }
+                else {
+                    setserverError(true);
+                    console.log("the http request faild");
+
+                }
+            })
+            .catch((error) => console.log(error));
+    }
+
     useEffect(() => {
         func();
-    },[]);
+    }, []);
 
-  
+
 
     return (
         <>
             {
-                details != null && 
-                <p> gggggg {details.name}</p>
-                // <>
-                // <p>{details.name}</p>
-                // <br></br>
-                // <button onClick={() => {
-                //     <Update details={details}/>
-                // }}>
-                // לעדכון
-                // </button>
-                // </>                 
+                details != null &&
+                // <><p> hello {details.name}</p>
+                // <p>{details.storeName}</p></>
+                
+                <>
+                <p>{details.name}</p>
+                <br></br>
+                <p>{details.storeName}</p>
+                <br></br>
+                <button onClick={() => {
+                    setnavToUpdate(true);   
+                }}>
+                לעדכון
+                </button>
+               
+                </>                 
             }
+             {
+                    navToUpdate==true &&
+                    <Update details={details}/>
+                }
             {
-                ServerError==true &&
+                serverError == true &&
                 <p>Uoooops we have problem now</p>
             }
         </>
