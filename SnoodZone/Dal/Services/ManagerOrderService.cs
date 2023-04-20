@@ -18,8 +18,8 @@ public class ManagerOrderService : IManagerOrderService
     public Task UpdateStatus(ManagerOrder order)
     {
         var filter = Builders<ManagerOrder>.Filter.Eq(o => o.Id, order.Id);
-        _orders.DeleteOneAsync(filter);
-        return CreateOrder(order);
+        return _orders.ReplaceOneAsync(filter, order);
+
     }
     public async Task<List<ManagerOrder>> GetOrdersByDatesAsync(DateTime from, DateTime to)
     {

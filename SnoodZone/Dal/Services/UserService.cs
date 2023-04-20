@@ -19,9 +19,7 @@
 
     public Task UpdateUser(User user)
     {
-        var filter = Builders<User>.Filter.Eq(u => u.Id , user.Id);
-        _users.DeleteOneAsync(filter);
-        return CreateUser(user);
+       return _users.ReplaceOneAsync(Builders<User>.Filter.Eq(u => u.Id, user.Id), user);
     }
 
     /// <summary>
