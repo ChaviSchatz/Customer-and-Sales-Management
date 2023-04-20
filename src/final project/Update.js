@@ -6,11 +6,11 @@ import * as yup from "yup";
 import axios, { AxiosResponse } from 'axios';
 import { urlUsers } from "./endpoints.ts";
 import { async } from "q";
-import { useDispatch ,useSelector} from "react-redux";
-import {  updateUser } from "./redax/actions/usersActions";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "./redax/actions/usersActions";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 
 const schema = yup.object().shape({
@@ -42,77 +42,86 @@ export function Update(prop) {
         resolver: yupResolver(schema),
     });
 
+    const findIndexBydetails = (email, password) => {
+        return users.findIndex(o => o.email == email && o.password == password);
+    }
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
+
     const users = useSelector((state) => state.usersReducer);
 
     const onSubmit = async (data) => {
         data.id = prop.details.id;
         const res = axios.put(putUrl, data)
-                .then((response) => {
-                    if(response.status < 299){
-                        debugger
-                        dispatch(updateUser(prop.details.emailAddress, prop.details.password
-                            ,data.emailAddress, data.password));
+            .then((response) => {
+                if (response.status < 299) {
+                    debugger
+                    dispatch(updateUser(prop.details.emailAddress, prop.details.password
+                        , data.emailAddress, data.password));
+                    var index = findIndexBydetails(data.emailAddress, data.password);
+                    if (index != -1) {
+                        console.log(index);
+                        navigate(`/helper/${index}`);
                     }
-                    console.log(response.data)
-                })
-                .catch((error) => console.log(error));
+                }
+                console.log(response.data)
+            })
+            .catch((error) => console.log(error));
         reset();
+        
     }
     const { index } = useParams();
     const putUrl = urlUsers;
     const userDetail = useSelector((state) => state.usersReducer);
-    const user = userDetail[index];
-    const [details, setDetails] = useState(null);
 
-  
 
 
     return (
         <>
             <form class="form-row" onSubmit={handleSubmit(onSubmit)}>
-                <div style={{'padding': '20px' }}>
-                <div class="form-group col-md-6">
-                    <label class="form-label" for="form2Example1">Full name</label>
-                    <input id="form2Example1" class="form-control"
-                        type="text"
-                        name="name"
-                        {...register('name')}
-                        placeholder="Your first name"
-                        value={prop.name}
-                    />
-                    <small className="text-danger">
-                        {errors?.name && errors.name.message}
-                    </small>
-                </div>
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example1">Phone number</label>
-                    <input id="form2Example1" class="form-control"
-                        type="text"
-                        name="phoneNumber"
-                        {...register('phoneNumber')}
-                        placeholder="Your phoneNumber"
-                        value={prop.phoneNumber}
-                    />
-                    <small className="text-danger">
-                        {errors?.phoneNumber && errors.phoneNumber.message}
-                    </small>
-                </div>
+                <div style={{ 'padding': '20px' }}>
+                    <div class="form-group col-md-6">
+                        <label class="form-label" for="form2Example1">Full name</label>
+                        <input id="form2Example1" class="form-control"
+                            type="text"
+                            name="name"
+                            {...register('name')}
+                            placeholder="Your first name"
+                            value={prop.details.name}
+                        />
+                        <small className="text-danger">
+                            {errors?.name && errors.name.message}
+                        </small>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example1">Phone number</label>
+                        <input id="form2Example1" class="form-control"
+                            type="text"
+                            name="phoneNumber"
+                            {...register('phoneNumber')}
+                            placeholder="Your phoneNumber"
+                            value={prop.phoneNumber}
+                        />
+                        <small className="text-danger">
+                            {errors?.phoneNumber && errors.phoneNumber.message}
+                        </small>
+                    </div>
 
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example1">Store name</label>
-                    <input id="form2Example1" class="form-control"
-                        type="text"
-                        name="storeName"
-                        {...register('storeName')}
-                        placeholder="Your store name"
-                    />
-                    <small className="text-danger">
-                        {errors?.storeName && errors.storeName.message}
-                    </small>
-                </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example1">Store name</label>
+                        <input id="form2Example1" class="form-control"
+                            type="text"
+                            name="storeName"
+                            {...register('storeName')}
+                            placeholder="Your store name"
+                        />
+                        <small className="text-danger">
+                            {errors?.storeName && errors.storeName.message}
+                        </small>
+                    </div>
 
-                <h3>Shipping address details</h3>
+                    <h3>Shipping address details</h3>
                     <div class="form-group col-md-6">
                         <label class="form-label" for="inputCity">City</label>
                         <input id="inputCity" class="form-control"
@@ -157,44 +166,44 @@ export function Update(prop) {
                         <small className="text-danger">
                             {errors.address?.floor && errors.address.floor.message}
                         </small>
-                  
 
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="form2Example1">Remarks</label>
-                        <input id="form2Example1" class="form-control"
-                            type="text"
-                            name="remarks"
-                            {...register('address.remarks')}
-                        />
-                        <small className="text-danger">
-                            {errors.address?.remarks && errors.address.remarks.message}
-                        </small>
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form2Example1">Remarks</label>
+                            <input id="form2Example1" class="form-control"
+                                type="text"
+                                name="remarks"
+                                {...register('address.remarks')}
+                            />
+                            <small className="text-danger">
+                                {errors.address?.remarks && errors.address.remarks.message}
+                            </small>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="form-label" for="inputEmail4">Email</label>
+                            <input id="inputEmail4" class="form-control"
+                                type="email"
+                                name="emailAddress"
+                                {...register('emailAddress')}
+                            />
+                            <small className="text-danger">
+                                {errors?.emailAddress && errors.emailAddress.message}
+                            </small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label /*class="form-label"*/ for="inputPassword4">Password</label>
+                            <input id="inputPassword4" class="form-control"
+                                type="password"
+                                name="password"
+                                {...register('password')}
+                            />
+                            <small className="text-danger">
+                                {errors?.password && errors.password.message}
+                            </small>
+                        </div>
+                        <button class="btn btn-primary">Submit</button>
                     </div>
-
-                <div class="form-group col-md-6">
-                    <label class="form-label" for="inputEmail4">Email</label>
-                    <input id="inputEmail4" class="form-control"
-                        type="email"
-                        name="emailAddress"
-                        {...register('emailAddress')}
-                    />
-                    <small className="text-danger">
-                        {errors?.emailAddress && errors.emailAddress.message}
-                    </small>
-                </div>
-                <div class="form-group col-md-6">
-                    <label /*class="form-label"*/ for="inputPassword4">Password</label>
-                    <input id="inputPassword4" class="form-control"
-                        type="password"
-                        name="password"
-                        {...register('password')}
-                    />
-                    <small className="text-danger">
-                        {errors?.password && errors.password.message}
-                    </small>
-                </div>
-                <button class="btn btn-primary">Submit</button>
-                </div>
                 </div>
 
             </form>

@@ -1,15 +1,12 @@
 
-
-
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { urlUsers } from "./endpoints.ts";
-import { HomeChild } from "./HomeChild";
 import { Update } from "./Update";
 
-export function Home(state) {
+export function Home() {
     const { index } = useParams();
     const postUrl = urlUsers + `/${index}`;
     const users = useSelector((state) => state.usersReducer);

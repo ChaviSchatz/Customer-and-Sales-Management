@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import {store} from './final project/redax/store';
 import {Update} from './final project/Update';
+import { Helper } from './final project/Helper';
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
             <Route exact path="/" element={<Login />} />
             <Route exact path="signup" element={<Singup />} />
             <Route exact path="/home/:index" element={<Home />} />
-            <Route exact path="/updateDetails/:index" element={<Update />} />
+            <Route exact path="/helper/:index" element={<Helper />} />
           </Routes>
         </BrowserRouter>
         {/* <Update></Update> */}

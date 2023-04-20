@@ -9,6 +9,8 @@ import { async } from "q";
 import { useDispatch } from "react-redux";
 import { pushNewUser } from "./redax/actions/usersActions";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 
 
 const schema = yup.object().shape({
@@ -41,6 +43,11 @@ export function Singup() {
 
     const dispatch = useDispatch();
     const users = useSelector((state) => state.usersReducer);
+    const navigate = useNavigate();
+    const findIndexBydetails = (email, password) => {
+        return users.findIndex(o => o.email == email && o.password == password);
+    }
+
 
     const onSubmit = async (data) => {
         debugger
@@ -50,6 +57,11 @@ export function Singup() {
         console.log(users);
         const res = await axios.post(urlUsers, data);
         reset();
+        var index = findIndexBydetails(data.emailAddress, data.password);
+        if (index != -1) {
+            navigate(`/home/${index}`);
+
+        }
     }
 
     return (
