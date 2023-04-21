@@ -22,6 +22,11 @@
        return _users.ReplaceOneAsync(Builders<User>.Filter.Eq(u => u.Id, user.Id), user);
     }
 
+    public Task<User> GetUserById(string id)
+    {
+        return _users.Find(u => u.Id == id);
+    }
+
     /// <summary>
     /// insert new order to the user by his id,
     /// to the list of his orders.

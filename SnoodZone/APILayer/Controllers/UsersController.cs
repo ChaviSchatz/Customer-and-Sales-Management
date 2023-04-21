@@ -22,6 +22,13 @@ public class UsersController : ControllerBase
         return await _userActions.GetAllUsers();
     }
 
+    [Route("{userId}")]//לשנות את ה url חובה!!!!!
+    [HttpGet]
+    public async Task<UserDTO> GetUserById(string userId)
+    {
+        return await _userActions.GetUserByID(userId);
+    }
+
     [HttpPost]
     public async void Create(UserDTO user)
     {
@@ -34,26 +41,14 @@ public class UsersController : ControllerBase
         await _userActions.UpdateUser(user);
     }
 
-    //[Route("/login")]
-    //[HttpGet]
-    //public async Task<bool> GetUserAuthentication(string email, string password)
-    //{
-    //   return await _userActions.UserAuthentication(email, password);
-    //}
-
-    [Route("{name}")]//לשנות את ה url חובה!!!!!
+    [Route("-")]//לשנות את ה url חובה!!!!!
     [HttpPost]
     public async Task<UserDTO> GetUserByEmailAndPassword(UserSimpleModel user)
     {
         return await _userActions.GetUserByEmailAndPassword(user.Email, user.Password);
     }
 
-    //[Route("/order")]
-    //[HttpPut]
-    //public async Task<UpdateResult> AddOrder(string id, UserOrderDTO newOrder)
-    //{
-    //    return await _userActions.InsertNewOrderToUsersOrdersList(id, newOrder);
-    //}
+    
 
 }
 
