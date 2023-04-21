@@ -78,7 +78,7 @@ export function Singup() {
         navigate(`/home-page`);
 
     }
-
+// ךהוציא את הפוסט הפנימי לבחוץ ולבדוק שהיוזר נכנס לקומפס
 
 
 
