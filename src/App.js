@@ -19,8 +19,8 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Login />} />
             <Route exact path="signup" element={<Singup />} />
-            <Route exact path="/home/:index" element={<Home />} />
-            <Route exact path="/helper/:index" element={<Helper />} />
+            <Route exact path="/home-page" element={<Home />} />
+            <Route exact path="/helper" element={<Helper />} />
           </Routes>
         </BrowserRouter>
         {/* <Update></Update> */}

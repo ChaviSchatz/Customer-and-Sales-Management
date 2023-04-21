@@ -1,15 +1,15 @@
 
-export const pushNewUser = (email, password) => {
+export const pushNewUser = (user) => {
     return{
         type: "PUSHNEWUSER",
-        payload: {email, password}
+        payload: {user}
     };
 }
 
-export const updateUser = (email, password, newEmail, newPassword) => {
+export const updateUser = (user) => {
     return{
         type: "UPDATEUSER",
-        payload: {email, password, newEmail, newPassword}
+        payload: {user}
     };
 }
 

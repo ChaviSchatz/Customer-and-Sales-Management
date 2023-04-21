@@ -17,25 +17,25 @@ export function Home() {
 
 
 
-    const func = async () => {
-        await axios.post(postUrl, user)
-            .then((response) => {
+    // const func = async () => {
+    //     await axios.post(postUrl, user)
+    //         .then((response) => {
                
-                if (response.status < 300) {
-                    const userData = response.data;
-                    setdetails(userData);
-                }
-                else {
-                    setserverError(true);
-                    console.log("the http request faild");
+    //             if (response.status < 300) {
+    //                 const userData = response.data;
+    //                 setdetails(userData);
+    //             }
+    //             else {
+    //                 setserverError(true);
+    //                 console.log("the http request faild");
 
-                }
-            })
-            .catch((error) => console.log(error));
-    }
+    //             }
+    //         })
+    //         .catch((error) => console.log(error));
+    // }
 
     useEffect(() => {
-        func();
+        // func();
     }, []);
 
 

@@ -44,25 +44,61 @@ export function Singup() {
     const dispatch = useDispatch();
     const users = useSelector((state) => state.usersReducer);
     const navigate = useNavigate();
-    const findIndexBydetails = (email, password) => {
-        return users.findIndex(o => o.email == email && o.password == password);
-    }
+    // const findIndexBydetails = (email, password) => {
+    //     return users.findIndex(o => o.email == email && o.password == password);
+    // }
 
 
     const onSubmit = async (data) => {
         debugger
         data.id = "";
-        data.orders = [];
-        dispatch(pushNewUser(data.emailAddress, data.password));
         console.log(users);
-        const res = await axios.post(urlUsers, data);
-        reset();
-        var index = findIndexBydetails(data.emailAddress, data.password);
-        if (index != -1) {
-            navigate(`/home/${index}`);
-
+        const res = async (data) => {
+            await axios.post(urlUsers, data)
+                .then((response) => {
+                   
+                    if (response.status < 300) {
+                            await axios.post( urlUsers,{email : data.email,password : data.password})
+                            .then((response) => {
+                                if (response.status < 300){
+                                   dispatch(pushNewUser(response.data));
+                                }
+                            })
+                            .catch((error) => console.log(error));
+                        
+                    }
+                    else {
+                        console.log("the http request faild");
+    
+                    }
+                })
+                .catch((error) => console.log(error));
         }
+        reset();        
+        navigate(`/home-page`);
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
 
     return (
         <>

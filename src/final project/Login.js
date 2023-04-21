@@ -5,23 +5,42 @@ import axios, { AxiosResponse } from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
+import { urlUsers } from "./endpoints.ts";
+import { pushNewUser } from "./redax/actions/usersActions";
+
 
 export function Login() {
     const navigate = useNavigate();
-    const users = useSelector((state) => state.usersReducer);
+    // const user = useSelector((state) => state.usersReducer);
     const [UserAuthentication, setUserAuthentication] = useState(true);
+    
+    const dispatch = useDispatch();
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const findIndexBydetails = (email, password) => {
-        return users.findIndex(o => o.email == email && o.password == password);
+    const func = async (detailsTovalidation) => {
+        await axios.post(urlUsers, detailsTovalidation)
+            .then((response) => {
+               
+                if (response.status < 300) {
+                    const userData = response.data;
+                    return userData;
+                }
+                else {
+                    // setserverError(true);
+                    console.log("the http request faild");
+
+                }
+            })
+            .catch((error) => console.log(error));
     }
 
     const handleRegistration = async (d) => {
         debugger
-        var index = findIndexBydetails(d.email, d.password);
-        if (index != -1) {
-            navigate(`/home/${index}`);
+        const result =await func(d);
+        if (result != null) {
+            dispatch(pushNewUser(result));
+            navigate(`/home-page`);
 
         }
         else {
