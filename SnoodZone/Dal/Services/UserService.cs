@@ -24,7 +24,7 @@
 
     public Task<User> GetUserById(string id)
     {
-        return _users.Find(u => u.Id == id);
+        return _users.Find(u => u.Id == id).FirstOrDefaultAsync();
     }
 
     /// <summary>

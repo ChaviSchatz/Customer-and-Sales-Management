@@ -26,7 +26,7 @@ public class UsersController : ControllerBase
     [HttpGet]
     public async Task<UserDTO> GetUserById(string userId)
     {
-        return await _userActions.GetUserByID(userId);
+        return await _userActions.GetUserById(userId);
     }
 
     [HttpPost]

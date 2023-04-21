@@ -69,7 +69,6 @@ C:\Users\שץ חוה\Source\Repos\project3\SnoodZone\Dal\obj\Debug\net6.0\Dal.dl
 C:\Users\שץ חוה\Source\Repos\project3\SnoodZone\Dal\obj\Debug\net6.0\refint\Dal.dll
 C:\Users\שץ חוה\Source\Repos\project3\SnoodZone\Dal\obj\Debug\net6.0\Dal.pdb
 C:\Users\שץ חוה\Source\Repos\project3\SnoodZone\Dal\obj\Debug\net6.0\ref\Dal.dll
-C:\Users\שץ חוה\Source\Repos\project\SnoodZone\Dal\bin\Debug\net6.0\ref\Dal.dll
 C:\Users\WIN-10\source\repos\projectkkk\SnoodZone\Dal\bin\Debug\net6.0\Dal.dll.config
 C:\Users\WIN-10\source\repos\projectkkk\SnoodZone\Dal\bin\Debug\net6.0\Dal.deps.json
 C:\Users\WIN-10\source\repos\projectkkk\SnoodZone\Dal\bin\Debug\net6.0\Dal.dll
@@ -144,3 +143,4 @@ C:\Users\WIN-10\source\repos\project45\SnoodZone\Dal\obj\Debug\net6.0\Dal.dll
 C:\Users\WIN-10\source\repos\project45\SnoodZone\Dal\obj\Debug\net6.0\refint\Dal.dll
 C:\Users\WIN-10\source\repos\project45\SnoodZone\Dal\obj\Debug\net6.0\Dal.pdb
 C:\Users\WIN-10\source\repos\project45\SnoodZone\Dal\obj\Debug\net6.0\ref\Dal.dll
+C:\Users\שץ חוה\Source\Repos\project\SnoodZone\Dal\obj\Debug\net6.0\refint\Dal.dll

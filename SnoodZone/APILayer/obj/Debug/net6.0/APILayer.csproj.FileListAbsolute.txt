@@ -197,7 +197,6 @@ C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\AP
 C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\APILayer.deps.json
 C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\APILayer.runtimeconfig.json
 C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\APILayer.dll
-C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\ref\APILayer.dll
 C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\APILayer.pdb
 C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\AWSSDK.Core.dll
@@ -481,3 +480,4 @@ C:\Users\WIN-10\source\repos\project45\SnoodZone\APILayer\obj\Debug\net6.0\refin
 C:\Users\WIN-10\source\repos\project45\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.pdb
 C:\Users\WIN-10\source\repos\project45\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.genruntimeconfig.cache
 C:\Users\WIN-10\source\repos\project45\SnoodZone\APILayer\obj\Debug\net6.0\ref\APILayer.dll
+C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\refint\APILayer.dll
