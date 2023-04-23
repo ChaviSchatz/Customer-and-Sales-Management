@@ -5,7 +5,7 @@ public static class ServiceCollectionDal
     {
         services.AddSingleton<IDBConnection, DBConnection>();
         services.AddSingleton<IUserService, UserService>();
-        services.AddSingleton<IManagerOrderService, ManagerOrderService>();
+        services.AddSingleton<IOrderService, OrderService>();
     }
 
 

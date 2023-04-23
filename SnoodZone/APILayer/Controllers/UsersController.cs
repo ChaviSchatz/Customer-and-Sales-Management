@@ -22,7 +22,7 @@ public class UsersController : ControllerBase
         return await _userActions.GetAllUsers();
     }
 
-    [Route("{userId}")]//לשנות את ה url חובה!!!!!
+    [Route("{userId}")]
     [HttpGet]
     public async Task<UserDTO> GetUserById(string userId)
     {

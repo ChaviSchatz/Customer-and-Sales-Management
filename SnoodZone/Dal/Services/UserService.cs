@@ -26,21 +26,5 @@
     {
         return _users.Find(u => u.Id == id).FirstOrDefaultAsync();
     }
-
-    /// <summary>
-    /// insert new order to the user by his id,
-    /// to the list of his orders.
-    /// </summary>
-    /// <param name="userId"></param>
-    /// <param name="newOrder"></param>
-    /// <returns></returns>
-    //public Task<UpdateResult> InsertNewOrder(string userId, UserOrder newOrder)
-    //{
-    //    var filter = Builders<User>.Filter.Where(u => u.Id == userId);
-    //    var data = Builders<User>.Update.Push(f =>
-    //    f.Orders, newOrder);
-    //    return _users.UpdateOneAsync(filter, data);
-
-    //}
 }
 
