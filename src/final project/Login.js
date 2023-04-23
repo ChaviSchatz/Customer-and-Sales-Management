@@ -18,34 +18,32 @@ export function Login() {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const func = async (detailsTovalidation) => {
-        await axios.post(urlUsers, detailsTovalidation)
-            .then((response) => {
-               
-                if (response.status < 300) {
-                    const userData = response.data;
-                    return userData;
-                }
-                else {
-                    // setserverError(true);
-                    console.log("the http request faild");
-
-                }
-            })
-            .catch((error) => console.log(error));
+    const func = async (detailsToValidation) => {
+        debugger
+        
     }
 
     const handleRegistration = async (d) => {
         debugger
-        const result =await func(d);
-        if (result != null) {
-            dispatch(pushNewUser(result));
-            navigate(`/home-page`);
-
-        }
-        else {
-            setUserAuthentication(false);
-        }
+        await axios.post(urlUsers + "/-", d)
+            .then((response) => {
+                if (response.status < 300) {
+                    const userData = response.data;
+                    if (userData != null) {
+                        dispatch(pushNewUser(userData));
+                        navigate(`/home-page`);
+                    }
+                }
+                else {
+                    // setserverError(true);
+                    console.log("the http request faild");
+                }
+            })
+            .catch((error) => console.log(error));
+        
+        // else {
+        //     setUserAuthentication(false);
+        // }
     }
 
     const registerOptions = {

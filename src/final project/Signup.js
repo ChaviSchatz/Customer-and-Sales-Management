@@ -53,33 +53,46 @@ export function Singup() {
         debugger
         data.id = "";
         console.log(users);
-        const res = async (data) => {
-            await axios.post(urlUsers, data)
-                .then((response) => {
+        const res = await axios.post(urlUsers, data)
+            .then((response) => {
 
-                    if (response.status < 300) {
-                        console.log("good luck!");
-                    }
-                    else {
-                        console.log("the http request faild");
+                if (response.status < 300) {
+                    console.log("good luck!");
+                }
+                else {
+                    console.log("the http request faild");
 
-                    }
-                })
-                .catch((error) => console.log(error));
-            console.log("pass to the second post...");
-            await axios.post(urlUsers, { email: data.email, password: data.password })
-                .then((response) => {
-                    if (response.status < 300) {
-                        dispatch(pushNewUser(response.data));
-                    }
-                })
-                .catch((error) => console.log(error));
+                }
+            })
+            .catch((error) => console.log(error));
+        console.log("pass to the second post...");
+        const send = { email: data.emailAddress, password: data.password };
+        await axios.post(urlUsers +"/-", send)
+            .then((response) => {
+                if (response.status < 300) {
+                    console.log(response.data);
+                    dispatch(pushNewUser(response.data));
+                }
+            })
+            .catch((error) => console.log(error));
 
-        }
-        reset();
         navigate(`/home-page`);
 
     }
+
+
+    // await axios.post(urlUsers, { email: data.email, password: data.password })
+    //     .then((response) => {
+    //         if (response.status < 300) {
+    //             dispatch(pushNewUser(response.data));
+    //         }
+    //     })
+    //     .catch((error) => console.log(error));
+
+
+    // reset();
+
+
     // ךהוציא את הפוסט הפנימי לבחוץ ולבדוק שהיוזר נכנס לקומפס
 
 
