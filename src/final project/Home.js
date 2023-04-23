@@ -1,41 +1,18 @@
 
-import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { urlUsers } from "./endpoints.ts";
 import { Update } from "./Update";
 
 export function Home() {
-    const { index } = useParams();
-    const postUrl = urlUsers + `/${index}`;
-    const users = useSelector((state) => state.usersReducer);
-    const user = users[index];
+    const user = useSelector((state) => state.usersReducer);
     const [details, setdetails] = useState(null);
     const [serverError, setserverError] = useState(false);
     const [navToUpdate, setnavToUpdate] = useState(false);
 
-
-
-    // const func = async () => {
-    //     await axios.post(postUrl, user)
-    //         .then((response) => {
-               
-    //             if (response.status < 300) {
-    //                 const userData = response.data;
-    //                 setdetails(userData);
-    //             }
-    //             else {
-    //                 setserverError(true);
-    //                 console.log("the http request faild");
-
-    //             }
-    //         })
-    //         .catch((error) => console.log(error));
-    // }
-
     useEffect(() => {
-        // func();
+        console.log(user);
+        setdetails(user);
     }, []);
 
 

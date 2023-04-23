@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './login.css';
 import { useForm } from "react-hook-form";
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
@@ -17,11 +17,6 @@ export function Login() {
     const dispatch = useDispatch();
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-
-    const func = async (detailsToValidation) => {
-        debugger
-
-    }
 
     const handleRegistration = async (d) => {
         debugger
@@ -44,8 +39,6 @@ export function Login() {
                 }
             })
             .catch((error) => console.log(error));
-
-
     }
 
     const registerOptions = {
