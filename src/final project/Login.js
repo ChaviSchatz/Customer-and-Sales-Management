@@ -13,14 +13,14 @@ export function Login() {
     const navigate = useNavigate();
     // const user = useSelector((state) => state.usersReducer);
     const [UserAuthentication, setUserAuthentication] = useState(true);
-    
+
     const dispatch = useDispatch();
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const func = async (detailsToValidation) => {
         debugger
-        
+
     }
 
     const handleRegistration = async (d) => {
@@ -28,10 +28,14 @@ export function Login() {
         await axios.post(urlUsers + "/-", d)
             .then((response) => {
                 if (response.status < 300) {
+                    debugger
                     const userData = response.data;
-                    if (userData != null) {
+                    if (userData != "") {
                         dispatch(pushNewUser(userData));
                         navigate(`/home-page`);
+                    }
+                    else {
+                        setUserAuthentication(false);
                     }
                 }
                 else {
@@ -40,10 +44,8 @@ export function Login() {
                 }
             })
             .catch((error) => console.log(error));
-        
-        // else {
-        //     setUserAuthentication(false);
-        // }
+
+
     }
 
     const registerOptions = {
@@ -84,7 +86,7 @@ export function Login() {
                     <small className="text-danger">
                         שם משתמש או סיסמא שגויים, נסה שוב
                     </small>}
-                    <br></br>
+                <br></br>
                 <Link to="Signup">משתמש חדש? הרשם כאן</Link>
             </form>
 
