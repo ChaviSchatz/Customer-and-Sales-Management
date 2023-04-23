@@ -9,9 +9,11 @@ export function Home() {
     const [details, setdetails] = useState(null);
     const [serverError, setserverError] = useState(false);
     const [navToUpdate, setnavToUpdate] = useState(false);
+    console.log("details",details);
 
     useEffect(() => {
-        console.log(user);
+        debugger
+        console.log("hhh" ,user);
         setdetails(user);
     }, []);
 
@@ -39,7 +41,7 @@ export function Home() {
             }
              {
                     navToUpdate==true &&
-                    <Update details={details}/>
+                    <Update/>
                 }
             {
                 serverError == true &&
