@@ -1,7 +1,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { urlUsers } from "./endpoints.ts";
 import { Update } from "./Update";
 
 export function Home() {

@@ -8,19 +8,22 @@ import { Provider } from 'react-redux';
 import {store} from './final project/redax/store';
 import {Update} from './final project/Update';
 import { Helper } from './final project/Helper';
+import { EditInventory } from './final project/EditInventory';
 
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <EditInventory></EditInventory>
         <Provider store={store}>
         <BrowserRouter>
           <Routes>
-            <Route exact path="/" element={<Login />} />
+            {/* <Route exact path="/" element={<Login />} />
             <Route exact path="signup" element={<Singup />} />
             <Route exact path="/home-page" element={<Home />} />
-            <Route exact path="/helper" element={<Helper />} />
+            <Route exact path="/helper" element={<Helper />} /> */}
+
           </Routes>
         </BrowserRouter>
         {/* <Update></Update> */}

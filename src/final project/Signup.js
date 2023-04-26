@@ -44,10 +44,6 @@ export function Singup() {
     const dispatch = useDispatch();
     const users = useSelector((state) => state.usersReducer);
     const navigate = useNavigate();
-    // const findIndexBydetails = (email, password) => {
-    //     return users.findIndex(o => o.email == email && o.password == password);
-    // }
-
 
     const onSubmit = async (data) => {
         debugger
