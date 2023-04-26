@@ -1,37 +1,40 @@
 import axios from "axios";
 import { urlInventory } from "./endpoints.ts";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 
-const schema = yup.array().of(
-    yup.object().shape({
-        id: yup.string(),
-        code: yup.string().required(),
-        inStock: yup.bool(),
-        description : yup.string().required(),
-        price: yup.number().required(),
-        colors : yup.array().of(yup.string())
-    })
-)
+// const schema = yup.array().of(
+//     yup.object().shape({
+//         id: yup.string(),
+//         code: yup.string().required(),
+//         inStock: yup.bool(),
+//         description : yup.string().required(),
+//         price: yup.number().required(),
+//         colors : yup.array().of(yup.string()).compact((v) => !v.checked)
+//     })
+// )
 
 
     
 export function EditInventory() {
     const { register, handleSubmit, formState: { errors }} = useForm({
-        resolver: yupResolver(schema),
+        // resolver: yupResolver(schema),
     });
 
-    const [inventory, setInventory] = useState(null);
+    const inventory = useRef(null);
+    const indexes = useRef([]);
+    const [r, setR] = useState(false);
 
     const getInventory = async () => {
         await axios.get(urlInventory + "/all")
             .then(response => {
                 if (response.status < 299) {
                     console.log(response.data);
-                    setInventory(response.data);
+                    inventory.current = response.data;
+                    setR(true);
                 }
             })
             .catch((error) => console.log(error));
@@ -41,14 +44,26 @@ export function EditInventory() {
     }, []);
 
     const onSubmit = async (data) => {
-        console.log(data);
+        debugger
+        const arr = [... new Set(indexes.current)]
+        console.log(arr);
+        for(const i of arr){
+            const res = await axios.put(urlInventory, inventory.current[i])
+        .then(response => {
+            if (response.status < 299) {
+                console.log(response.data);
+            }
+        })
+        .catch((error) => console.log(error));
+    }
+        
     }
 
     return (
         <html dir="rtl">
             <p>עדכון מלאי</p>
             <form onSubmit={handleSubmit(onSubmit)}>
-            {inventory != null &&
+            {inventory.current != null &&
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -60,7 +75,7 @@ export function EditInventory() {
                         </tr>
                     </thead>
                     <tbody>
-                        {inventory.map((item, index) => {
+                        {inventory.current.map((item, index) => {
                             return (
                                 <>
                                     <tr>
@@ -68,31 +83,47 @@ export function EditInventory() {
                                         <td><input 
                                         type="text"
                                         name="description"
-                                        {...register('description')}
+                                        onChange={(e) =>{
+                                            indexes.current.push(index);
+                                            inventory.current[index].description = e.target.value;
+                                        }}
+                                        // {...register('description')}
                                         defaultValue={item.description}
                                         /></td>
                                         <td><input
                                         type="text"
                                         name="code"
-                                        {...register('code')}
+                                        onChange={(e) =>{
+                                            indexes.current.push(index);
+                                            inventory.current[index].code = e.target.value;
+                                        }}
+                                        // {...register('code')}
                                          defaultValue={item.code}
                                          /></td>
                                         <td><input
                                         type="number"
                                         name="price"
-                                        {...register('price')}
+                                        onChange={(e) =>{
+                                            indexes.current.push(index);
+                                            inventory.current[index].price = e.target.value;
+                                        }}
+                                        // {...register('price')}
                                          defaultValue={item.price}
                                          /></td>
                                         <td>
                                             {
-                                                item.colors.map((color, index)=> {
+                                                item.colors.map((color, i)=> {
                                                     return(
                                                         <>
                                                         <div>
-                                                        <label>{index+1}.</label>
+                                                        <label>{i+1}.</label>
                                                         <input
-                                                        // type="text"
-                                                        // name="color"
+                                                        type="text"
+                                                        name="color"
+                                                        onChange={(e) =>{
+                                                            indexes.current.push(index);
+                                                            inventory.current[index].colors[i] = e.target.value;
+                                                        }}
                                                         // {...register('color')} 
                                                         defaultValue={color}
                                                          /><br></br>
