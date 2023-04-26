@@ -1036,11 +1036,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\WIN-10\\source\\repos\\project111\\SnoodZone\\BL\\BL.csproj",
+      "projectUniqueName": "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\BL\\BL.csproj",
       "projectName": "BL",
-      "projectPath": "C:\\Users\\WIN-10\\source\\repos\\project111\\SnoodZone\\BL\\BL.csproj",
+      "projectPath": "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\BL\\BL.csproj",
       "packagesPath": "C:\\Users\\WIN-10\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\WIN-10\\source\\repos\\project111\\SnoodZone\\BL\\obj\\",
+      "outputPath": "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\BL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\WIN-10\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1057,8 +1057,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\WIN-10\\source\\repos\\project111\\SnoodZone\\Dal\\Dal.csproj": {
-              "projectPath": "C:\\Users\\WIN-10\\source\\repos\\project111\\SnoodZone\\Dal\\Dal.csproj"
+            "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\Dal\\Dal.csproj": {
+              "projectPath": "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\Dal\\Dal.csproj"
             }
           }
         }

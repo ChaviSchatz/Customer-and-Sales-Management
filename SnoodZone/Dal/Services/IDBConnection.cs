@@ -2,8 +2,10 @@
 {
     MongoClient Client { get; }
     string DbName { get; }
-    IMongoCollection<User> UsersCollection { get; }
-    string UsersCollectionName { get; }
+    IMongoCollection<Item> InventoryCollection { get; }
+    string InventoryCollectionName { get; set; }
     IMongoCollection<Order> OrdersCollection { get; }
     string OrdersCollectionName { get; }
+    IMongoCollection<User> UsersCollection { get; }
+    string UsersCollectionName { get; }
 }

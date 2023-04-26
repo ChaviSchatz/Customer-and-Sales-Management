@@ -1267,11 +1267,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\WIN-10\\source\\repos\\project111\\SnoodZone\\APILayer\\APILayer.csproj",
+      "projectUniqueName": "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\APILayer\\APILayer.csproj",
       "projectName": "APILayer",
-      "projectPath": "C:\\Users\\WIN-10\\source\\repos\\project111\\SnoodZone\\APILayer\\APILayer.csproj",
+      "projectPath": "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\APILayer\\APILayer.csproj",
       "packagesPath": "C:\\Users\\WIN-10\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\WIN-10\\source\\repos\\project111\\SnoodZone\\APILayer\\obj\\",
+      "outputPath": "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\APILayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\WIN-10\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1288,8 +1288,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\WIN-10\\source\\repos\\project111\\SnoodZone\\BL\\BL.csproj": {
-              "projectPath": "C:\\Users\\WIN-10\\source\\repos\\project111\\SnoodZone\\BL\\BL.csproj"
+            "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\BL\\BL.csproj": {
+              "projectPath": "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\BL\\BL.csproj"
             }
           }
         }

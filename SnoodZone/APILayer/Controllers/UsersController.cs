@@ -1,10 +1,4 @@
 ﻿
-using MongoDB.Bson.IO;
-using MongoDB.Bson;
-using MongoDB.Driver;
-using System.Dynamic;
-using System.Text.Json;
-
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
