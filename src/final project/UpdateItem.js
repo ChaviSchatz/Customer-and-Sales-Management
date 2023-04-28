@@ -13,6 +13,8 @@ export function UpdateItem(prop) {
     const inventory = useRef(prop.prop);
     console.log(prop);
 
+    const inputHtml =  "<input type='text' name='color' placeholder= 'new color'/>";
+
 
     // const inventory = useRef(null);
     // const indexes = useRef([]);
@@ -38,13 +40,13 @@ export function UpdateItem(prop) {
         // const arr = [... new Set(indexes.current)]
         // console.log(arr);
         // for (const i of arr) {
-            const res = await axios.put(urlInventory, inventory.current)
-                .then(response => {
-                    if (response.status < 299) {
-                        console.log(response.data);
-                    }
-                })
-                .catch((error) => console.log(error));
+        const res = await axios.put(urlInventory, inventory.current)
+            .then(response => {
+                if (response.status < 299) {
+                    console.log(response.data);
+                }
+            })
+            .catch((error) => console.log(error));
         // }
 
     }
@@ -54,7 +56,7 @@ export function UpdateItem(prop) {
         <>
             <html dir="rtl">
                 <p>עדכון מלאי</p>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                {/* <form onSubmit={handleSubmit(onSubmit)}> */}
                     {inventory.current != null &&
                         <table class="table table-striped">
                             <thead>
@@ -70,75 +72,75 @@ export function UpdateItem(prop) {
                                 {/* {inventory.current.map((item, index) => {
                                     {
                                         return ( */}
-                                            <>
-                                                <tr>
-                                                    {/* <th scope="row">{inventory.current.description}</th> */}
-                                                    <td><input
-                                                        type="text"
-                                                        name="description"
-                                                        onChange={(e) => {
-                                                            // indexes.current.push(index);
-                                                            inventory.current.description = e.target.value;
-                                                        }}
-                                                        // {...register('description')}
-                                                        defaultValue={inventory.current.description}
-                                                    /></td>
-                                                    <td><input
-                                                        type="text"
-                                                        name="code"
-                                                        onChange={(e) => {
-                                                            // indexes.current.push(index);
-                                                            inventory.current.code = e.target.value;
-                                                        }}
-                                                        // {...register('code')}
-                                                        defaultValue={inventory.current.code}
-                                                    /></td>
-                                                    <td><input
-                                                        type="number"
-                                                        name="price"
-                                                        onChange={(e) => {
-                                                            // indexes.current.push(index);
-                                                            inventory.current.price = e.target.value;
-                                                        }}
-                                                        // {...register('price')}
-                                                        defaultValue={inventory.current.price}
-                                                    /></td>
-                                                    <td>
-                                                        {
-                                                            inventory.current.colors.map((color, i) => {
-                                                                return (
-                                                                    <>
-                                                                        <div>
-                                                                            <label>{i + 1}.</label>
-                                                                            <input
-                                                                                type="text"
-                                                                                name="color"
-                                                                                onChange={(e) => {
-                                                                                    // indexes.current.push(index);
-                                                                                    inventory.current.colors[i] = e.target.value;
-                                                                                }}
-                                                                                // {...register('color')} 
-                                                                                defaultValue={color}
-                                                                            /><br></br>
-                                                                        </div>
-                                                                    </>
-                                                                )
-                                                            },
-                                                            <button onClick={p=>p}>add new color</button>)
-                                                        }
-
-                                                    </td>
-                                                </tr>
+                                <>
+                                    <tr>
+                                        {/* <th scope="row">{inventory.current.description}</th> */}
+                                        <td><input
+                                            type="text"
+                                            name="description"
+                                            onChange={(e) => {
+                                                // indexes.current.push(index);
+                                                inventory.current.description = e.target.value;
+                                            }}
+                                            // {...register('description')}
+                                            defaultValue={inventory.current.description}
+                                        /></td>
+                                        <td><input
+                                            type="text"
+                                            name="code"
+                                            onChange={(e) => {
+                                                // indexes.current.push(index);
+                                                inventory.current.code = e.target.value;
+                                            }}
+                                            // {...register('code')}
+                                            defaultValue={inventory.current.code}
+                                        /></td>
+                                        <td><input
+                                            type="number"
+                                            name="price"
+                                            onChange={(e) => {
+                                                // indexes.current.push(index);
+                                                inventory.current.price = e.target.value;
+                                            }}
+                                            // {...register('price')}
+                                            defaultValue={inventory.current.price}
+                                        /></td>
+                                        <td>
+                                            <>{
+                                                inventory.current.colors.map((color, i) => {
+                                                    return (
+                                                        <>
+                                                            <div>
+                                                                <label>{i + 1}.</label>
+                                                                <input
+                                                                    type="text"
+                                                                    name="color"
+                                                                    onChange={(e) => {
+                                                                        // indexes.current.push(index);
+                                                                        inventory.current.colors[i] = e.target.value;
+                                                                    }}
+                                                                    // {...register('color')} 
+                                                                    defaultValue={color}
+                                                                /><br></br>
+                                                            </div>
+                                                        </>
+                                                    )
+                                                })}
+                                                <button onClick={p => p.add.insertAdjacentHTML("beforeend", inputHtml)}>add new color</button>
                                             </>
-                                        {/* )
+
+                                        </td>
+                                    </tr>
+                                </>
+                                {/* )
                                     }} */}
-                        {/* )} */}
+                                {/* )} */}
                             </tbody>
                         </table>
 
                     }
-                    <button>שמירה</button>
-                </form>
+                    <button type="onSubmit" onClick={onSubmit()}>שמירה</button>
+                {/* </form> */}
             </html>
         </>
     )
