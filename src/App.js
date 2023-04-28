@@ -9,13 +9,15 @@ import {store} from './final project/redax/store';
 import {Update} from './final project/Update';
 import { Helper } from './final project/Helper';
 import { EditInventory } from './final project/EditInventory';
+import { UpdateItem } from './final project/UpdateItem';
 
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <EditInventory></EditInventory>
+        {/* <EditInventory></EditInventory> */}
+        <UpdateItem prop = {{description:"snood",code:"123",price:"111",colors:["red","black"]}}></UpdateItem>
         <Provider store={store}>
         <BrowserRouter>
           <Routes>
