@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
+import {UpdateItem } from "./UpdateItem.js"
 
 export function EditInventory() {
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -98,6 +99,7 @@ export function EditInventory() {
                                         </td>
                                         <td>
                                             <button class="btn btn-primary" onClick={() =>{
+                                                updatingItem.current = inventory.current[index];
                                                  setUpdateState(true);
                                             }}>לעדכון פריט</button>
                                         </td>
@@ -116,8 +118,13 @@ export function EditInventory() {
     
         {
             updateState == true &&
+            <>
             <p>jjjjjj</p>
-            // <UpdateItem prop = {updatingItem.current}></UpdateItem>
+            <UpdateItem prop = {updatingItem.current}></UpdateItem>
+            <button onClick={() => {
+                setUpdateState(false);
+            }}>חזור לרשימת מוצרים</button>
+            </>
         }
         </>
     )

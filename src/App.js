@@ -16,8 +16,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <EditInventory></EditInventory> */}
-        <UpdateItem prop = {{description:"snood",code:"123",price:"111",colors:["red","black"]}}></UpdateItem>
+        <EditInventory></EditInventory>
+        {/* <UpdateItem prop = {{description:"snood",code:"123",price:"111",colors:["red","black"]}}></UpdateItem> */}
         <Provider store={store}>
         <BrowserRouter>
           <Routes>
