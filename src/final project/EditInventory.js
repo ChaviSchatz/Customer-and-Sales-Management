@@ -5,28 +5,18 @@ import { useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
+import {UpdateItem } from "./UpdateItem.js"
 
-// const schema = yup.array().of(
-//     yup.object().shape({
-//         id: yup.string(),
-//         code: yup.string().required(),
-//         inStock: yup.bool(),
-//         description : yup.string().required(),
-//         price: yup.number().required(),
-//         colors : yup.array().of(yup.string()).compact((v) => !v.checked)
-//     })
-// )
-
-
-    
 export function EditInventory() {
-    const { register, handleSubmit, formState: { errors }} = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         // resolver: yupResolver(schema),
     });
 
     const inventory = useRef(null);
-    const indexes = useRef([]);
     const [r, setR] = useState(false);
+    const [updateState, setUpdateState] = useState(false);
+    console.log("1",updateState)
+    const updatingItem = useRef(null);
 
     const getInventory = async () => {
         await axios.get(urlInventory + "/all")
@@ -43,26 +33,34 @@ export function EditInventory() {
         getInventory();
     }, []);
 
-    const onSubmit = async (data) => {
-        debugger
-        const arr = [... new Set(indexes.current)]
-        console.log(arr);
-        for(const i of arr){
-            const res = await axios.put(urlInventory, inventory.current[i])
-        .then(response => {
-            if (response.status < 299) {
-                console.log(response.data);
-            }
-        })
-        .catch((error) => console.log(error));
-    }
-        
-    }
+    // const onSubmit = async (data) => {
+    //     debugger
+    //     const arr = [... new Set(indexes.current)]
+    //     console.log(arr);
+    //     for(const i of arr){
+    //         const res = await axios.put(urlInventory, inventory.current[i])
+    //     .then(response => {
+    //         if (response.status < 299) {
+    //             console.log(response.data);
+    //         }
+    //     })
+    //     .catch((error) => console.log(error));
+    // }
+
+    // }
+
+    // const goToUpdate = (index) => {
+    //     // setUpdateState(true);
+    // }
 
     return (
+        <>
         <html dir="rtl">
+            {updateState == false &&
+            <>
             <p>עדכון מלאי</p>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <button>הוספת מוצר</button>
+            
             {inventory.current != null &&
                 <table class="table table-striped">
                     <thead>
@@ -79,60 +77,31 @@ export function EditInventory() {
                             return (
                                 <>
                                     <tr>
-                                        <th scope="row">{index+1}</th>
-                                        <td><input 
-                                        type="text"
-                                        name="description"
-                                        onChange={(e) =>{
-                                            indexes.current.push(index);
-                                            inventory.current[index].description = e.target.value;
-                                        }}
-                                        // {...register('description')}
-                                        defaultValue={item.description}
-                                        /></td>
-                                        <td><input
-                                        type="text"
-                                        name="code"
-                                        onChange={(e) =>{
-                                            indexes.current.push(index);
-                                            inventory.current[index].code = e.target.value;
-                                        }}
-                                        // {...register('code')}
-                                         defaultValue={item.code}
-                                         /></td>
-                                        <td><input
-                                        type="number"
-                                        name="price"
-                                        onChange={(e) =>{
-                                            indexes.current.push(index);
-                                            inventory.current[index].price = e.target.value;
-                                        }}
-                                        // {...register('price')}
-                                         defaultValue={item.price}
-                                         /></td>
+                                        <th scope="row">{index + 1}</th>
+                                        <td>{item.description}</td>
+                                        <td>{item.code}</td>
+                                        <td>{item.price}</td>
                                         <td>
+                                            {/* <div style={{textAlign: "center"}}> */}
+                                            <ol>
                                             {
-                                                item.colors.map((color, i)=> {
-                                                    return(
+
+                                                item.colors.map((color, i) => {
+                                                    return (
                                                         <>
-                                                        <div>
-                                                        <label>{i+1}.</label>
-                                                        <input
-                                                        type="text"
-                                                        name="color"
-                                                        onChange={(e) =>{
-                                                            indexes.current.push(index);
-                                                            inventory.current[index].colors[i] = e.target.value;
-                                                        }}
-                                                        // {...register('color')} 
-                                                        defaultValue={color}
-                                                         /><br></br>
-                                                         </div>
-                                                         </>
+                                                            <li>{color}</li>
+                                                        </>
                                                     )
                                                 })
-                                            }
-
+                                            }   
+                                            </ol>                                         
+                                            {/* </div> */}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary" onClick={() =>{
+                                                updatingItem.current = inventory.current[index];
+                                                 setUpdateState(true);
+                                            }}>לעדכון פריט</button>
                                         </td>
                                     </tr>
                                 </>
@@ -140,10 +109,23 @@ export function EditInventory() {
                         })}
                     </tbody>
                 </table>
-               
+
             }
-             <button>שמירה</button>
-        </form>
+        {/* } */}
+        </>
+        }
         </html>
+    
+        {
+            updateState == true &&
+            <>
+            <p>jjjjjj</p>
+            <UpdateItem prop = {updatingItem.current}></UpdateItem>
+            <button onClick={() => {
+                setUpdateState(false);
+            }}>חזור לרשימת מוצרים</button>
+            </>
+        }
+        </>
     )
 }
