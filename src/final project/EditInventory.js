@@ -21,7 +21,6 @@ export function EditInventory() {
     const updatingItem = useRef(null);
 
     const getInventory = async () => {
-        debugger
         await axios.get(urlInventory + "/all")
             .then(response => {
                 if (response.status < 299) {
@@ -43,7 +42,6 @@ export function EditInventory() {
             <>
             <p>עדכון מלאי</p>
             <button onClick={() =>{
-                debugger
                 updatingItem.current = {
                     code: "",
                     description: "",

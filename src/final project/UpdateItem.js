@@ -9,9 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { render } from "react-dom";
 
 export function UpdateItem(prop) {
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        // resolver: yupResolver(schema),
-    });
     const navigate = useNavigate();
     const [forRendering, setForRendering] = useState(1);
     const item = useRef(prop.prop);
@@ -58,12 +55,15 @@ export function UpdateItem(prop) {
                                         defaultValue={item.current.price}
                                     /></td>
                                     <td>
+                                    <ol>
                                         <>{
                                             item.current.colors.map((color, i) => {
+                                                console.log("color: ", color);
                                                 return (
                                                     <>
                                                         <div>
-                                                            <label>{i + 1}.</label>
+                                                        
+                                                            <li>
                                                             <input
                                                                 type="text"
                                                                 name="color"
@@ -72,41 +72,43 @@ export function UpdateItem(prop) {
                                                                 }}
                                                                 defaultValue={color}
                                                             />
-                                                            <button onClick={() =>{
-                                                                item.current.colors.splice(i, 1);
-                                                                item.current.colors.filter(c => c!= item.current.colors[i]);
-                                                                console.log("item.current.colors", item.current.colors);
+                                                            <button onClick = { async () => {
+                                                                delete item.current.colors[i];
                                                                 setForRendering(forRendering + 1);
                                                             }}>למחיקה</button>
-                                                        <br></br>
-                                                    </div>
+                                                            </li>
+                                                            <br></br>
+                                                           
+                                                        </div>
                                                     </>
-                                        )
+                                                );
                                             })}
-                                        <button onClick={() => {
-                                            item.current.colors.push("");
-                                            setForRendering(forRendering + 1);
-                                        }}>add new color</button>
-                                    </>
-                                </td>
-                            </tr>
-                        </>
-                    </tbody>
+                                            <button onClick={() => {
+                                                item.current.colors.push("");
+                                                setForRendering(forRendering + 1);
+                                            }}>add new color</button>
+                                        </>
+                                        </ol>
+                                    </td>
+                                </tr>
+                            </>
+                        </tbody>
                     </table>
 
                 }
-            <button onClick={async () => {
-                const res = await axios.put(urlInventory, item.current)
-                    .then(response => {
-                        if (response.status < 299) {
-                            console.log(response.data);
-                        }
-                    })
-                    .catch((error) => console.log(error));
-                navigate(`/helper/edit-inventory`);
-            }}>שמירה</button>
+                <button onClick={async () => {
+                    item.current.colors = await item.current.colors.filter(c => c != undefined);
+                    const res = await axios.put(urlInventory, item.current)
+                        .then(response => {
+                            if (response.status < 299) {
+                                console.log(response.data);
+                            }
+                        })
+                        .catch((error) => console.log(error));
+                    navigate(`/helper/edit-inventory`);
+                }}>שמירה</button>
 
-        </html>
+            </html>
         </>
     )
 }
