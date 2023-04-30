@@ -58,7 +58,7 @@ export function Update() {
             .catch((error) => console.log(error));
         reset();
         console.log("success");
-        navigate(`/helper`);
+        navigate(`/helper/{home-page}`);
     }
 
 

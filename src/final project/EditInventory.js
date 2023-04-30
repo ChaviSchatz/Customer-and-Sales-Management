@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import {UpdateItem } from "./UpdateItem.js"
+import { render } from "@testing-library/react";
 
 export function EditInventory() {
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -14,11 +15,13 @@ export function EditInventory() {
 
     const inventory = useRef(null);
     const [r, setR] = useState(false);
+    const [addItem, setItem] = useState(false);
     const [updateState, setUpdateState] = useState(false);
     console.log("1",updateState)
     const updatingItem = useRef(null);
 
     const getInventory = async () => {
+        debugger
         await axios.get(urlInventory + "/all")
             .then(response => {
                 if (response.status < 299) {
@@ -33,33 +36,23 @@ export function EditInventory() {
         getInventory();
     }, []);
 
-    // const onSubmit = async (data) => {
-    //     debugger
-    //     const arr = [... new Set(indexes.current)]
-    //     console.log(arr);
-    //     for(const i of arr){
-    //         const res = await axios.put(urlInventory, inventory.current[i])
-    //     .then(response => {
-    //         if (response.status < 299) {
-    //             console.log(response.data);
-    //         }
-    //     })
-    //     .catch((error) => console.log(error));
-    // }
-
-    // }
-
-    // const goToUpdate = (index) => {
-    //     // setUpdateState(true);
-    // }
-
     return (
         <>
         <html dir="rtl">
             {updateState == false &&
             <>
             <p>עדכון מלאי</p>
-            <button>הוספת מוצר</button>
+            <button onClick={() =>{
+                debugger
+                updatingItem.current = {
+                    code: "",
+                    description: "",
+                    id: "",
+                    price: 0,
+                    colors: []
+                }
+                setUpdateState(true);
+            }}>הוספת מוצר</button>
             
             {inventory.current != null &&
                 <table class="table table-striped">
@@ -82,20 +75,22 @@ export function EditInventory() {
                                         <td>{item.code}</td>
                                         <td>{item.price}</td>
                                         <td>
-                                            {/* <div style={{textAlign: "center"}}> */}
+                                            
                                             <ol>
                                             {
 
                                                 item.colors.map((color, i) => {
                                                     return (
                                                         <>
+                                                        {/* <div style={{textAlign: "right", marginRight: "130px"}}> */}
                                                             <li>{color}</li>
+                                                            {/* </div> */}
                                                         </>
                                                     )
                                                 })
                                             }   
                                             </ol>                                         
-                                            {/* </div> */}
+                                            
                                         </td>
                                         <td>
                                             <button class="btn btn-primary" onClick={() =>{
@@ -119,11 +114,7 @@ export function EditInventory() {
         {
             updateState == true &&
             <>
-            <p>jjjjjj</p>
             <UpdateItem prop = {updatingItem.current}></UpdateItem>
-            <button onClick={() => {
-                setUpdateState(false);
-            }}>חזור לרשימת מוצרים</button>
             </>
         }
         </>

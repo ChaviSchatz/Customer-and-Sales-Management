@@ -16,15 +16,16 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <EditInventory></EditInventory>
+        {/* <EditInventory></EditInventory> */}
         {/* <UpdateItem prop = {{description:"snood",code:"123",price:"111",colors:["red","black"]}}></UpdateItem> */}
         <Provider store={store}>
         <BrowserRouter>
           <Routes>
-            {/* <Route exact path="/" element={<Login />} />
+          <Route exact path="/edit-inventory" element={<EditInventory />} />
+            <Route exact path="/" element={<Login />} />
             <Route exact path="signup" element={<Singup />} />
             <Route exact path="/home-page" element={<Home />} />
-            <Route exact path="/helper" element={<Helper />} /> */}
+            <Route exact path="/helper/:comp" element={<Helper />} />
 
           </Routes>
         </BrowserRouter>
