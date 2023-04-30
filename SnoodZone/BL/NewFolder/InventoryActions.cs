@@ -45,6 +45,10 @@ public class InventoryActions : IInventoryActions
     public Task UpdateItem(ItemDTO item)
     {
         Item itemForDal = mapper.Map<ItemDTO, Item>(item);
+        if(itemForDal.Id.Length < 24)
+        {
+            return CreateNewItem(item);
+        }
         return itemService.UpdateItem(itemForDal);
     }
     public Task DeleteItem(string id)///לשאול את המורה אם להחזיר ערך וכיצד לעשות זאת
