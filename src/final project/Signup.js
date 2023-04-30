@@ -15,7 +15,6 @@ import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
     id: yup.string(),
-    orders: yup.array(yup.object()),
     name: yup.string().required(),
     storeName: yup.string(),
     phoneNumber: yup.string().required(),
@@ -115,7 +114,7 @@ export function Singup() {
                         type="text"
                         name="phoneNumber"
                         {...register('phoneNumber')}
-                        placeholder="Your first name"
+                        placeholder="Your phone number"
                     />
                     <small className="text-danger">
                         {errors?.phoneNumber && errors.phoneNumber.message}
