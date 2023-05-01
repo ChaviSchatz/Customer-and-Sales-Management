@@ -10,6 +10,8 @@ import {Update} from './final project/Update';
 import { Helper } from './final project/Helper';
 import { EditInventory } from './final project/EditInventory';
 import { UpdateItem } from './final project/UpdateItem';
+import { ManagerHomePage } from './final project/ManagerHomePage';
+import { Orders } from './final project/Orders';
 
 
 function App() {
@@ -26,7 +28,8 @@ function App() {
             <Route exact path="signup" element={<Singup />} />
             <Route exact path="/home-page" element={<Home />} />
             <Route exact path="/helper/:comp" element={<Helper />} />
-
+            <Route exact path="/manager-home-page" element={<ManagerHomePage />} />
+            <Route exact path="/orders" element={<Orders />} />
           </Routes>
         </BrowserRouter>
         {/* <Update></Update> */}
