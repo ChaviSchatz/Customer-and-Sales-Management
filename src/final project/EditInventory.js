@@ -104,7 +104,6 @@ export function EditInventory() {
                 </table>
 
             }
-        {/* } */}
         </>
         }
         </html>

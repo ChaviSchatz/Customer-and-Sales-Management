@@ -178,6 +178,7 @@ export function Singup() {
                             type="number"
                             name="floor"
                             {...register('address.floor')}
+                            defaultValue={0}
                         />
                         <small className="text-danger">
                             {errors.address?.floor && errors.address.floor.message}

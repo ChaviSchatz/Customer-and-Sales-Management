@@ -76,6 +76,7 @@ export function ChooseAColors(prop) {
                                                             type="number"
                                                             name="amount"
                                                         // {...register('address.floor')}
+                                                        defaultValue={0}
                                                         />
                                                     </li>
                                                     </>
@@ -90,6 +91,7 @@ export function ChooseAColors(prop) {
                         </tbody>
                     </table>
                 }
+                
 
 
             </html>

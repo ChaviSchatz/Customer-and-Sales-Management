@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { UpdateItem } from "./UpdateItem.js"
 import { render } from "@testing-library/react";
 import { ChooseAColors } from "./ChooseAColors";
+import { useSelector } from "react-redux";
 
 
 
@@ -19,12 +20,74 @@ export function CreateOrder() {
         // resolver: yupResolver(schema),
     });
 
+    const user = useSelector((state) => state.usersReducer);
+
     const inventory = useRef(null);
     const [r, setR] = useState(false);
     const [addItem, setItem] = useState(false);
     const [updateState, setUpdateState] = useState(false);
+    const itemsToOrder = useRef(
+        {
+            userId: "644feb8d555cdae414f00818",//user.id,
+            status: false,
+            orderDetails: {
+                priceBeforeTax: 0,
+                priceAfterTax: 0,
+                amountOfSnoods: 0,
+                date: new Date().toLocaleString(),
+                details: []
+            }
+        });
+
+
     console.log("1", updateState)
-    const updatingItem = useRef(null);
+
+    const orderItem = (e,index, index2) => {
+
+
+        //parse to int = e.target.value
+        console.log("currenb", e.target.value)
+        debugger
+        var b = false;
+        var i = -1;
+        for (var t = 0; t < itemsToOrder.current.orderDetails.details.length; t++) {
+            var x = itemsToOrder.current.orderDetails.details;
+            if (x[t].code == inventory.current[index].code) {
+                b = true;
+                i = t;
+            }
+
+        }
+        if (b == true) {
+            var co = false;
+            var indexColor = -1;
+            for (var t = 0; t < itemsToOrder.current.orderDetails.details[i].colorAmount.length; t++) {
+                var x = itemsToOrder.current.orderDetails.details[i].colorAmount;
+                if (x[t].color == inventory.current[index].colors[index2]) {
+                    co = true;
+                    indexColor = t;
+                }
+
+            }
+            if (co == true) {
+                // console.log("current current",e.target.value);
+                itemsToOrder.current.orderDetails.details[i].colorAmount[indexColor].amount = e.target.value;
+            }
+            else {
+                itemsToOrder.current.orderDetails.details[i].colorAmount.push({ color: inventory.current[index].colors[index2], amount: e.target.value })
+            }
+        }
+        else {
+
+            itemsToOrder.current.orderDetails.details.push({ code: inventory.current[index].code, description: inventory.current[index].description, price: inventory.current[index].price, colorAmount: [{ color: inventory.current[index].colors[index2], amount: e.target.value }] })
+        }
+    }
+
+
+
+
+
+
 
     const getInventory = async () => {
         debugger
@@ -47,18 +110,7 @@ export function CreateOrder() {
             <html dir="rtl">
                 {updateState == false &&
                     <>
-                        <p>עדכון מלאי</p>
-                        <button onClick={() => {
-                            debugger
-                            updatingItem.current = {
-                                code: "",
-                                description: "",
-                                id: "",
-                                price: 0,
-                                colors: []
-                            }
-                            setUpdateState(true);
-                        }}>הוספת מוצר</button>
+
 
                         {inventory.current != null &&
                             <table class="table table-striped">
@@ -69,6 +121,7 @@ export function CreateOrder() {
                                         <th scope="col">קוד</th>
                                         <th scope="col">מחיר</th>
                                         <th scope="col">צבעים</th>
+                                        <th scope="col">כמות</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -85,12 +138,12 @@ export function CreateOrder() {
                                                         <ol>
                                                             {
 
-                                                                item.colors.map((color, i) => {
+                                                                item.colors.map((color) => {
                                                                     return (
                                                                         <>
-                                                                            {/* <div style={{textAlign: "right", marginRight: "130px"}}> */}
-                                                                            <li>{color}</li>
-                                                                            {/* </div> */}
+                                                                            <div style={{ textAlign: "right", marginRight: "130px" }}>
+                                                                                <li>{color}</li>
+                                                                            </div>
                                                                         </>
                                                                     )
                                                                 })
@@ -99,11 +152,28 @@ export function CreateOrder() {
 
                                                     </td>
                                                     <td>
-                                                        <button class="btn btn-primary" onClick={() => {
-                                                            updatingItem.current = inventory.current[index];
-                                                            setUpdateState(true);
-                                                        }}>להזמנת מוצר</button>
+                                                        <ol>
+                                                            {
+
+                                                                item.colors.map((c, i) => {
+                                                                    return (
+                                                                        <><li>
+                                                                            <input id="form2Example1"// class="form-control"
+                                                                                type="number"
+                                                                                name="amount"
+                                                                                defaultValue={0}
+                                                                                min="0"
+                                                                                onChange={(e) => orderItem(e,index, i)}
+                                                                            />
+                                                                        </li>
+                                                                        </>
+                                                                    )
+                                                                })
+                                                            }
+                                                        </ol>
+
                                                     </td>
+
                                                 </tr>
                                             </>
                                         )
@@ -114,12 +184,17 @@ export function CreateOrder() {
                     </>
                 }
             </html>
-            {
-            updateState == true &&
-            <>
-            <ChooseAColors prop = {updatingItem.current}></ChooseAColors>
-            </>
-        }
+            <button onClick={ () => {
+                console.log("itemsToOrder",itemsToOrder.current)
+                //allert to check if the user is sure
+                //axios.post of the use ref
+            }}>סגירת הזמנה</button>
+            {/* {
+                updateState == true &&
+                <>
+                    <ChooseAColors prop={updatingItem.current}></ChooseAColors>//למחוק את הקומפוננטה הזאת
+                </>
+            } */}
         </>
 
     )
