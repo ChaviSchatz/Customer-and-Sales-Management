@@ -1,5 +1,5 @@
 import axios from "axios";
-import { urlInventory } from "./endpoints.ts";
+import { urlInventory, urlOrders } from "./endpoints.ts";
 import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { UpdateItem } from "./UpdateItem.js"
 import { render } from "@testing-library/react";
-import { ChooseAColors } from "./ChooseAColors";
+// import { ChooseAColors } from "./ChooseAColors";
 import { useSelector } from "react-redux";
 
 
@@ -26,27 +26,41 @@ export function CreateOrder() {
     const [r, setR] = useState(false);
     const [addItem, setItem] = useState(false);
     const [updateState, setUpdateState] = useState(false);
+
+    const submit = async (order) => {
+        console.log("order: ",order);
+        debugger
+        await axios.post(urlOrders, order)
+            .then((response) => {
+                if (response.status < 300) {
+                    console.log("re.data", response.data);
+                    // dispatch(pushNewUser(response.data));
+                }
+            })
+            .catch((error) => console.log(error));
+    }
+
     const itemsToOrder = useRef(
         {
-            userId: "644feb8d555cdae414f00818",//user.id,
+            id: "",
+            userId: String(user.id),
             status: false,
             orderDetails: {
-                priceBeforeTax: 0,
-                priceAfterTax: 0,
+                priceBeforeTax: 0.0,
+                priceAfterTax: 0.0,
                 amountOfSnoods: 0,
                 date: new Date().toLocaleString(),
                 details: []
             }
         });
 
+    // console.log("1", updateState)
 
-    console.log("1", updateState)
-
-    const orderItem = (e,index, index2) => {
+    const orderItem = (e, index, index2) => {
 
 
-        //parse to int = e.target.value
-        console.log("currenb", e.target.value)
+        //parse to int = parseInt(e.target.value)
+        console.log("current", parseInt(e.target.value))
         debugger
         var b = false;
         var i = -1;
@@ -70,22 +84,18 @@ export function CreateOrder() {
 
             }
             if (co == true) {
-                // console.log("current current",e.target.value);
-                itemsToOrder.current.orderDetails.details[i].colorAmount[indexColor].amount = e.target.value;
+                // console.log("current current",parseInt(e.target.value));
+                itemsToOrder.current.orderDetails.details[i].colorAmount[indexColor].amount = parseInt(e.target.value);
             }
             else {
-                itemsToOrder.current.orderDetails.details[i].colorAmount.push({ color: inventory.current[index].colors[index2], amount: e.target.value })
+                itemsToOrder.current.orderDetails.details[i].colorAmount.push({ color: String(inventory.current[index].colors[index2]), amount: parseInt(e.target.value) })
             }
         }
         else {
 
-            itemsToOrder.current.orderDetails.details.push({ code: inventory.current[index].code, description: inventory.current[index].description, price: inventory.current[index].price, colorAmount: [{ color: inventory.current[index].colors[index2], amount: e.target.value }] })
+            itemsToOrder.current.orderDetails.details.push({ code: String(inventory.current[index].code), description: String(inventory.current[index].description), price: parseInt(inventory.current[index].price), colorAmount: [{ color: String(inventory.current[index].colors[index2]), amount: parseInt(e.target.value) }] })
         }
     }
-
-
-
-
 
 
 
@@ -163,7 +173,7 @@ export function CreateOrder() {
                                                                                 name="amount"
                                                                                 defaultValue={0}
                                                                                 min="0"
-                                                                                onChange={(e) => orderItem(e,index, i)}
+                                                                                onChange={(e) => orderItem(e, index, i)}
                                                                             />
                                                                         </li>
                                                                         </>
@@ -184,10 +194,12 @@ export function CreateOrder() {
                     </>
                 }
             </html>
-            <button onClick={ () => {
-                console.log("itemsToOrder",itemsToOrder.current)
-                //allert to check if the user is sure
+            <button onClick={() => {
+                console.log("itemsToOrder", itemsToOrder.current)
+                // alert("??האם את/ה רןצה לסגור את ההזמנה");
                 //axios.post of the use ref
+                submit(itemsToOrder.current);
+
             }}>סגירת הזמנה</button>
             {/* {
                 updateState == true &&

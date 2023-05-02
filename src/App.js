@@ -12,6 +12,7 @@ import { EditInventory } from './final project/EditInventory';
 import { UpdateItem } from './final project/UpdateItem';
 import { ManagerHomePage } from './final project/ManagerHomePage';
 import { Orders } from './final project/Orders';
+import {CreateOrder} from './final project/CreateOrder';
 
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
             <Route exact path="/helper/:comp" element={<Helper />} />
             <Route exact path="/manager-home-page" element={<ManagerHomePage />} />
             <Route exact path="/orders" element={<Orders />} />
+            <Route exact path="/create-order" element={<CreateOrder />} />
+
           </Routes>
         </BrowserRouter>
         {/* <Update></Update> */}
