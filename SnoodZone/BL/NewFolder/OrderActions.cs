@@ -31,7 +31,9 @@ public class OrderActions : IOrderActions
 
     public async Task<List<OrderDTO>> GetAllOrders()
     {
-        List<Order> results = await _OrderServices.GetAllOrdersAsync();
+        DateTime now = DateTime.Now;
+        List<Order> results = await _OrderServices
+            .GetOrdersByDatesAsync(now.AddMonths(-3), now);
         List<OrderDTO> orders = new();
         foreach (Order item in results)
         {
