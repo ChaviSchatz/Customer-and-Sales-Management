@@ -43,13 +43,13 @@ export function CreateOrder() {
     const itemsToOrder = useRef(
         {
             id: "",
-            userId: String(user.id),
+            userId: user.id,
             status: false,
             orderDetails: {
                 priceBeforeTax: 0.0,
                 priceAfterTax: 0.0,
                 amountOfSnoods: 0,
-                date: new Date().toLocaleString(),
+                date: new Date(),
                 details: []
             }
         });
@@ -88,12 +88,12 @@ export function CreateOrder() {
                 itemsToOrder.current.orderDetails.details[i].colorAmount[indexColor].amount = parseInt(e.target.value);
             }
             else {
-                itemsToOrder.current.orderDetails.details[i].colorAmount.push({ color: String(inventory.current[index].colors[index2]), amount: parseInt(e.target.value) })
+                itemsToOrder.current.orderDetails.details[i].colorAmount.push({ color: inventory.current[index].colors[index2], amount: parseInt(e.target.value) })
             }
         }
         else {
 
-            itemsToOrder.current.orderDetails.details.push({ code: String(inventory.current[index].code), description: String(inventory.current[index].description), price: parseInt(inventory.current[index].price), colorAmount: [{ color: String(inventory.current[index].colors[index2]), amount: parseInt(e.target.value) }] })
+            itemsToOrder.current.orderDetails.details.push({ code: inventory.current[index].code, description: inventory.current[index].description, price: parseInt(inventory.current[index].price), colorAmount: [{ color: inventory.current[index].colors[index2], amount: parseInt(e.target.value) }] })
         }
     }
 
@@ -129,7 +129,7 @@ export function CreateOrder() {
                                         <th scope="col">#</th>
                                         <th scope="col">תאור</th>
                                         <th scope="col">קוד</th>
-                                        <th scope="col">מחיר</th>
+                                        <th scope="col">מחיר לפני מע"מ</th>
                                         <th scope="col">צבעים</th>
                                         <th scope="col">כמות</th>
                                     </tr>
