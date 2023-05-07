@@ -18,7 +18,10 @@ export function ManagerHomePage() {
             <br></br>
             <button type="button" class="btn btn-success">Success</button>
             <br></br>
-            <button type="button" class="btn btn-danger">Danger</button>
+            <button type="button" class="btn btn-secondary" onClick={() =>{
+                    navigate(`/clients`);
+
+            }}>לקוחות</button>
             <br></br>
             <button type="button" class="btn btn-warning">Warning</button>
         </>
