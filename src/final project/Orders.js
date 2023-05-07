@@ -51,7 +51,6 @@ export function Orders() {
     useEffect(() => {
         async function fetchData() {
             dict.current = await getOrders();
-
             setTimeout(() => {
                 setR(true);
             }, 100);

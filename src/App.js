@@ -13,6 +13,7 @@ import { UpdateItem } from './final project/UpdateItem';
 import { ManagerHomePage } from './final project/ManagerHomePage';
 import { Orders } from './final project/Orders';
 import {CreateOrder} from './final project/CreateOrder';
+import {ClientManagement} from './final project/ClientManagement';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route exact path="/manager-home-page" element={<ManagerHomePage />} />
             <Route exact path="/orders" element={<Orders />} />
             <Route exact path="/create-order" element={<CreateOrder />} />
+            <Route exact path="/clients" element={<ClientManagement />} />
 
           </Routes>
         </BrowserRouter>
