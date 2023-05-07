@@ -1,6 +1,8 @@
 ﻿
 public class OrderActions : IOrderActions
 {
+    public readonly double TAX = 0.17;
+
     private readonly IOrderService _OrderServices;
 
     private IMapper mapper;
@@ -25,21 +27,59 @@ public class OrderActions : IOrderActions
 
     public Task CreateNewOrder(OrderDTO order)
     {
+        int price = 0;
+        int allAmount = 0;
+        order.OrderDetails.Details.ForEach(o =>
+        {
+            int amount = 0;
+            o.ColorAmount.ForEach(c =>
+            {
+                amount += c.Amount;
+            });
+            price += o.Price * amount;
+            allAmount += amount;
+
+        });
+        order.OrderDetails.PriceBeforeTax = price;
+        order.OrderDetails.AmountOfSnoods = allAmount;
+        order.OrderDetails.PriceAfterTax = price + (price * TAX);
         Order orderForDal = mapper.Map<OrderDTO, Order>(order);
         return _OrderServices.CreateOrder(orderForDal);
     }
 
     public async Task<List<OrderDTO>> GetAllOrders()
     {
-        DateTime now = DateTime.Now;
-        List<Order> results = await _OrderServices
-            .GetOrdersByDatesAsync(now.AddMonths(-3), now);
+        List<Order> results = await _OrderServices.GetAllOrdersAsync();
         List<OrderDTO> orders = new();
         foreach (Order item in results)
         {
             orders.Add(mapper.Map<Order, OrderDTO>(item));
         }
         return orders;
+    }
+
+    public Task UpdateOrder(OrderDTO order)
+    {
+
+        Order orderForDal = mapper.Map<OrderDTO, Order>(order);
+        int price = 0;
+        int allAmount = 0;
+        order.OrderDetails.Details.ForEach(o =>
+        {
+            int amount = 0;
+            o.ColorAmount.ForEach(c =>
+            {
+                amount += c.Amount;
+            });
+            price += o.Price * amount;
+            allAmount += amount;
+
+        });
+        order.OrderDetails.PriceBeforeTax = price;
+        order.OrderDetails.AmountOfSnoods = allAmount;
+        order.OrderDetails.PriceAfterTax = allAmount + allAmount * TAX;
+
+        return _OrderServices.UpdateOrder(orderForDal);
     }
 }
 

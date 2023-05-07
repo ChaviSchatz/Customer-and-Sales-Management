@@ -8,4 +8,6 @@ public interface IOrderService
     Task<List<Order>> GetOrdersByUserAsync(string id);
     Task UpdateStatus(Order order);
     Task<List<Order>> GetAllOrdersAsync();
+    Task UpdateOrder(Order order);
+
 }

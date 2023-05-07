@@ -46,4 +46,11 @@ public class OrderService : IOrderService
         return _orders.InsertOneAsync(orderWithMongoId);
     }
 
+    public Task UpdateOrder(Order order)
+    {
+
+        return _orders.ReplaceOneAsync(Builders<Order>.Filter.Eq(s => s.Id, order.Id), order);
+
+    }
+
 }

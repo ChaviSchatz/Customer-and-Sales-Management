@@ -20,5 +20,10 @@ public class OrdersController : ControllerBase
     {
          return await _orderActions.GetAllOrders();
     }
+    [HttpPut]
+    public async void Update(OrderDTO order)
+    {
+        await _orderActions.UpdateOrder(order);
+    }
 }
 
