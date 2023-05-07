@@ -26,7 +26,7 @@ public class OrderService : IOrderService
     }
     public async Task<List<Order>> GetOrdersByDatesAsync(DateTime from, DateTime to)
     {
-        return await _orders.Find(o => o.OrderDetails.Date.Date >= from.Date && o.OrderDetails.Date.Date <= to.Date).ToListAsync();
+        return await _orders.Find(o => o.OrderDetails.Date >= from && o.OrderDetails.Date <= to).ToListAsync();
     }
     public async Task<List<Order>> GetOrdersByPriceAsync(double price)
     {

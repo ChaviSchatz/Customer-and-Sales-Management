@@ -81,5 +81,16 @@ public class OrderActions : IOrderActions
 
         return _OrderServices.UpdateOrder(orderForDal);
     }
+
+    public async Task<List<OrderDTO>> GetOrdersByDatesAsync(DateTime from, DateTime to)
+    {
+        List<Order> results = await _OrderServices.GetOrdersByDatesAsync(from, to);
+        List<OrderDTO> orders = new();
+        foreach (Order item in results)
+        {
+            orders.Add(mapper.Map<Order, OrderDTO>(item));
+        }
+        return orders;
+    }
 }
 

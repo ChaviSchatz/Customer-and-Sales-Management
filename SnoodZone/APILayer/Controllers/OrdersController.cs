@@ -20,6 +20,14 @@ public class OrdersController : ControllerBase
     {
          return await _orderActions.GetAllOrders();
     }
+
+    [HttpGet]
+    [Route("search")]
+    public async Task<List<OrderDTO>> GetAllOrders(DateTime from, DateTime to)
+    {
+        return await _orderActions.GetOrdersByDatesAsync(from, to);
+    }
+
     [HttpPut]
     public async void Update(OrderDTO order)
     {
