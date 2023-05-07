@@ -22,10 +22,20 @@ export function Orders() {
         console.log("open", openIndex);
     }
 
+    const compare = (a, b) => {
+        if (a.status == false && b.status == true) {
+            return -1;
+        }
+        if (a.status == true && b.status == false) {
+            return 1;
+        }
+        return 0;
+    }
 
     const getOrders = async () => {
         await axios.get(urlOrders)
             .then(response => {
+                response.data = response.data.sort(compare);
                 if (response.status < 299) {
                     var g = [];
                     response.data.forEach(async o => {
@@ -37,7 +47,6 @@ export function Orders() {
                                 }
                             })
                             .catch((error) => console.log(error));
-                        console.log("res: ", res);
                     });
 
                     orders.current = response.data;
@@ -51,7 +60,6 @@ export function Orders() {
     useEffect(() => {
         async function fetchData() {
             dict.current = await getOrders();
-
             setTimeout(() => {
                 setR(true);
             }, 100);
@@ -68,6 +76,8 @@ export function Orders() {
 
     return (
         <>
+        <h4>הזמנות אחרונות</h4>
+        <br></br>
             {r != false &&
                 <>
                     {
@@ -126,52 +136,53 @@ export function Orders() {
                                                                 {
                                                                     o.orderDetails.details.map((d, i2) => {
                                                                         return (
-                                                                            <tr>
-                                                                                <th scope="row">{i2 + 1}</th>
-                                                                                <td>{d.description}</td>
-                                                                                <td>{d.code}</td>
-                                                                                <td>{d.price}</td>
-                                                                                <td>
-                                                                                    <ol>
-                                                                                        {
+                                                                            <>
+                                                                                <tr>
+                                                                                    <th scope="row">{i2 + 1}</th>
+                                                                                    <td>{d.description}</td>
+                                                                                    <td>{d.code}</td>
+                                                                                    <td>{d.price}</td>
+                                                                                    <td>
+                                                                                        <ol>
+                                                                                            {
 
-                                                                                            d.colorAmount.map((ca, i) => {
+                                                                                                d.colorAmount.map((ca, i) => {
+                                                                                                    return (
+                                                                                                        <>
+                                                                                                            <div style={{ display: "flex" }}>
+                                                                                                                <li>{ca.color}:  <b>{ca.amount}</b></li>
+                                                                                                            </div>
+                                                                                                        </>
+                                                                                                    )
+                                                                                                })
+                                                                                            }
+                                                                                        </ol>
+                                                                                    </td>
+                                                                                    {
+                                                                                        o.status == false &&
+                                                                                        <td>
+                                                                                            {d.colorAmount.map((c) => {
                                                                                                 return (
                                                                                                     <>
-                                                                                                        <div style={{ display: "flex" }}>
-                                                                                                            <li>{ca.color}:  <b>{ca.amount}</b></li>
-                                                                                                        </div>
+                                                                                                        <input
+                                                                                                            type="number"
+                                                                                                            name="code"
+                                                                                                            min="0"
+                                                                                                            onChange={(e) => {
+                                                                                                                c.amount = parseInt(e.target.value);
+                                                                                                            }}
+                                                                                                            defaultValue={c.amount}
+                                                                                                        />
+                                                                                                        <>
+                                                                                                            <input type="checkbox" style={{ marginRight: "70px" }} />
+                                                                                                            <br></br>
+                                                                                                        </>
                                                                                                     </>
-                                                                                                )
-                                                                                            })
-                                                                                        }
-                                                                                    </ol>
-                                                                                </td>
-                                                                                {
-                                                                                    o.status == false &&
-                                                                                    <td>
-                                                                                        {d.colorAmount.map((c) => {
-                                                                                            return (
-                                                                                                <>
-                                                                                                    <input
-                                                                                                        type="number"
-                                                                                                        name="code"
-                                                                                                        min="0"
-                                                                                                        onChange={(e) => {
-                                                                                                            c.amount = parseInt(e.target.value);
-                                                                                                        }}
-                                                                                                        defaultValue={c.amount}
-                                                                                                    />
-                                                                                                    <>
-                                                                                                        <input type="checkbox" style={{ marginRight: "70px" }} />
-                                                                                                        <br></br>
-                                                                                                    </>
-                                                                                                </>
-                                                                                            );
-                                                                                        })}
-                                                                                    </td>
-                                                                                }
-                                                                            </tr>
+                                                                                                );
+                                                                                            })}
+                                                                                        </td>
+                                                                                    }
+                                                                                </tr>                                                                            </>
                                                                         )
                                                                     })
                                                                 }
@@ -181,6 +192,14 @@ export function Orders() {
                                                             o.status == false &&
                                                             <Button variant="success" className="mb-3" onClick={() => doneOrder(i)}>הזמנה הושלמה!</Button>
                                                         }
+                                                        {
+                                                            o.status == true &&
+                                                            <>
+                                                                <p>סה"כ מטפחות: {o.orderDetails.priceBeforeTax}</p>
+                                                                <p>סה"כ לפני מע"מ: {o.orderDetails.amountOfSnoods} ש"ח</p>
+                                                                <b>סה"כ אחרי מע"מ: {o.orderDetails.priceAfterTax} ש"ח</b>
+                                                            </>
+                                                        }
                                                     </div>
                                                 </Collapse>
                                             </div>
@@ -189,6 +208,7 @@ export function Orders() {
                                             </div>
                                         </div>
                                     </html>
+                                    <br></br>
                                 </>
                             )
                         })

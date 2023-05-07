@@ -1,12 +1,11 @@
 import axios from "axios";
 import { urlInventory } from "./endpoints.ts";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { render } from "react-dom";
 
 export function UpdateItem(prop) {
     const navigate = useNavigate();
