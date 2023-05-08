@@ -48,8 +48,7 @@ public class OrderService : IOrderService
 
     public Task UpdateOrder(Order order)
     {
-
-        return _orders.ReplaceOneAsync(Builders<Order>.Filter.Eq(s => s.Id, order.Id), order);
+        return _orders.ReplaceOneAsync(Builders<Order>.Filter.Eq(u => u.Id, order.Id), order);
 
     }
 

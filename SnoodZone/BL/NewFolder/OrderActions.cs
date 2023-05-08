@@ -61,7 +61,6 @@ public class OrderActions : IOrderActions
     public Task UpdateOrder(OrderDTO order)
     {
 
-        Order orderForDal = mapper.Map<OrderDTO, Order>(order);
         int price = 0;
         int allAmount = 0;
         order.OrderDetails.Details.ForEach(o =>
@@ -77,7 +76,8 @@ public class OrderActions : IOrderActions
         });
         order.OrderDetails.PriceBeforeTax = price;
         order.OrderDetails.AmountOfSnoods = allAmount;
-        order.OrderDetails.PriceAfterTax = allAmount + allAmount * TAX;
+        order.OrderDetails.PriceAfterTax = price + (price * TAX);
+        Order orderForDal = mapper.Map<OrderDTO, Order>(order);
 
         return _OrderServices.UpdateOrder(orderForDal);
     }
