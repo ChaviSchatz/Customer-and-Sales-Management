@@ -4,6 +4,7 @@ import { urlUsers } from "./endpoints.ts";
 import { urlOrders } from "./endpoints.ts";
 import "./cssFiles/orders.css";
 import { Button, Collapse } from 'react-bootstrap';
+import { useNavigate, useParams} from "react-router-dom";
 
 export function Orders() {
     const orders = useRef(null);
@@ -13,6 +14,7 @@ export function Orders() {
     const [rIndex, setRIndex] = useState(0);
     const [open, setOpen] = useState(false);
     const [openIndex, setOpenIndex] = useState();
+    const navigate = useNavigate();
 
     function handleClick(index) {
         if (open == false || index == openIndex) {
@@ -73,9 +75,8 @@ export function Orders() {
         orders.current[i].status = true;
         debugger
         await axios.put(urlOrders, orders.current[i]).then(res => console.log(res.data)).catch(err => console.log(err));
-        dict.current = await getOrders();
+        navigate(`/helper/orders`);
         handleClick(i);
-
     }
 
     return (
