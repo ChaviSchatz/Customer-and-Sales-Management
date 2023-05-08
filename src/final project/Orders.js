@@ -10,6 +10,7 @@ export function Orders() {
     const peuple = useRef(null);
     const dict = useRef(null);
     const [r, setR] = useState(false);
+    const [rIndex, setRIndex] = useState(0);
     const [open, setOpen] = useState(false);
     const [openIndex, setOpenIndex] = useState();
 
@@ -48,7 +49,7 @@ export function Orders() {
                             })
                             .catch((error) => console.log(error));
                     });
-
+                    console.log("response.data", response.data);
                     orders.current = response.data;
                     peuple.current = g;
                 }
@@ -70,8 +71,11 @@ export function Orders() {
     const doneOrder = async (i) => {
         console.log("orders[i]", orders.current[i]);
         orders.current[i].status = true;
+        debugger
         await axios.put(urlOrders, orders.current[i]).then(res => console.log(res.data)).catch(err => console.log(err));
+        dict.current = await getOrders();
         handleClick(i);
+
     }
 
     return (
@@ -169,7 +173,10 @@ export function Orders() {
                                                                                                             name="code"
                                                                                                             min="0"
                                                                                                             onChange={(e) => {
+                                                                                                                console.log("c amount before", c.amount);
                                                                                                                 c.amount = parseInt(e.target.value);
+                                                                                                                console.log("c amount after", c.amount);
+
                                                                                                             }}
                                                                                                             defaultValue={c.amount}
                                                                                                         />
@@ -195,8 +202,8 @@ export function Orders() {
                                                         {
                                                             o.status == true &&
                                                             <>
-                                                                <p>סה"כ מטפחות: {o.orderDetails.priceBeforeTax}</p>
-                                                                <p>סה"כ לפני מע"מ: {o.orderDetails.amountOfSnoods} ש"ח</p>
+                                                                <p>סה"כ מטפחות: {o.orderDetails.amountOfSnoods}</p>
+                                                                <p>סה"כ לפני מע"מ: {o.orderDetails.priceBeforeTax} ש"ח</p>
                                                                 <b>סה"כ אחרי מע"מ: {o.orderDetails.priceAfterTax} ש"ח</b>
                                                             </>
                                                         }
