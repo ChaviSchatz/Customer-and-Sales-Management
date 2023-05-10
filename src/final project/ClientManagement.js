@@ -8,6 +8,8 @@ import { Button, Collapse } from 'react-bootstrap';
 export function ClientManagement() {
     const users = useRef(null);
     const temp = useRef(null);
+    const [open, setOpen] = useState(false);
+    const [openIndex, setOpenIndex] = useState();
 
     const [r, setR] = useState(false);
     const [add, setAdd] = useState(false);
@@ -38,57 +40,86 @@ export function ClientManagement() {
         }
         fetchData();
     }, []);
-    // let r = res.Json;
 
-    // console.log("u", users.current);
 
+    function handleClick(index) {
+        if (open == false || index == openIndex) {
+            setOpen(!open);
+
+        }
+        setOpenIndex(index);
+        console.log("open", openIndex);
+    }
 
     return (<>
-        {/* key={i} in={open && openIndex == i} */}
-        {/* <Collapse > */}
-        <div id="collapsePanel">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">שם לקוח</th>
-                        <th scope="col">טלפון</th>
-                        <th scope="col">שם החנות</th>
-                        <th scope="col">כתובת למשלוח</th>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    {r != false &&
-                        users.current.map((d, i2) => {
-                            return (
-                                <>
-                                    <tr>
-                                        <th scope="row">{i2 + 1}</th>
-                                        <td>{d.name}</td>
-                                        <td>{d.phoneNumber}</td>
-                                        <td>{d.storeName}</td>
-                                        {/* <td><button onClick={setAdd(true)}>פרטי כתובת</button></td> */}
-                                    </tr>
-                                    {/* {add != false && <>{
-                                        users.current[i2].map((a, i) => {
-                                            return (
-                                                <>
-                                                    <td>{a.city}</td>
-                                                    <td>{a.street}</td>
-                                                    <td>{a.city}</td></>
-                                            )
-                                        })
-                                    }</>} */}
-                                </>
-                            )
-                        })
-                    }
-                    
-                </tbody>
-            </table>
-            
-        </div>
-        {/* </Collapse> */}
+        <table class="table table-striped" dir='rtl'>
+            <thead>
+                <tr >
+                    {/* <th scope="col">#</th> */}
+                    <th scope="col">שם לקוח</th>
+                    <th scope="col">טלפון</th>
+                    <th scope="col">שם החנות</th>
+                    {/* <th scope="col">כתובת למשלוח</th> */}
+                </tr>
+            </thead>
+        </table>
+
+        {r != false &&
+            users.current.map((d, i) => {
+                return (
+                    <>
+                        <html>
+                            <div className="card">
+                                {/* <div className="card-header" style={{"paddingLeft":"-50%"}}> */}
+                                    <table dir='rtl'>
+                                        <tbody >
+                                            <th scope="col">{d.name}</th>
+                                            <th scope="col">{d.phoneNumber}</th>
+                                            <th scope="col">{d.storeName}</th>
+                                        </tbody>
+                                    </table>
+                                    <div style={{ "margin": "20px" }}>
+                                            <Button variant="success" onClick={() => handleClick(i)} >
+                                                פרטי כתובת
+                                            </Button>
+                                        </div>
+                                {/* </div> */}
+                                <br></br>
+                                <div className="card-header">
+                                    <Collapse key={i} in={open && openIndex == i} >
+                                        <div id="collapsePanel" dir='rtl'>
+                                            <p>עיר : {d.address.city}</p>
+                                            <p>רחוב : {d.address.street}</p>
+                                            <p>דירה : {d.address.floor}</p>
+                                            <p>הערות כתובת : {d.address.remarks}</p>
+                                            {/* <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">עיר</th>
+                                                        <th scope="col">רחוב</th>
+                                                        <th scope="col">דירה</th>
+                                                        <th scope="col">הערות כתובת</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <td>{d.address.city}</td>
+                                                    <td>{d.address.}</td>
+                                                    <td>{d.address.}</td>
+                                                    <td>{d.address.}</td>
+                                                </tbody>
+                                            </table> */}
+                                        </div>
+                                    </Collapse>
+                                </div>
+                            </div>
+                        </html>
+
+                    </>
+                )
+            })
+        }
+
+
     </>);
 }

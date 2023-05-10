@@ -14,6 +14,7 @@ import { ManagerHomePage } from './final project/ManagerHomePage';
 import { Orders } from './final project/Orders';
 import {CreateOrder} from './final project/CreateOrder';
 import { OrdersByDates } from './final project/OrdersByDates';
+import { ClientManagement } from './final project/ClientManagement';
 import { HeaderUser } from './final project/HeaderUser';
 import { useState } from 'react';
 import { UserOrders } from './final project/UserOrders';
@@ -38,6 +39,7 @@ function App() {
             <Route exact path="/orders" element={<Orders />} />
             <Route exact path="/users-orders" element={<UserOrders />} />
             <Route exact path="/create-order" element={<CreateOrder />} />
+            <Route exact path="/customers" element={<ClientManagement />} />
             <Route exact path="/orders/dates" element={<OrdersByDates />} /> 
           </Routes></article>
         </BrowserRouter>
