@@ -203,13 +203,6 @@ export function CreateOrder() {
                                 </tbody>
                             </table>
                         }
-                        <button onClick={() => {
-                            console.log("itemsToOrder", itemsToOrder.current)
-                            // alert("??האם את/ה רןצה לסגור את ההזמנה");
-                            //axios.post of the use ref
-                            submit(itemsToOrder.current);
-
-                        }}>סגירת הזמנה</button>
                     </>
 
                 }
