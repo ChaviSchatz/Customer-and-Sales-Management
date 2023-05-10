@@ -4,7 +4,7 @@ import { urlUsers } from "./endpoints.ts";
 import { urlOrders } from "./endpoints.ts";
 import "./cssFiles/orders.css";
 import { Button, Collapse } from 'react-bootstrap';
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function OrdersByDates() {
     const current = new Date();
@@ -12,12 +12,9 @@ export function OrdersByDates() {
     const [toDate, setToDate] = useState(`${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`);
     const orders = useRef([]);
     const peuple = useRef([]);
-    const dict = useRef(null);
     const [r, setR] = useState(false);
-    const [rIndex, setRIndex] = useState(0);
     const [open, setOpen] = useState(false);
     const [openIndex, setOpenIndex] = useState();
-    const navigate = useNavigate();
 
     function handleClick(index) {
         if (open == false || index == openIndex) {
@@ -49,7 +46,6 @@ export function OrdersByDates() {
                     return new Date(b.orderDetails.date) - new Date(a.orderDetails.date);
                   });
                 if (response.status < 299) {
-                    var g = [];
                     response.data.forEach(async o => {
                         const res = await axios.get(urlUsers + `/${o.userId}`)
                             .then(response => {
@@ -62,11 +58,9 @@ export function OrdersByDates() {
                     });
                     console.log("response.data", response.data);
                     orders.current = response.data;
-                    peuple.current = g;
                 }
             })
             .catch((error) => console.log(error));
-        // return peuple.current;
     }
 
     return (
@@ -113,6 +107,9 @@ export function OrdersByDates() {
                 <button type="button" class="btn btn-outline-dark"
                     onClick={getOrders}
                 >קבל הזמנות בטווח זה</button>
+                <br></br>
+                <br></br>
+                <br></br>
                 {r != false  &&
                     <>
                         {

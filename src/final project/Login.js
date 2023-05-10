@@ -19,15 +19,19 @@ export function Login() {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const handleRegistration = async (d) => {
-        debugger
         await axios.post(urlUsers + "/-", d)
             .then((response) => {
                 if (response.status < 300) {
                     debugger
                     const userData = response.data;
                     if (userData != "") {
-                        dispatch(pushNewUser(userData));
-                        navigate(`/home-page`);
+                        if(userData.password == "011920246"){
+                            navigate(`/manager-home-page`);
+                        }
+                        else{
+                            dispatch(pushNewUser(userData));
+                            navigate(`/home-page`);
+                        }
                     }
                     else {
                         setUserAuthentication(false);
