@@ -25,20 +25,12 @@ export function Orders() {
         console.log("open", openIndex);
     }
 
-    const compare = (a, b) => {
-        if (a.status == false && b.status == true) {
-            return -1;
-        }
-        if (a.status == true && b.status == false) {
-            return 1;
-        }
-        return 0;
-    }
-
     const getOrders = async () => {
         await axios.get(urlOrders)
             .then(response => {
-                response.data = response.data.sort(compare);
+                response.data = response.data.sort(function(a,b){
+                    return new Date(b.orderDetails.date) - new Date(a.orderDetails.date);
+                  });
                 if (response.status < 299) {
                     var g = [];
                     response.data.forEach(async o => {

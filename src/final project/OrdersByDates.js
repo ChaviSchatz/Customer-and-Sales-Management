@@ -11,7 +11,7 @@ export function OrdersByDates() {
     const [fromDate, setFromDate] = useState(`${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`);
     const [toDate, setToDate] = useState(`${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`);
     const orders = useRef([]);
-    const peuple = useRef(null);
+    const peuple = useRef([]);
     const dict = useRef(null);
     const [r, setR] = useState(false);
     const [rIndex, setRIndex] = useState(0);
@@ -28,17 +28,15 @@ export function OrdersByDates() {
         console.log("open", openIndex);
     }
 
-    const compare = (a, b) => {
-        if (a.status == false && b.status == true) {
-            return -1;
-        }
-        if (a.status == true && b.status == false) {
-            return 1;
-        }
-        return 0;
+    const getOrders = async () =>{
+        setR(false);
+        await getOrdersAndPeople();
+        setTimeout(() => {
+            setR(true);
+        }, 100);
     }
-
-    const getOrders = async () => {
+    const getOrdersAndPeople = async () => {
+        debugger
         await axios.get(urlOrders + "/search",
             {
                 params: {
@@ -47,7 +45,9 @@ export function OrdersByDates() {
                 }
             })
             .then(response => {
-                response.data = response.data.sort(compare);
+                response.data = response.data.sort(function(a,b){
+                    return new Date(b.orderDetails.date) - new Date(a.orderDetails.date);
+                  });
                 if (response.status < 299) {
                     var g = [];
                     response.data.forEach(async o => {
@@ -55,7 +55,7 @@ export function OrdersByDates() {
                             .then(response => {
                                 if (response.status < 299) {
                                     console.log(response.data);
-                                    g.push(response.data);
+                                    peuple.current.push(response.data);
                                 }
                             })
                             .catch((error) => console.log(error));
@@ -66,7 +66,7 @@ export function OrdersByDates() {
                 }
             })
             .catch((error) => console.log(error));
-        return peuple.current;
+        // return peuple.current;
     }
 
     return (
@@ -113,10 +113,11 @@ export function OrdersByDates() {
                 <button type="button" class="btn btn-outline-dark"
                     onClick={getOrders}
                 >קבל הזמנות בטווח זה</button>
-                {orders.current != null &&
+                {r != false  &&
                     <>
                         {
                             orders.current.map((o, i) => {
+                                console.log("o: ", o);
                                 var date = new Date(o.orderDetails.date);
                                 var year = date.getFullYear();
                                 var dateVal = date.getDate();
