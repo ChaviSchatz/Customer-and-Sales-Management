@@ -9,6 +9,7 @@ import { UpdateItem } from "./UpdateItem.js"
 import { render } from "@testing-library/react";
 // import { ChooseAColors } from "./ChooseAColors";
 import { useSelector } from "react-redux";
+import { HeaderUser } from "./HeaderUser";
 
 
 
@@ -117,6 +118,9 @@ export function CreateOrder() {
 
     return (
         <>
+        <header className="App-header">
+                <HeaderUser></HeaderUser>
+            </header>
             <html dir="rtl">
                 {updateState == false &&
                     <>

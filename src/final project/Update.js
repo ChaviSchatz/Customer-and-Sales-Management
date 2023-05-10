@@ -58,7 +58,7 @@ export function Update() {
             .catch((error) => console.log(error));
         reset();
         console.log("success");
-        navigate(`/helper/{home-page}`);
+        navigate(`/helper/home-page`);
     }
 
 
@@ -79,7 +79,7 @@ export function Update() {
     return (
         <>
             <form class="form-row" onSubmit={handleSubmit(onSubmit)}>
-                <div style={{ 'padding': '20px' }}>
+                <div  style={{ margin: "auto" }}>
                     <div class="form-group md-6">
                         <label class="form-label" for="form2Example1">Full name</label>
                         <input id="form2Example1" class="form-control"

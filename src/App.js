@@ -14,33 +14,33 @@ import { ManagerHomePage } from './final project/ManagerHomePage';
 import { Orders } from './final project/Orders';
 import {CreateOrder} from './final project/CreateOrder';
 import { OrdersByDates } from './final project/OrdersByDates';
+import { HeaderUser } from './final project/HeaderUser';
+import { useState } from 'react';
 
 
 function App() {
+  const [login, setLogin] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <EditInventory></EditInventory> */}
-        {/* <UpdateItem prop = {{description:"snood",code:"123",price:"111",colors:["red","black"]}}></UpdateItem> */}
+    
         <Provider store={store}>
+        <div style={{ width: "99%", margin: "auto" }}>
         <BrowserRouter>
+          <article style={{ marginTop : "80px"}}>
           <Routes>
           <Route exact path="/edit-inventory" element={<EditInventory />} />
             <Route exact path="/" element={<Login />} />
             <Route exact path="signup" element={<Singup />} />
-            <Route exact path="/home-page" element={<Home />} />
+            <Route exact path="/home-page" element={<Home />} /> 
             <Route exact path="/helper/:comp" element={<Helper />} />
             <Route exact path="/manager-home-page" element={<ManagerHomePage />} />
             <Route exact path="/orders" element={<Orders />} />
             <Route exact path="/create-order" element={<CreateOrder />} />
-            <Route exact path="/orders/dates" element={<OrdersByDates />} />
-          </Routes>
+            <Route exact path="/orders/dates" element={<OrdersByDates />} /> 
+          </Routes></article>
         </BrowserRouter>
-        {/* <Update></Update> */}
-        </Provider> 
-        
-       
-      </header>
+        </div>
+        </Provider>        
     </div>
   );
 }
