@@ -16,6 +16,7 @@ import {CreateOrder} from './final project/CreateOrder';
 import { OrdersByDates } from './final project/OrdersByDates';
 import { HeaderUser } from './final project/HeaderUser';
 import { useState } from 'react';
+import { UserOrders } from './final project/UserOrders';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route exact path="/helper/:comp" element={<Helper />} />
             <Route exact path="/manager-home-page" element={<ManagerHomePage />} />
             <Route exact path="/orders" element={<Orders />} />
+            <Route exact path="/users-orders" element={<UserOrders />} />
             <Route exact path="/create-order" element={<CreateOrder />} />
             <Route exact path="/orders/dates" element={<OrdersByDates />} /> 
           </Routes></article>

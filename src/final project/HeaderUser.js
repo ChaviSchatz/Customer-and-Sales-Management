@@ -16,7 +16,7 @@ export function HeaderUser() {
                                     <a class="nav-link active" onClick={() => { navigate('/home-page') }}>החשבון שלי</a>
                                 </li>
                                  <li class="nav-item">
-                                    <a class="nav-link active" onClick={() => { navigate('/צריך להכין') }}>הזמנות</a>
+                                    <a class="nav-link active" onClick={() => { navigate("/users-orders") }}>הזמנות</a>
                                 </li>
                             </ul> 
                         </div>

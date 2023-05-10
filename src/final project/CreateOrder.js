@@ -10,6 +10,7 @@ import { render } from "@testing-library/react";
 // import { ChooseAColors } from "./ChooseAColors";
 import { useSelector } from "react-redux";
 import { HeaderUser } from "./HeaderUser";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -27,6 +28,7 @@ export function CreateOrder() {
     const [r, setR] = useState(false);
     const [addItem, setItem] = useState(false);
     const [updateState, setUpdateState] = useState(false);
+    const navigate = useNavigate();
 
     const submit = async (order) => {
         console.log("order: ",order);
@@ -35,6 +37,7 @@ export function CreateOrder() {
             .then((response) => {
                 if (response.status < 300) {
                     console.log("re.data", response.data);
+                    navigate("/users-orders");
                     // dispatch(pushNewUser(response.data));
                 }
             })
@@ -198,7 +201,7 @@ export function CreateOrder() {
                     </>
                 }
             </html>
-            <button onClick={() => {
+            <button class="btn btn-outline-dark" onClick={() => {
                 console.log("itemsToOrder", itemsToOrder.current)
                 // alert("??האם את/ה רןצה לסגור את ההזמנה");
                 //axios.post of the use ref
