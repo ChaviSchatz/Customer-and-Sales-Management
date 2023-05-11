@@ -26,7 +26,7 @@ export function Login() {
                     const userData = response.data;
                     if (userData != "") {
                         if(userData.password == "011920246"){
-                            navigate(`/manager-home-page`);
+                            navigate(`/orders`);
                         }
                         else{
                             dispatch(pushNewUser(userData));

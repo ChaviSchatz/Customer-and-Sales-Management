@@ -2,11 +2,9 @@ import axios from "axios";
 import { urlInventory } from "./endpoints.ts";
 import { useRef, useState } from "react";
 import { useEffect } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import {UpdateItem } from "./UpdateItem.js"
-import { render } from "@testing-library/react";
+import { HeaderManager } from "./HeaderManager.js";
 
 export function EditInventory() {
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -37,11 +35,14 @@ export function EditInventory() {
 
     return (
         <>
+        <header>
+            <HeaderManager></HeaderManager>
+        </header>
         <html dir="rtl">
             {updateState == false &&
             <>
             <p>עדכון מלאי</p>
-            <button onClick={() =>{
+            <button class="btn btn-primary" onClick={() =>{
                 updatingItem.current = {
                     code: "",
                     description: "",

@@ -1,22 +1,25 @@
-
 import { useNavigate } from "react-router";
 import { useRef } from 'react';
 
-export function HeaderUser() {
-    const navigate = useNavigate();
+export function HeaderManager(prop) {
     return (
         <>
-    
             <header dir="rtl">
-                <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" style={{borderBottom: "solid", borderBottomColor: "blue"}}>
+                <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" style={{borderBottom: "solid", borderBottomColor: "black"}}>
                     <div class="container-fluid" style = {{backgroundColor: ""}}>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style = {{marginTop: "20px"}}>
+                            <ul class="navbar-nav" style = {{marginTop: "20px"}}>
                                 <li class="breadcrumb-item">
-                                    <a class="nav-link active" href='/home-page'>החשבון שלי</a>
+                                    <a class="nav-link active" href="/orders">הזמנות אחרונות</a>
                                 </li>
                                  <li class="nav-item">
-                                    <a class="nav-link active" href="/users-orders">הזמנות</a>
+                                    <a class="nav-link active" href="/orders/dates">הזמנות לפי תאריכים</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="/customers">ניהול לקוחות</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="/edit-inventory">ניהול מלאי</a>
                                 </li>
                             </ul> 
                         </div>

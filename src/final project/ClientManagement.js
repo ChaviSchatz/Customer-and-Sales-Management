@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 // import "./cssFiles/orders.css";
 import { Button, Collapse } from 'react-bootstrap';
+import { HeaderManager } from './HeaderManager.js';
 
 
 export function ClientManagement() {
@@ -52,7 +53,9 @@ export function ClientManagement() {
     }
 
     return (<>
-
+        <header>
+            <HeaderManager></HeaderManager>
+        </header>
         <table class="table table-striped" dir='rtl'>
             <thead>
                 <tr >
@@ -72,18 +75,18 @@ export function ClientManagement() {
                         <html>
                             <div className="card">
                                 {/* <div className="card-header" style={{"paddingLeft":"-50%"}}> */}
-                                    <table dir='rtl'>
-                                        <tbody >
-                                            <th scope="col">{d.name}</th>
-                                            <th scope="col">{d.phoneNumber}</th>
-                                            <th scope="col">{d.storeName}</th>
-                                        </tbody>
-                                    </table>
-                                    <div style={{ "margin": "20px" }}>
-                                            <Button variant="success" onClick={() => handleClick(i)} >
-                                                פרטי כתובת
-                                            </Button>
-                                        </div>
+                                <table dir='rtl'>
+                                    <tbody >
+                                        <th scope="col">{d.name}</th>
+                                        <th scope="col">{d.phoneNumber}</th>
+                                        <th scope="col">{d.storeName}</th>
+                                    </tbody>
+                                </table>
+                                <div style={{ "margin": "20px" }}>
+                                    <Button variant="success" onClick={() => handleClick(i)} >
+                                        פרטי כתובת
+                                    </Button>
+                                </div>
                                 {/* </div> */}
                                 <br></br>
                                 <div className="card-header">

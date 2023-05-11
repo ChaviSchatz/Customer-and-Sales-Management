@@ -11,7 +11,7 @@ import { HeaderUser } from "./HeaderUser";
 export function UserOrders() {
     const user = useSelector((state) => state.usersReducer);
     const [details, setdetails] = useState(user);
-    const orders = useRef(null);
+    const orders = useRef([]);
     const [r, setR] = useState(false);
     const [open, setOpen] = useState(false);
     const [openIndex, setOpenIndex] = useState();

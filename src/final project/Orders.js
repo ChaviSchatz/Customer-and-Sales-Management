@@ -4,8 +4,8 @@ import { urlUsers } from "./endpoints.ts";
 import { urlOrders } from "./endpoints.ts";
 import "./cssFiles/orders.css";
 import { Button, Collapse } from 'react-bootstrap';
-import { useNavigate, useParams} from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
+import { HeaderManager } from "./HeaderManager.js";
 export function Orders() {
     const orders = useRef(null);
     const peuple = useRef(null);
@@ -28,9 +28,9 @@ export function Orders() {
     const getOrders = async () => {
         await axios.get(urlOrders)
             .then(response => {
-                response.data = response.data.sort(function(a,b){
+                response.data = response.data.sort(function (a, b) {
                     return new Date(b.orderDetails.date) - new Date(a.orderDetails.date);
-                  });
+                });
                 if (response.status < 299) {
                     var g = [];
                     response.data.forEach(async o => {
@@ -73,8 +73,11 @@ export function Orders() {
 
     return (
         <>
-        <h4>הזמנות אחרונות</h4>
-        <br></br>
+            <header>
+                <HeaderManager></HeaderManager>
+            </header>
+            <h4>הזמנות אחרונות</h4>
+            <br></br>
             {r != false &&
                 <>
                     {
