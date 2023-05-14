@@ -28,7 +28,7 @@ export function ClientManagement() {
             })
             .catch((error) => console.log(error));
         console.log("u", users.current);
-
+            users.current = users.current.sort((a, b) => (a.name < b.name ? -1 : 1));
         return users.current;
     }
     useEffect(() => {
@@ -56,17 +56,6 @@ export function ClientManagement() {
         <header>
             <HeaderManager></HeaderManager>
         </header>
-        <table class="table table-striped" dir='rtl'>
-            <thead>
-                <tr >
-                    {/* <th scope="col">#</th> */}
-                    <th scope="col">שם לקוח</th>
-                    <th scope="col">טלפון</th>
-                    <th scope="col">שם החנות</th>
-                    {/* <th scope="col">כתובת למשלוח</th> */}
-                </tr>
-            </thead>
-        </table>
 
         {r != false &&
             users.current.map((d, i) => {
@@ -74,12 +63,11 @@ export function ClientManagement() {
                     <>
                         <html>
                             <div className="card">
-                                {/* <div className="card-header" style={{"paddingLeft":"-50%"}}> */}
                                 <table dir='rtl'>
                                     <tbody >
-                                        <th scope="col">{d.name}</th>
-                                        <th scope="col">{d.phoneNumber}</th>
-                                        <th scope="col">{d.storeName}</th>
+                                        <tr scope="col"><span style={{ fontWeight: 'bold' }}> שם:  </span>{d.name}</tr>
+                                        <tr scope="col"><span style={{ fontWeight: 'bold' }}> טלפון:  </span>{d.phoneNumber}</tr>
+                                        <tr scope="col"><span style={{ fontWeight: 'bold' }}> שם החנות:  </span>{d.storeName}</tr>
                                     </tbody>
                                 </table>
                                 <div style={{ "margin": "20px" }}>
@@ -96,22 +84,6 @@ export function ClientManagement() {
                                             <p>רחוב : {d.address.street}</p>
                                             <p>דירה : {d.address.floor}</p>
                                             <p>הערות כתובת : {d.address.remarks}</p>
-                                            {/* <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">עיר</th>
-                                                        <th scope="col">רחוב</th>
-                                                        <th scope="col">דירה</th>
-                                                        <th scope="col">הערות כתובת</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <td>{d.address.city}</td>
-                                                    <td>{d.address.}</td>
-                                                    <td>{d.address.}</td>
-                                                    <td>{d.address.}</td>
-                                                </tbody>
-                                            </table> */}
                                         </div>
                                     </Collapse>
                                 </div>
