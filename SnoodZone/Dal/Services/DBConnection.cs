@@ -24,7 +24,7 @@ public class DBConnection : IDBConnection
     public DBConnection(IConfiguration config)
     {
         _config = config;
-        Client = new MongoClient(GetConnectionString());
+        Client = new MongoClient(GetConnectionString("MongoDB"));
         DbName = "SnoodZone";
         _db = Client.GetDatabase(DbName);
 
@@ -32,9 +32,9 @@ public class DBConnection : IDBConnection
         OrdersCollection = _db.GetCollection<Order>(OrdersCollectionName);
         InventoryCollection = _db.GetCollection<Item>(InventoryCollectionName);
     }
-    public string GetConnectionString()
+    public string GetConnectionString(string dbName)
     {
-        return _config.GetConnectionString("MongoDB");
+        return _config.GetConnectionString(dbName);
     }
 }
 
