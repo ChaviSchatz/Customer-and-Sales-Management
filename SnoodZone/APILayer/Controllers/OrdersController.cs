@@ -28,6 +28,14 @@ public class OrdersController : ControllerBase
         return await _orderActions.GetOrdersByDatesAsync(from, to);
     }
 
+    [HttpGet]
+    [Route("{userId}")]
+
+    public async Task<List<OrderDTO>> GetUsersOrders(string userId)
+    {
+        return await _orderActions.GetOrdersByUserAsync(userId);
+    }
+
     [HttpPut]
     public async void Update(OrderDTO order)
     {
