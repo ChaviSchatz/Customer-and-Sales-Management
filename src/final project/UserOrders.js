@@ -20,7 +20,6 @@ export function UserOrders() {
     function handleClick(index) {
         if (open == false || index == openIndex) {
             setOpen(!open);
-
         }
         setOpenIndex(index);
         console.log("open", openIndex);

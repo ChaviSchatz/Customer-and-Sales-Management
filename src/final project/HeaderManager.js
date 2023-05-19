@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import { useRef } from 'react';
 
 export function HeaderManager(prop) {
+    const navigate = useNavigate();
     return (
         <>
             <header dir="rtl">
@@ -10,16 +11,16 @@ export function HeaderManager(prop) {
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav" style = {{marginTop: "20px"}}>
                                 <li class="breadcrumb-item">
-                                    <a class="nav-link active" href="/orders">הזמנות אחרונות</a>
+                                    <a class="nav-link active" onClick={() => navigate("/orders")}>הזמנות אחרונות</a>
                                 </li>
                                  <li class="nav-item">
-                                    <a class="nav-link active" href="/orders/dates">הזמנות לפי תאריכים</a>
+                                    <a class="nav-link active" onClick={() => navigate("/orders/dates")}>הזמנות לפי תאריכים</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/customers">ניהול לקוחות</a>
+                                    <a class="nav-link active" onClick={() => navigate("/customers")}>ניהול לקוחות</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/edit-inventory">ניהול מלאי</a>
+                                    <a class="nav-link active" onClick={() => navigate("/edit-inventory")}>ניהול מלאי</a>
                                 </li>
                             </ul> 
                         </div>
