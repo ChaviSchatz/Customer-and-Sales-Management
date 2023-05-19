@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ziDn8uRu5fFdz+q/dXUIJecC5berBEKfs9yhG4dXrVblSs2+hLUrOyyhzLzGG+loyo4/IgBAFul6a+/8LQkMNQ==",
+  "dgSpecHash": "5kYS/YCHtz01UMssTJSvfAzfS+AAVVAnI0WlpefQ5ZM0db6qqCGdHK5AwPTt39A3TKgHWVnXSq+hSZLpurGlqw==",
   "success": true,
   "projectFilePath": "C:\\Users\\WIN-10\\source\\repos\\project55\\SnoodZone\\BL\\BL.csproj",
   "expectedPackageFiles": [
@@ -10,10 +10,11 @@
     "C:\\Users\\WIN-10\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\WIN-10\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
-    "C:\\Users\\WIN-10\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\WIN-10\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\mongodb.bson\\2.19.0\\mongodb.bson.2.19.0.nupkg.sha512",

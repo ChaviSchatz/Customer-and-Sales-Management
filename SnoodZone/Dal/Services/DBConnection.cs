@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.Extensions.Configuration;
+
 public class DBConnection : IDBConnection
 {
     private readonly IMongoDatabase _db;
@@ -9,6 +11,9 @@ public class DBConnection : IDBConnection
     public string InventoryCollectionName { get; set; } = "inventory";
 
     public string DbName { get; private set; }
+
+    private IConfiguration _config;
+
     public MongoClient Client { get; private set; }
 
     public IMongoCollection<User> UsersCollection { get; private set; }
@@ -16,15 +21,20 @@ public class DBConnection : IDBConnection
     public IMongoCollection<Item> InventoryCollection { get; private set; }
 
 
-    public DBConnection()
+    public DBConnection(IConfiguration config)
     {
-        Client = new MongoClient("mongodb://localhost:27017");
+        _config = config;
+        Client = new MongoClient(GetConnectionString());
         DbName = "SnoodZone";
         _db = Client.GetDatabase(DbName);
 
         UsersCollection = _db.GetCollection<User>(UsersCollectionName);
         OrdersCollection = _db.GetCollection<Order>(OrdersCollectionName);
         InventoryCollection = _db.GetCollection<Item>(InventoryCollectionName);
+    }
+    public string GetConnectionString()
+    {
+        return _config.GetConnectionString("MongoDB");
     }
 }
 

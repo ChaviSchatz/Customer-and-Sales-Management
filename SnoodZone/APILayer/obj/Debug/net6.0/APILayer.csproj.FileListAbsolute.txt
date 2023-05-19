@@ -678,3 +678,5 @@ C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\obj\Debug\net6.0\refin
 C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.pdb
 C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.genruntimeconfig.cache
 C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\obj\Debug\net6.0\ref\APILayer.dll
+C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
