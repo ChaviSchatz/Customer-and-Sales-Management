@@ -1,6 +1,9 @@
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.MyAddAuthentication(builder.Configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddTestBL();
@@ -32,6 +35,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors();
 
+app.UseAuthentication(); // This need to be added	
 app.UseAuthorization();
 
 app.MapControllers();

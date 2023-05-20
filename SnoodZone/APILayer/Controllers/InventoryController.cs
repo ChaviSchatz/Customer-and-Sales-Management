@@ -1,4 +1,4 @@
-﻿
+﻿    
     [ApiController]
     [Route("api/[controller]")]
     public class InventoryController : ControllerBase

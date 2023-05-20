@@ -1,12 +1,33 @@
-﻿
+﻿using APILayer.Repository;
+using Microsoft.AspNetCore.Authorization;
+
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class OrdersController : ControllerBase
     {
     private readonly IOrderActions _orderActions;
-    public OrdersController(IOrderActions orderActions)
+    private readonly IJWTManagerRepository jWTManager;
+
+    public OrdersController(IOrderActions orderActions, IJWTManagerRepository jWTManager)
     {
         this._orderActions = orderActions;
+        this.jWTManager = jWTManager;
+    }
+
+    [AllowAnonymous]
+    [HttpPost]
+    [Route("authenticate")]
+    public IActionResult Authenticate(UserSimpleModel usersdata)
+    {
+        var token = jWTManager.Authenticate(usersdata);
+
+        if (token == null)
+        {
+            return Unauthorized();
+        }
+
+        return Ok(token);
     }
 
     [HttpPost]

@@ -680,3 +680,11 @@ C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\obj\Debug\net6.0\APILa
 C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\obj\Debug\net6.0\ref\APILayer.dll
 C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
