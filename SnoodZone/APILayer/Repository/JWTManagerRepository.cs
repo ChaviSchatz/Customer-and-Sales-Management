@@ -8,13 +8,20 @@ namespace APILayer.Repository
     public class JWTManagerRepository : IJWTManagerRepository
     {
         private readonly IConfiguration iconfiguration;
-        public JWTManagerRepository(IConfiguration iconfiguration)
+        private readonly IUserActions userActions;
+
+        public JWTManagerRepository(IConfiguration iconfiguration, IUserActions userActions)
         {
             this.iconfiguration = iconfiguration;
+            this.userActions = userActions;
         }
-        public Tokens Authenticate(UserSimpleModel users)
+        public async Task<Tokens> Authenticate(UserSimpleModel users)
         {
-
+            UserDTO user = await userActions.GetUserByEmailAndPassword(users.Email, users.Password);
+            if(user == null)
+            {
+                return null;
+            }
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.UTF8.GetBytes(iconfiguration["JWT:Key"]);

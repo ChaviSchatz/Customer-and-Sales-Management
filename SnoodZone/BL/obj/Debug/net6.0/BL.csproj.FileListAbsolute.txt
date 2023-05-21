@@ -173,7 +173,6 @@ C:\Users\WIN-10\source\repos\project45\SnoodZone\BL\obj\Debug\net6.0\BL.dll
 C:\Users\WIN-10\source\repos\project45\SnoodZone\BL\obj\Debug\net6.0\refint\BL.dll
 C:\Users\WIN-10\source\repos\project45\SnoodZone\BL\obj\Debug\net6.0\BL.pdb
 C:\Users\WIN-10\source\repos\project45\SnoodZone\BL\obj\Debug\net6.0\ref\BL.dll
-C:\Users\שץ חוה\Source\Repos\project\SnoodZone\BL\obj\Debug\net6.0\refint\BL.dll
 C:\Users\WIN-10\source\repos\project111\SnoodZone\BL\bin\Debug\net6.0\BL.deps.json
 C:\Users\WIN-10\source\repos\project111\SnoodZone\BL\bin\Debug\net6.0\BL.dll
 C:\Users\WIN-10\source\repos\project111\SnoodZone\BL\bin\Debug\net6.0\BL.pdb
@@ -238,3 +237,4 @@ C:\Users\WIN-10\source\repos\project55\SnoodZone\BL\obj\Debug\net6.0\BL.dll
 C:\Users\WIN-10\source\repos\project55\SnoodZone\BL\obj\Debug\net6.0\refint\BL.dll
 C:\Users\WIN-10\source\repos\project55\SnoodZone\BL\obj\Debug\net6.0\BL.pdb
 C:\Users\WIN-10\source\repos\project55\SnoodZone\BL\obj\Debug\net6.0\ref\BL.dll
+C:\Users\שץ חוה\Source\Repos\project\SnoodZone\BL\bin\Debug\net6.0\ref\BL.dll

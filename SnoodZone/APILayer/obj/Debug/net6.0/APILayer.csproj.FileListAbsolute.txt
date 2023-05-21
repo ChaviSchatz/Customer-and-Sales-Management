@@ -480,7 +480,6 @@ C:\Users\WIN-10\source\repos\project45\SnoodZone\APILayer\obj\Debug\net6.0\refin
 C:\Users\WIN-10\source\repos\project45\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.pdb
 C:\Users\WIN-10\source\repos\project45\SnoodZone\APILayer\obj\Debug\net6.0\APILayer.genruntimeconfig.cache
 C:\Users\WIN-10\source\repos\project45\SnoodZone\APILayer\obj\Debug\net6.0\ref\APILayer.dll
-C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\obj\Debug\net6.0\refint\APILayer.dll
 C:\Users\WIN-10\source\repos\project111\SnoodZone\APILayer\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\WIN-10\source\repos\project111\SnoodZone\APILayer\bin\Debug\net6.0\appsettings.json
 C:\Users\WIN-10\source\repos\project111\SnoodZone\APILayer\bin\Debug\net6.0\APILayer.exe
@@ -688,3 +687,14 @@ C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Syste
 C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\WIN-10\source\repos\project55\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\ref\APILayer.dll
+C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\שץ חוה\Source\Repos\project\SnoodZone\APILayer\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

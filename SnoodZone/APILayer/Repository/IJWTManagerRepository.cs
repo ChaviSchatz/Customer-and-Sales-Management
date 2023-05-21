@@ -2,6 +2,6 @@
 {
     public interface IJWTManagerRepository
     {
-        Tokens Authenticate(UserSimpleModel users);
+        Task<Tokens> Authenticate(UserSimpleModel users);
     }
 }
