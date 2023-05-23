@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Update } from "./Update";
 import { useNavigate } from "react-router-dom";
 import { HeaderUser } from "./HeaderUser";
+import { Footer } from "./Footer";
 
 export function Home() {
     const user = useSelector((state) => state.usersReducer);
@@ -55,6 +56,9 @@ export function Home() {
                         }
                 </>
             }
+            <footer style={{"marginTop":"150px"}}> 
+            <Footer></Footer>
+            </footer>
         </>
     );
 }

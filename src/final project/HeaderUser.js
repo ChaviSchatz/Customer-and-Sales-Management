@@ -1,4 +1,4 @@
-
+import './cssFiles/headerUser.css';
 import { useNavigate } from "react-router";
 import { useRef } from 'react';
 
@@ -6,9 +6,9 @@ export function HeaderUser() {
     const navigate = useNavigate();
     return (
         <>
-            <header dir="rtl">
-                <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" style={{borderBottom: "solid", borderBottomColor: "blue"}}>
-                    <div class="container-fluid" style = {{backgroundColor: ""}}>
+            <header dir="rtl" className='header'>
+                <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid" id = "style">
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style = {{marginTop: "20px"}}>
                                 <li class="breadcrumb-item">
