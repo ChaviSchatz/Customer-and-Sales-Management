@@ -18,9 +18,9 @@ public class OrdersController : ControllerBase
     [AllowAnonymous]
     [HttpPost]
     [Route("authenticate")]
-    public IActionResult Authenticate(UserSimpleModel usersdata)
+    public async Task<IActionResult> Authenticate(UserSimpleModel usersdata)
     {
-        var token = jWTManager.Authenticate(usersdata);
+        var token = await jWTManager.Authenticate(usersdata);
 
         if (token == null)
         {
