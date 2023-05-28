@@ -5,7 +5,7 @@
         services.AddSingleton<IUserActions, UserActions>();
         services.AddSingleton<IOrderActions, OrderActions>();
         services.AddSingleton<IInventoryActions, InventoryActions>();
-
+        services.AddSingleton<IAdminActions, AdminActions>();
 
         services.AddAutoMapper(typeof(AddressProfile),
                                typeof(OrderProfile),
@@ -13,7 +13,8 @@
                                typeof(SnoodProfile),
                                typeof(UserProfile),
                                typeof(ColorAmountProfile),
-                               typeof(ItemProfile));
+                               typeof(ItemProfile),
+                               typeof(AdminProfile));
 
         services.AddTestDal();
     }

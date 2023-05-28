@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Jvf08vss7vYymNgAwKpIh9UJgWnf0oxZ9m/EjdcxtQ70BW4y17qYMq9kpexGql07rCN0GZpYeDBjSHRA1+1F3Q==",
+  "dgSpecHash": "E+6WQ8wJLpcb/mKVPatMEruZqqYzjog8cyAWYTdOhHEIwCT4hBQdyqRwSaftthqPLAzdUa1kivKwqK9mYk28Lg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\Dal\\Dal.csproj",
+  "projectFilePath": "C:\\Users\\WIN-10\\source\\repos\\project1\\SnoodZone\\Dal\\Dal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\WIN-10\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

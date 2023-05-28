@@ -7,41 +7,27 @@ using Microsoft.AspNetCore.Authorization;
 public class OrdersController : ControllerBase
     {
     private readonly IOrderActions _orderActions;
-    private readonly IJWTManagerRepository jWTManager;
 
-    public OrdersController(IOrderActions orderActions, IJWTManagerRepository jWTManager)
+    public OrdersController(IOrderActions orderActions)
     {
         this._orderActions = orderActions;
-        this.jWTManager = jWTManager;
     }
 
-    [AllowAnonymous]
-    [HttpPost]
-    [Route("authenticate")]
-    public async Task<IActionResult> Authenticate(UserSimpleModel usersdata)
-    {
-        var token = await jWTManager.Authenticate(usersdata);
-
-        if (token == null)
-        {
-            return Unauthorized();
-        }
-
-        return Ok(token);
-    }
-
+    [Authorize(Roles = "User")]
     [HttpPost]
     public async void Create(OrderDTO order)
     {
         await _orderActions.CreateNewOrder(order);
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<List<OrderDTO>> GetAllOrders()
     {
          return await _orderActions.GetAllOrders();
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     [Route("search")]
     public async Task<List<OrderDTO>> GetAllOrders(DateTime from, DateTime to)
@@ -49,14 +35,15 @@ public class OrdersController : ControllerBase
         return await _orderActions.GetOrdersByDatesAsync(from, to);
     }
 
+    [Authorize(Roles = "Admin, User")]
     [HttpGet]
     [Route("{userId}")]
-
     public async Task<List<OrderDTO>> GetUsersOrders(string userId)
     {
         return await _orderActions.GetOrdersByUserAsync(userId);
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPut]
     public async void Update(OrderDTO order)
     {

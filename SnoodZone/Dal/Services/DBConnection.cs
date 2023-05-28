@@ -9,6 +9,7 @@ public class DBConnection : IDBConnection
     public string UsersCollectionName { get; private set; } = "users";
     public string OrdersCollectionName { get; private set; } = "orders";
     public string InventoryCollectionName { get; set; } = "inventory";
+    public string AdminsCollectionName { get; set; } = "Admins";
 
     public string DbName { get; private set; }
 
@@ -19,6 +20,7 @@ public class DBConnection : IDBConnection
     public IMongoCollection<User> UsersCollection { get; private set; }
     public IMongoCollection<Order> OrdersCollection { get; private set; }
     public IMongoCollection<Item> InventoryCollection { get; private set; }
+    public IMongoCollection<Admin> AdminsCollection { get; private set; }
 
 
     public DBConnection(IConfiguration config)
@@ -31,6 +33,7 @@ public class DBConnection : IDBConnection
         UsersCollection = _db.GetCollection<User>(UsersCollectionName);
         OrdersCollection = _db.GetCollection<Order>(OrdersCollectionName);
         InventoryCollection = _db.GetCollection<Item>(InventoryCollectionName);
+        AdminsCollection = _db.GetCollection<Admin>(AdminsCollectionName);
     }
     public string GetConnectionString(string dbName)
     {

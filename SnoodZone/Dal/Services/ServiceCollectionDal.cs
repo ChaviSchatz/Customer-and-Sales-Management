@@ -7,6 +7,8 @@ public static class ServiceCollectionDal
         services.AddSingleton<IUserService, UserService>();
         services.AddSingleton<IOrderService, OrderService>();
         services.AddSingleton<IInventoryService, InventoryService>();
+        services.AddSingleton<IAdminService, AdminService>();
+
     }
 
 
