@@ -36,7 +36,7 @@ public class UsersController : ControllerBase
     }
 
     [Authorize(Roles = "Admin, User")]
-    [Route("{userId}")]
+    [Route("{mongoId}")]
     [HttpGet]
     public async Task<UserDTO> GetUserById(string mongoId)
     {
