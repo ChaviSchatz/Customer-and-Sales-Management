@@ -1,5 +1,4 @@
-﻿using APILayer.Repository;
-using Microsoft.AspNetCore.Authorization;
+﻿
 
 namespace APILayer.Controllers
 {

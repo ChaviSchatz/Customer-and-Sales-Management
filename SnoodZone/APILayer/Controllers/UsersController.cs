@@ -1,9 +1,4 @@
 ﻿
-using APILayer.Repository;
-using Microsoft.AspNetCore.Authorization;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-
 [Authorize]
 [ApiController]
 [Route("api/[controller]")]
@@ -50,7 +45,7 @@ public class UsersController : ControllerBase
         return await _userActions.GetUserById(mongoId);
     }
 
-    [Authorize(Roles = "User")]
+    [AllowAnonymous]
     [HttpPost]
     public async void Create(UserDTO user)
     {
