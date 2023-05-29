@@ -51,8 +51,7 @@ public class UserActions : IUserActions
         var result = usersList
             .Where(u => u.EmailAddress == email && u.Password == password)
             .FirstOrDefault();
-        if (result == null) return null;
-
+        if (((User)result).Id == null) return null;
         return mapper.Map<User, UserDTO>(result);
     }
 

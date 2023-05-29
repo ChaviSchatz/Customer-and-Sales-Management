@@ -3,8 +3,7 @@ global using APILayer.Repository;
 global using Microsoft.AspNetCore.Authorization;
 global using System.IdentityModel.Tokens.Jwt;
 global using System.Security.Claims;
-//global using MongoDB.Bson.IO;
-//global using MongoDB.Bson;
-//global using MongoDB.Driver;
-//global using System.Dynamic;
-//global using System.Text.Json;
+global using Microsoft.IdentityModel.Tokens;
+global using System.Security.Cryptography;
+global using System.Text;
+

@@ -7,24 +7,43 @@ public class UsersController : ControllerBase
 
     private readonly IUserActions _userActions;
     private readonly IJWTManagerRepository jWTManager;
+    private readonly ITokenActions toknActions;
 
-    public UsersController(IUserActions userActions, IJWTManagerRepository jWTManager)
+    public UsersController(IUserActions userActions, IJWTManagerRepository jWTManager, ITokenActions toknActions)
     {
         _userActions = userActions;
         this.jWTManager = jWTManager;
+        this.toknActions = toknActions;
     }
 
     [AllowAnonymous]
     [HttpPost]
     [Route("authenticate")]
-    public async Task<IActionResult> Authenticate(AuthModel usersdata)
+    public async Task<IActionResult> AuthenticateAsync(AuthModel usersdata)
     {
-        var token = await jWTManager.UserAuthenticate(usersdata);
+        var validUserId = await jWTManager.UserAuthenticate(usersdata);
+
+        if (validUserId == null)
+        {
+            return Unauthorized("Incorrect username or password!");
+        }
+
+        var token = await jWTManager.GenerateUserToken(usersdata);
 
         if (token == null)
         {
-            return Unauthorized();
+            return Unauthorized("Invalid Attempt!");
         }
+
+        // saving refresh token to the db
+        UserRefreshTokenDTO obj = new UserRefreshTokenDTO
+        {
+            RefreshToken = token.RefreshToken,
+            UserId = validUserId,
+            Email = usersdata.Email,
+        };
+
+        await toknActions.AddUserRefreshTokens(obj);
         return Ok(token);
     }
 

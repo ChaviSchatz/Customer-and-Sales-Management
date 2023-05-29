@@ -8,9 +8,8 @@ public static class ServiceCollectionDal
         services.AddSingleton<IOrderService, OrderService>();
         services.AddSingleton<IInventoryService, InventoryService>();
         services.AddSingleton<IAdminService, AdminService>();
-
+        services.AddSingleton<ITokenService, TokenService>();
     }
-
 
 }
 
