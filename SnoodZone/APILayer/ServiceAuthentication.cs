@@ -15,6 +15,7 @@ public static class MyServiceAuthentication
         //    options.Password.RequireDigit = true;
         //    options.SignIn.RequireConfirmedEmail = true;
         //}).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+        
         services.AddAuthorization(options =>
         {
             options.AddPolicy("RequireAdministratorRole",

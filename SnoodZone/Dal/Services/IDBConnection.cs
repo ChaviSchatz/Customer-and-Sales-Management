@@ -1,7 +1,7 @@
 ﻿public interface IDBConnection
 {
     IMongoCollection<Admin> AdminsCollection { get; }
-    string AdminsCollectionName { get; set; }
+    string AdminsCollectionName { get;}
     MongoClient Client { get; }
     string DbName { get; }
     IMongoCollection<Item> InventoryCollection { get; }

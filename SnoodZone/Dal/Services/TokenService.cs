@@ -11,14 +11,16 @@ public class TokenService : ITokenService
         return tokens.InsertOneAsync(usersToken);
     }
 
-    public Task DeleteUserRefreshTokens(string id)
+    public Task DeleteUserRefreshTokens(string userId, string refreshToken)
     {
-        return tokens.DeleteOneAsync(Builders<UserRefreshToken>.Filter.Eq(t => t.Id, id));
+        var f1 = Builders<UserRefreshToken>.Filter.Eq(t => t.Id, userId);
+        var f2 = Builders<UserRefreshToken>.Filter.Eq(t => t.RefreshToken, refreshToken);
+        return tokens.DeleteOneAsync(f1 & f2);
     }
 
-    public Task<UserRefreshToken> GetSavedRefreshTokens(string id)
+    public Task<UserRefreshToken> GetSavedRefreshTokens(string userId, string refreshToken)
     {
-        return tokens.Find(a => a.Id == id).FirstOrDefaultAsync();
+        return tokens.Find(a => a.UserId == userId && a.RefreshToken == refreshToken).FirstOrDefaultAsync();
     }
 }
 

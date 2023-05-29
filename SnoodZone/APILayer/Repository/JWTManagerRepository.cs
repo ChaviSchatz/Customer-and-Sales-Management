@@ -1,9 +1,4 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using System.ComponentModel;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
+﻿
 
 namespace APILayer.Repository
 {
@@ -20,38 +15,19 @@ namespace APILayer.Repository
             this.userActions = userActions;
             this.adminActions = adminActions;
         }
-        public async Task<bool> UserAuthenticate(AuthModel users)
+        public async Task<UserDTO> UserAuthenticate(AuthModel users)
         {
             UserDTO user = await userActions.GetUserByEmailAndPassword(users.Email, users.Password);
-            if (user == null)
-            {
-                return false;
-            }
-            return true;
-            //var tokenHandler = new JwtSecurityTokenHandler();
-            //var tokenKey = Encoding.UTF8.GetBytes(iconfiguration["JWT:Key"]);
-            //var tokenDescriptor = new SecurityTokenDescriptor
-            //{
-            //    Subject = new ClaimsIdentity(new Claim[]
-            //  {
-            //    new Claim("mongoId", user.Id),
-            //    new Claim(ClaimTypes.Email, users.Email),
-            //    new Claim(ClaimTypes.Role, "User"),
-            //  }),
-            //    Expires = DateTime.UtcNow.AddMinutes(1),
-            //    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
-            //};
-            //var token = tokenHandler.CreateToken(tokenDescriptor);
-            //return new Tokens { Token = tokenHandler.WriteToken(token) };
+            return user;
         }
-        public async Task<bool> AdminAuthenticate(AuthModel adminData)
+        public async Task<AdminDTO> AdminAuthenticate(AuthModel adminData)
         {
             AdminDTO admin = await adminActions.GetAdminByEmailAndPassword(adminData.Email, adminData.Password);
             if (admin == null)
             {
-                return false;
+                return null;
             }
-            return true;
+            return admin;
             //var tokenHandler = new JwtSecurityTokenHandler();
             //var tokenKey = Encoding.UTF8.GetBytes(iconfiguration["JWT:Key"]);
             //var tokenDescriptor = new SecurityTokenDescriptor
@@ -69,17 +45,15 @@ namespace APILayer.Repository
             //return new Tokens { Token = tokenHandler.WriteToken(token) };
         }
 
-        public Task<Tokens> GenerateUserToken(AuthModel usersData)
+        public Tokens GenerateUserToken(UserDTO usersData)
         {
             return GenerateJWTUserTokens(usersData);
         }
 
-        public async Task<Tokens> GenerateJWTUserTokens(AuthModel usersData)
+        public Tokens GenerateJWTUserTokens(UserDTO user)
         {
             try
             {
-                UserDTO user = await userActions.GetUserByEmailAndPassword(usersData.Email, usersData.Password);
-
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var tokenKey = Encoding.UTF8.GetBytes(iconfiguration["JWT:Key"]);
                 var tokenDescriptor = new SecurityTokenDescriptor
@@ -90,7 +64,7 @@ namespace APILayer.Repository
                     new Claim(ClaimTypes.Email, user.EmailAddress),
                     new Claim(ClaimTypes.Role, "User"),
                   }),
-                    Expires = DateTime.Now.AddMinutes(1),
+                    Expires = DateTime.Now.AddMinutes(15),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
                 };
                 var token = tokenHandler.CreateToken(tokenDescriptor);
@@ -103,21 +77,19 @@ namespace APILayer.Repository
             }
         }
 
-        public Task<Tokens> GenerateUserRefreshToken(AuthModel usersData)
+        public Tokens GenerateUserRefreshToken(UserDTO usersData)
         {
             return GenerateJWTUserTokens(usersData);
         }
 
-        public Task<Tokens> GenerateAdminToken(AuthModel adminsData)
+        public Tokens GenerateAdminToken(AdminDTO adminsData)
         {
             return GenerateJWTAdminTokens(adminsData);
         }
-        public async Task<Tokens> GenerateJWTAdminTokens(AuthModel adminsData)
+        public Tokens GenerateJWTAdminTokens(AdminDTO admin)
         {
             try
             {
-                AdminDTO admin = await adminActions.GetAdminByEmailAndPassword(adminsData.Email, adminsData.Password);
-
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var tokenKey = Encoding.UTF8.GetBytes(iconfiguration["JWT:Key"]);
                 var tokenDescriptor = new SecurityTokenDescriptor
@@ -128,7 +100,7 @@ namespace APILayer.Repository
                     new Claim(ClaimTypes.Email, admin.EmailAddress),
                     new Claim(ClaimTypes.Role, "Admin"),
                   }),
-                    Expires = DateTime.Now.AddMinutes(1),
+                    Expires = DateTime.Now.AddMinutes(15),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
                 };
                 var token = tokenHandler.CreateToken(tokenDescriptor);
@@ -140,7 +112,7 @@ namespace APILayer.Repository
                 return null;
             }
         }
-        public Task<Tokens> GenerateAdminRefreshToken(AuthModel adminsData)
+        public Tokens GenerateAdminRefreshToken(AdminDTO adminsData)
         {
             return GenerateJWTAdminTokens(adminsData);
         }

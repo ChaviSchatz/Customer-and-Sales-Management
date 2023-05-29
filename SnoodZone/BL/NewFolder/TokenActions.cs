@@ -17,14 +17,14 @@ public class TokenActions : ITokenActions
         return tokenService.AddUserRefreshTokens(usersTokenForDal);
     }
 
-    public Task DeleteUserRefreshTokens(string id)
+    public Task DeleteUserRefreshTokens(string userId, string refreshToken)
     {
-        return tokenService.DeleteUserRefreshTokens(id);
+        return tokenService.DeleteUserRefreshTokens(userId, refreshToken);
     }
 
-    public Task<UserRefreshToken> GetSavedRefreshTokens(string id)
+    public Task<UserRefreshToken> GetSavedRefreshTokens(string userId, string refreshToken)
     {
-        return tokenService.GetSavedRefreshTokens(id);
+        return tokenService.GetSavedRefreshTokens(userId, refreshToken);
     }
 }
 

@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.AspNetCore.Identity;
+
 [Authorize]
 [ApiController]
 [Route("api/[controller]")]
@@ -7,13 +9,13 @@ public class UsersController : ControllerBase
 
     private readonly IUserActions _userActions;
     private readonly IJWTManagerRepository jWTManager;
-    private readonly ITokenActions toknActions;
+    private readonly ITokenActions tokenActions;
 
-    public UsersController(IUserActions userActions, IJWTManagerRepository jWTManager, ITokenActions toknActions)
+    public UsersController(IUserActions userActions, IJWTManagerRepository jWTManager, ITokenActions tokenActions)
     {
         _userActions = userActions;
         this.jWTManager = jWTManager;
-        this.toknActions = toknActions;
+        this.tokenActions = tokenActions;
     }
 
     [AllowAnonymous]
@@ -21,14 +23,14 @@ public class UsersController : ControllerBase
     [Route("authenticate")]
     public async Task<IActionResult> AuthenticateAsync(AuthModel usersdata)
     {
-        var validUserId = await jWTManager.UserAuthenticate(usersdata);
+        var validUser = await jWTManager.UserAuthenticate(usersdata);
 
-        if (validUserId == null)
+        if (validUser == null)
         {
             return Unauthorized("Incorrect username or password!");
         }
 
-        var token = await jWTManager.GenerateUserToken(usersdata);
+        var token =  jWTManager.GenerateUserToken(validUser);
 
         if (token == null)
         {
@@ -39,12 +41,49 @@ public class UsersController : ControllerBase
         UserRefreshTokenDTO obj = new UserRefreshTokenDTO
         {
             RefreshToken = token.RefreshToken,
-            UserId = validUserId,
+            UserId = validUser.Id,
             Email = usersdata.Email,
         };
 
-        await toknActions.AddUserRefreshTokens(obj);
+        await tokenActions.AddUserRefreshTokens(obj);
         return Ok(token);
+    }
+
+    [AllowAnonymous]
+    [HttpPost]
+    [Route("refresh")]
+    public async Task<IActionResult> Refresh(Tokens token)
+    {
+        var principal = jWTManager.GetPrincipalFromExpiredToken(token.Token);
+        var userId = principal.Claims.Where(c => c.Type == "mongoId").Single().Value;
+        UserDTO user = await _userActions.GetUserById(userId);
+        //retrieve the saved refresh token from database
+        var savedRefreshToken = await tokenActions.GetSavedRefreshTokens(userId, token.RefreshToken);
+
+        if (savedRefreshToken.RefreshToken != token.RefreshToken)
+        {
+            return Unauthorized("Invalid attempt!");
+        }
+
+        var newJwtToken = jWTManager.GenerateUserRefreshToken(user);
+
+        if (newJwtToken == null)
+        {
+            return Unauthorized("Invalid attempt!");
+        }
+
+        // saving refresh token to the db
+        UserRefreshTokenDTO obj = new UserRefreshTokenDTO
+        {
+            RefreshToken = newJwtToken.RefreshToken,
+            UserId = user.Id,
+            Email = user.EmailAddress,
+        };
+
+        await tokenActions.DeleteUserRefreshTokens(user.Id, token.RefreshToken);
+        await tokenActions.AddUserRefreshTokens(obj);
+
+        return Ok(newJwtToken);
     }
 
     [Authorize(Roles = "Admin")]

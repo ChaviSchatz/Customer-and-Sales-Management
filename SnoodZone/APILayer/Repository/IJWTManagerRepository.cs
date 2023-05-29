@@ -2,15 +2,15 @@
 {
     public interface IJWTManagerRepository
     {
-        Task<bool> AdminAuthenticate(AuthModel adminData);
-        Task<Tokens> GenerateAdminRefreshToken(AuthModel adminsData);
-        Task<Tokens> GenerateAdminToken(AuthModel adminsData);
-        Task<Tokens> GenerateJWTAdminTokens(AuthModel adminsData);
-        Task<Tokens> GenerateJWTUserTokens(AuthModel usersData);
+        Task<AdminDTO> AdminAuthenticate(AuthModel adminData);
+        Tokens GenerateAdminRefreshToken(AdminDTO adminsData);
+        Tokens GenerateAdminToken(AdminDTO adminsData);
+        Tokens GenerateJWTAdminTokens(AdminDTO admin);
+        Tokens GenerateJWTUserTokens(UserDTO user);
         string GenerateStringRefreshToken();
-        Task<Tokens> GenerateUserRefreshToken(AuthModel usersData);
-        Task<Tokens> GenerateUserToken(AuthModel usersData);
+        Tokens GenerateUserRefreshToken(UserDTO usersData);
+        Tokens GenerateUserToken(UserDTO usersData);
         ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
-        Task<bool> UserAuthenticate(AuthModel users);
+        Task<UserDTO> UserAuthenticate(AuthModel users);
     }
 }
