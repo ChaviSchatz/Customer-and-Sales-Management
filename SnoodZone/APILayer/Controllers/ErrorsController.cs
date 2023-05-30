@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APILayer.Controllers
 {
     [ApiController]
-    public class ErrorController : ControllerBase
+
+    public class ErrorsController : ControllerBase
     {
         ILogger<ErrorsController> logger;
         public ErrorsController(ILogger<ErrorsController> logger)
@@ -12,6 +14,7 @@ namespace APILayer.Controllers
             this.logger = logger;
         }
 
+        [HttpGet]
         [Route("/error")]
         public ActionResult Error([FromServices] IHostEnvironment hostEnvironment)
         {
@@ -24,6 +27,8 @@ namespace APILayer.Controllers
                 title: "Sorry...");
 
         }
+
+        [HttpGet]
         [Route("/error-development")]
         public ActionResult DevelopmentError([FromServices] IHostEnvironment hostEnvironment)
         {
