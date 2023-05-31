@@ -730,3 +730,13 @@ C:\Users\WIN-10\source\repos\project1\SnoodZone\APILayer\obj\Debug\net6.0\static
 C:\Users\WIN-10\source\repos\project1\SnoodZone\APILayer\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.APILayer.props
 C:\Users\WIN-10\source\repos\project1\SnoodZone\APILayer\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.APILayer.props
 C:\Users\WIN-10\source\repos\project1\SnoodZone\APILayer\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\שץ חוה\Source\Repos\project1\SnoodZone\APILayer\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

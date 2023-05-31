@@ -21,18 +21,15 @@ public class OrdersController : ControllerBase
 
     [Authorize(Roles = "Admin")]
     [HttpGet]
-    public async Task<List<OrderDTO>> GetAllOrders()
-    {
-         return await _orderActions.GetAllOrders();
-    }
-
-    [Authorize(Roles = "Admin")]
-    [HttpGet]
-    [Route("search")]
     public async Task<List<OrderDTO>> GetAllOrders(DateTime from, DateTime to)
     {
-        return await _orderActions.GetOrdersByDatesAsync(from, to);
+        if(from != null && to != null)
+        {
+            return await _orderActions.GetOrdersByDatesAsync(from, to);
+        }
+        return await _orderActions.GetAllOrders();
     }
+
 
     [Authorize(Roles = "Admin, User")]
     [HttpGet]

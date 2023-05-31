@@ -834,11 +834,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\שץ חוה\\Source\\Repos\\project\\SnoodZone\\Dal\\Dal.csproj",
+      "projectUniqueName": "C:\\Users\\שץ חוה\\Source\\Repos\\project1\\SnoodZone\\Dal\\Dal.csproj",
       "projectName": "Dal",
-      "projectPath": "C:\\Users\\שץ חוה\\Source\\Repos\\project\\SnoodZone\\Dal\\Dal.csproj",
+      "projectPath": "C:\\Users\\שץ חוה\\Source\\Repos\\project1\\SnoodZone\\Dal\\Dal.csproj",
       "packagesPath": "C:\\Users\\שץ חוה\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\שץ חוה\\Source\\Repos\\project\\SnoodZone\\Dal\\obj\\",
+      "outputPath": "C:\\Users\\שץ חוה\\Source\\Repos\\project1\\SnoodZone\\Dal\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
