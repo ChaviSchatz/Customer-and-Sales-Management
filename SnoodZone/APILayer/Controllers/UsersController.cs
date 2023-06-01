@@ -46,7 +46,7 @@ public class UsersController : ControllerBase
         };
 
         await tokenActions.AddUserRefreshTokens(obj);
-        return Ok(token);
+        return Ok(new { user = validUser, token = token });
     }
 
     [AllowAnonymous]
