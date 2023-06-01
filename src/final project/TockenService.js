@@ -11,7 +11,7 @@ export const getTokenObj = () =>{
     }
     return tokens;
 }
- const getToken = () =>{
+export const getToken = () =>{
     var tokens = sessionStorage.getItem("token");
     return tokens;
 }

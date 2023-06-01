@@ -65,17 +65,14 @@ export function Singup() {
             .catch((error) => console.log(error));
         console.log("pass to the second post...");
         const send = { email: data.emailAddress, password: data.password };
-        await axios.post(urlUsers + "/-", send)
+        await axios.post(urlUsers, send)
             .then((response) => {
                 if (response.status < 300) {
                     console.log(response.data);
-                    dispatch(pushNewUser(response.data));
+                    navigate("/");
                 }
             })
             .catch((error) => console.log(error));
-
-        navigate(`/home-page`);
-
     }
 
     const [passwordType, setPasswordType] = useState("password");

@@ -13,15 +13,11 @@ export function Home() {
     const [navToUpdate, setnavToUpdate] = useState(false);
     const navigate = useNavigate();
 
-    console.log("details", details);
-
     useEffect(() => {
         debugger
         console.log("hhh", user);
         setdetails(user);
     }, []);
-
-
 
     return (
         <>

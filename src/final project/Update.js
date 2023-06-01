@@ -8,6 +8,7 @@ import { urlUsers } from "./endpoints.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "./redax/actions/usersActions";
 import { useNavigate } from "react-router-dom";
+import { getToken, refreshAndUpdateTokens } from "./TockenService.js";
 
 
 const schema = yup.object().shape({
@@ -34,6 +35,7 @@ const schema = yup.object().shape({
 
 
 export function Update() {
+    const [isTokenExpierd, setIsTokenExpierd] = useState(false);
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema),
     });
@@ -44,21 +46,63 @@ export function Update() {
 
     const user = useSelector((state) => state.usersReducer);
 
-    const onSubmit = async (data) => {
-        
-        data.id = user.id;
-        const res = await axios.put(urlUsers, data)
+    const sendReq = async (data) => {
+        debugger
+        var config = {
+            headers: { Authorization: `Bearer ${getToken()}` }
+        };
+        await axios.put(urlUsers, data, config)
             .then((response) => {
                 if (response.status < 299) {
-                    debugger
                     dispatch(updateUser(data));
                 }
-                console.log(response.data)
             })
-            .catch((error) => console.log(error));
-        reset();
-        console.log("success");
-        navigate(`/helper/home-page`);
+            .then(setIsTokenExpierd(true))
+            .catch((error) => { setIsTokenExpierd(false); });
+    }
+
+    const onSubmit = async (data) => {
+        data.id = user.id;
+        debugger
+        var config = {
+            headers: { Authorization: `Bearer ${getToken()}` }
+        };
+        await axios.put(urlUsers, data, config)
+            .then((response) => {
+                if (response.status < 299) {
+                    dispatch(updateUser(data));
+                }
+            })
+            .then(setIsTokenExpierd(true))
+            .catch((error) => {
+                refreshAndUpdateTokens(urlUsers);
+                config = {
+                    headers: { Authorization: `Bearer ${getToken()}` }
+                }
+                // axios.put(urlUsers, data, config)
+                //     .then((response) => {
+                //         if (response.status < 299) {
+                //             dispatch(updateUser(data));
+                //             reset();
+                //             console.log("success");
+                //             navigate(`/helper/home-page`);
+                //         }
+                //     })
+                    // .then(setIsTokenExpierd(true))
+                console.log("token isnot expired...",error); 
+                // setIsTokenExpierd(false);
+            });
+        // await sendReq(data);
+        // if(!isTokenExpierd){
+        //     refreshAndUpdateTokens(urlUsers);
+        // }
+        // await sendReq(data);
+        // if(isTokenExpierd){
+        //     reset();
+        //     console.log("success");
+        //     navigate(`/helper/home-page`);
+        // }
+        // console.log("The refresh token didnt work...");
     }
 
 
@@ -79,7 +123,7 @@ export function Update() {
     return (
         <>
             <form class="form-row" onSubmit={handleSubmit(onSubmit)}>
-                <div  style={{ margin: "auto" }}>
+                <div style={{ margin: "auto" }}>
                     <div class="form-group md-6">
                         <label class="form-label" for="form2Example1">Full name</label>
                         <input id="form2Example1" class="form-control"
@@ -198,7 +242,7 @@ export function Update() {
                         </div>
                         <div class="form-group md-6">
                             <label /*class="form-label"*/ for="inputPassword4">Password</label>
-                            <div style={{display :"flex"}}>
+                            <div style={{ display: "flex" }}>
                                 <input id="inputPassword4" class="form-control"
                                     name="password"
                                     {...register('password')}

@@ -3,9 +3,9 @@ import './cssFiles/login.css';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
-import { urlUsers } from "./endpoints.ts";
+import { urlUsers, urlAdmins } from "./endpoints.ts";
 import { pushNewUser } from "./redax/actions/usersActions";
 import img1 from './images/לוגו.jpg';
 import { Header } from "./Header";
@@ -13,7 +13,7 @@ import { setTokens } from "./TockenService";
 
 export function Login() {
     const navigate = useNavigate();
-    // const user = useSelector((state) => state.usersReducer);
+    const [checked, setChecked] = useState(false);
     const [UserAuthentication, setUserAuthentication] = useState(true);
 
     const dispatch = useDispatch();
@@ -21,21 +21,24 @@ export function Login() {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const handleRegistration = async (d) => {
-        await axios.post(urlUsers + "/authenticate", d)
+        debugger
+        let url = "";
+        url = checked ? urlAdmins : urlUsers;
+        await axios.post(url + "/authenticate", d)
             .then((response) => {
                 if (response.status < 300) {
                     debugger
                     const userData = response.data.user;
+                    dispatch(pushNewUser(userData));
                     setTokens(response.data.token);
-                    navigate("/home-page")
+                    url == urlAdmins ? navigate("/orders"):navigate("/home-page");
                 }
                 else {
-                    // setserverError(true);
                     setUserAuthentication(false);
                     console.log("the http request faild");
                 }
             })
-            .catch((error) => console.log(error));
+            .catch((error) => setUserAuthentication(false));
     }
 
     const registerOptions = {
@@ -47,7 +50,7 @@ export function Login() {
 
     return (
         <>
-        <Header></Header>
+            <Header></Header>
             <section class="vh-100" style={{ "backgroundColor": "#9A616D", "width": "80%", "margin": "auto" }}>
                 <div class="container py-5 h-100">
                     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -92,8 +95,14 @@ export function Login() {
                                                         {errors?.password && errors.password.message}
                                                     </small>
                                                     <label class="form-label" for="form2Example27">סיסמה</label>
+                                                    <div dir="rtl" class="form-check">
+                                                        <div style={{"display" :"flex"}}>
+                                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" onChange={() => {
+                                                            setChecked(true);
+                                                        }}/>
+                                                        <label class="form-check-label" style={{"marginRight": "19px"}} for="defaultCheck1">הכנס כמנהל</label>
+                                                        </div></div>
                                                 </div>
-
                                                 <div class="pt-1 mb-4">
                                                     <button class="btn btn-dark btn-lg btn-block">Login</button>
                                                     {UserAuthentication == false &&
@@ -104,8 +113,6 @@ export function Login() {
 
                                                 {/* <a class="small text-muted" href="#!">Forgot password?</a> */}
                                                 <p class="mb-5 pb-lg-2" style={{ "color": "#393f81" }}>אין לך חשבון?<Link to="Signup">הרשם כאן</Link></p>
-                                                {/* <a href="#!" class="small text-muted">Terms of use.</a>
-                  <a href="#!" class="small text-muted">Privacy policy</a> */}
                                             </form>
                                         </div>
                                     </div>
@@ -115,61 +122,6 @@ export function Login() {
                     </div>
                 </div>
             </section>
-
-
-
-            {/* 
-            <section class="vh-100" style={{"width": "90%", "margin" : "auto"}}>
-                <div class="container-fluid h-custom">
-                    <div class="row d-flex justify-content-center align-items-center h-100">
-                        <div class="col-md-9 col-lg-6 col-xl-5">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-                                class="img-fluid" alt="Sample image" />
-                        </div>
-                        <div class="col-md-4 col-lg-2 col-xl-4 offset-xl-1">
-                            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                                <form className="form" onSubmit={handleSubmit(handleRegistration)} style={{"width": "90%"}}>
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="form2Example1">Email</label>
-                                        <input id="form2Example1" class="form-control"
-                                            type="email"
-                                            name="email"
-                                            {...register('email', registerOptions.email)}
-                                        />
-                                        <small className="text-danger">
-                                            {errors?.email && errors.email.message}
-                                        </small>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="form2Example2">Password</label>
-                                        <input id="form2Example2" class="form-control"
-                                            type="password"
-                                            name="password"
-                                            {...register('password', registerOptions.password)}
-                                        />
-                                        <small className="text-danger">
-                                            {errors?.password && errors.password.message}
-                                        </small>
-                                    </div>
-                                    <button class="btn btn-primary btn-block mb-4">Submit</button>
-                                    {UserAuthentication == false &&
-                                        <small className="text-danger">
-                                            שם משתמש או סיסמא שגויים, נסה שוב
-                                        </small>}
-                                    <br></br>
-                                    <Link to="Signup">משתמש חדש? הרשם כאן</Link>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-1 px-4 px-xl-5 bg-primary">
-                    <div class="text-white mb-3 mb-md-0">
-                    </div>
-                </div>
-            </section> */}
         </>
     );
 }
