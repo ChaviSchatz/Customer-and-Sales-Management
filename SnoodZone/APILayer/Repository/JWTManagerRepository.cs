@@ -44,7 +44,7 @@ namespace APILayer.Repository
                     new Claim(ClaimTypes.Email, user.EmailAddress),
                     new Claim(ClaimTypes.Role, "User"),
                   }),
-                    Expires = DateTime.Now.AddMinutes(15),
+                    Expires = DateTime.Now.AddMinutes(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
                 };
                 var token = tokenHandler.CreateToken(tokenDescriptor);
@@ -79,7 +79,7 @@ namespace APILayer.Repository
                     new Claim(ClaimTypes.Email, admin.EmailAddress),
                     new Claim(ClaimTypes.Role, "Admin"),
                   }),
-                    Expires = DateTime.Now.AddMinutes(15),
+                    Expires = DateTime.Now.AddMinutes(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
                 };
                 var token = tokenHandler.CreateToken(tokenDescriptor);

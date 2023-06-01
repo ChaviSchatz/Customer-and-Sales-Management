@@ -49,7 +49,7 @@ namespace APILayer.Controllers
             };
 
             await tokenActions.AddUserRefreshTokens(obj);
-            return Ok(token);
+            return Ok(new { token = token, user = validAdmin });
         }
 
         [AllowAnonymous]
