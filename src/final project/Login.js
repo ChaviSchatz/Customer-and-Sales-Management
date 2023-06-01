@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { urlUsers } from "./endpoints.ts";
 import { pushNewUser } from "./redax/actions/usersActions";
 import img1 from './images/לוגו.jpg';
+import { Header } from "./Header";
 
 export function Login() {
     const navigate = useNavigate();
@@ -54,6 +55,7 @@ export function Login() {
 
     return (
         <>
+        <Header></Header>
             <section class="vh-100" style={{ "backgroundColor": "#9A616D", "width": "80%", "margin": "auto" }}>
                 <div class="container py-5 h-100">
                     <div class="row d-flex justify-content-center align-items-center h-100">

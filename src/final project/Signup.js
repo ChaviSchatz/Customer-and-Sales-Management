@@ -11,6 +11,7 @@ import { pushNewUser } from "./redax/actions/usersActions";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import img1 from './images/לוגו.jpg';
+import { Header } from "./Header";
 
 
 
@@ -96,6 +97,7 @@ export function Singup() {
 
     return (
         <>
+        <Header></Header>
             <section class="h-100" style={{ "backgroundColor": "#9A616D", "width": "80%", "margin": "auto" }}>
                 <div class="container py-5 h-100">
                     <div class="row d-flex justify-content-center align-items-center h-100">

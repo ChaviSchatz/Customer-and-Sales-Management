@@ -28,7 +28,7 @@ function App() {
         <Provider store={store}>
         <div style={{ width: "99%", margin: "auto" }}>
         <BrowserRouter>
-          <article style={{ marginTop : "80px"}}>
+          <article >
           <Routes>
           <Route exact path="/edit-inventory" element={<EditInventory />} />
             <Route exact path="/" element={<Login />} />
