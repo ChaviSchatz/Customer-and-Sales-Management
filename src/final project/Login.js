@@ -9,6 +9,7 @@ import { urlUsers } from "./endpoints.ts";
 import { pushNewUser } from "./redax/actions/usersActions";
 import img1 from './images/לוגו.jpg';
 import { Header } from "./Header";
+import { setTokens } from "./TockenService";
 
 export function Login() {
     const navigate = useNavigate();
@@ -24,22 +25,13 @@ export function Login() {
             .then((response) => {
                 if (response.status < 300) {
                     debugger
-                    const userData = response.data;
-                    if (userData != "") {
-                        if (userData.password == "011920246") {
-                            navigate(`/orders`);
-                        }
-                        else {
-                            dispatch(pushNewUser(userData));
-                            navigate(`/home-page`);
-                        }
-                    }
-                    else {
-                        setUserAuthentication(false);
-                    }
+                    const userData = response.data.user;
+                    setTokens(response.data.token);
+                    navigate("/home-page")
                 }
                 else {
                     // setserverError(true);
+                    setUserAuthentication(false);
                     console.log("the http request faild");
                 }
             })
