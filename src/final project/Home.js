@@ -52,7 +52,7 @@ export function Home() {
                         }
                 </>
             }
-            <footer style={{"marginTop":"150px"}}> 
+            <footer style={{"marginTop":"25%"}}> 
             <Footer></Footer>
             </footer>
         </>
