@@ -96,7 +96,7 @@ export function Update() {
 
     return (
         <>
-            <div class="card card-registration my-4">
+            <div class="card card-registration my-10">
                 <div class="row g-0">
                     <div class="card-body p-md-5 text-black">
                         <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -253,7 +253,7 @@ export function Update() {
                                     </small>
                                 </div>
                             </div>
-                            <button class="btn btn-dark btn-lg btn-block">הרשמה</button>
+                            <button class="btn btn-dark btn-lg btn-block">עדכון</button>
                         </form>
                     </div>
                 </div>

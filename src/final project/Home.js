@@ -24,53 +24,43 @@ export function Home() {
             <header className="App-header">
                 <HeaderUser></HeaderUser>
             </header>
+
             {
                 details != null &&
                 <>
-                    <div class="card-body">
-                        <div class="container py-5 h-100">
-                            <div class="row d-flex justify-content-center align-items-center h-100">
-                                <div class="col">
-                                    {/* <div class="card card-registration my-4"> */}
-                                    {/* <div class="row g-0"> */}
-                                    {/* <div class="col-xl-6 d-none d-xl-block"> */}
+                    <div class="card" style={{margin : "120px", border : "2px solid black", borderRadius : "5px", boxShadow : "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}>
+                        <div class="row" style={{"textAlign" : "center"}}>
+                            <div class="col-6" style={{"textAlign" : "center"}}>
+                                {
+                                    navToUpdate == false &&
+                                    <>
+                                    <br></br>
+                                    <br></br>
+                                    <button type="button" class="btn btn-outline-dark" onClick={() => {
+                                        setnavToUpdate(true);
+                                    }}>
+                                        לעדכון פרטים
+                                    </button>
+                                    </>
+                                }
+                                    {
+                                        navToUpdate == true &&
+                                        <Update></Update>
+                                    }
+                                    {
+                                        serverError == true &&
+                                        <p>Uoooops we have problem now</p>
+                                    }
+                            </div>
+                            <div class="col-6" style={{"textAlign" : "center", backgroundColor:"rgb(245, 245, 245)"}}>
+                                <div class="card-body" style={{"margin" : "auto"}}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                         <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
                                     </svg>
                                     <h3 class="card-title">{details.name}</h3>
-                                    <h5 class="card-text">{details.storeName}</h5></div>
-                                <button type="button" class="btn btn-outline-dark" onClick={() => {
-                                    setnavToUpdate(true);
-                                }}>
-                                    לעדכון פרטים
-                                </button>
-                                <br></br>
-                                .                                         {/* </div> */}
-
-                                {/* <div dir="rtl" style={{ "display": "flex" }}>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-                                </svg>
-                                <h3 class="card-title">{details.name}</h3>
-                                <h5 class="card-text">{details.storeName}</h5></div>
-                            <br></br>
-                            <button type="button" class="btn btn-outline-dark" onClick={() => {
-                                setnavToUpdate(true);
-                            }}>
-                                לעדכון פרטים
-                            </button>
-                        </div> */}
-                                {
-                                    navToUpdate == true &&
-                                    <Update></Update>
-                                }
-                                {
-                                    serverError == true &&
-                                    <p>Uoooops we have problem now</p>
-                                }
-
-                                {/* </div> */}
+                                    <h5 class="card-text">{details.storeName}</h5>
+                                    <br></br>
+                                </div>
                             </div>
                         </div>
                     </div>
