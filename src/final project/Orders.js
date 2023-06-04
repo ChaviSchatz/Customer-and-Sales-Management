@@ -6,6 +6,7 @@ import "./cssFiles/orders.css";
 import { Button, Collapse } from 'react-bootstrap';
 import { useNavigate, useParams } from "react-router-dom";
 import { HeaderManager } from "./HeaderManager.js";
+import { getToken } from "./TockenService.js";
 export function Orders() {
     const orders = useRef(null);
     const peuple = useRef(null);
@@ -26,7 +27,10 @@ export function Orders() {
     }
 
     const getOrders = async () => {
-        await axios.get(urlOrders)
+        var config = {
+            headers: { Authorization: `Bearer ${getToken()}` }
+        };
+        await axios.get(urlOrders, config)
             .then(response => {
                 response.data = response.data.sort(function (a, b) {
                     return new Date(b.orderDetails.date) - new Date(a.orderDetails.date);
@@ -34,7 +38,7 @@ export function Orders() {
                 if (response.status < 299) {
                     var g = [];
                     response.data.forEach(async o => {
-                        const res = await axios.get(urlUsers + `/${o.userId}`)
+                        const res = await axios.get(urlUsers + `/${o.userId}`, config)
                             .then(response => {
                                 if (response.status < 299) {
                                     console.log(response.data);
@@ -66,7 +70,10 @@ export function Orders() {
         console.log("orders[i]", orders.current[i]);
         orders.current[i].status = true;
         debugger
-        await axios.put(urlOrders, orders.current[i]).then(res => console.log(res.data)).catch(err => console.log(err));
+        var config = {
+            headers: { Authorization: `Bearer ${getToken()}` }
+        };
+        await axios.put(urlOrders, orders.current[i], config).then(res => console.log(res.data)).catch(err => console.log(err));
         navigate(`/helper/orders`);
         handleClick(i);
     }
@@ -76,6 +83,7 @@ export function Orders() {
             <header>
                 <HeaderManager></HeaderManager>
             </header>
+            <br></br>
             <h4>הזמנות אחרונות</h4>
             <br></br>
             {r != false &&

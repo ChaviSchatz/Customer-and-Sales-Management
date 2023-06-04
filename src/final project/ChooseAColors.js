@@ -9,8 +9,6 @@ import { UpdateItem } from "./UpdateItem.js"
 import { render } from "@testing-library/react";
 
 
-
-
 export function ChooseAColors(prop) {
     console.log("prop:::", prop.prop);
 
