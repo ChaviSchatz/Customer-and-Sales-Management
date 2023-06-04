@@ -75,34 +75,8 @@ export function Update() {
             })
             .then(setIsTokenExpierd(true))
             .catch((error) => {
-                refreshAndUpdateTokens(urlUsers);
-                config = {
-                    headers: { Authorization: `Bearer ${getToken()}` }
-                }
-                // axios.put(urlUsers, data, config)
-                //     .then((response) => {
-                //         if (response.status < 299) {
-                //             dispatch(updateUser(data));
-                //             reset();
-                //             console.log("success");
-                //             navigate(`/helper/home-page`);
-                //         }
-                //     })
-                    // .then(setIsTokenExpierd(true))
                 console.log("token isnot expired...",error); 
-                // setIsTokenExpierd(false);
             });
-        // await sendReq(data);
-        // if(!isTokenExpierd){
-        //     refreshAndUpdateTokens(urlUsers);
-        // }
-        // await sendReq(data);
-        // if(isTokenExpierd){
-        //     reset();
-        //     console.log("success");
-        //     navigate(`/helper/home-page`);
-        // }
-        // console.log("The refresh token didnt work...");
     }
 
 

@@ -39,7 +39,7 @@ function App() {
             <Route exact path="/orders" element={<Orders />} />
             <Route exact path="/users-orders" element={<UserOrders />} />
             <Route exact path="/create-order" element={<CreateOrder />} />
-            <Route exact path="/customers" element={<ClientManagement />} />
+            <Route exact path="/costumers" element={<ClientManagement />} />
             <Route exact path="/orders/dates" element={<OrdersByDates />} /> 
           </Routes></article>
         </BrowserRouter>
