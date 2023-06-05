@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
+import { getToken } from "./TockenService.js";
 
 export function UpdateItem(prop) {
     const navigate = useNavigate();
@@ -97,7 +98,10 @@ export function UpdateItem(prop) {
                 }
                 <button onClick={async () => {
                     item.current.colors = await item.current.colors.filter(c => c != undefined);
-                    const res = await axios.put(urlInventory, item.current)
+                    var config = {
+                        headers: { Authorization: `Bearer ${getToken()}` }
+                    };
+                    const res = await axios.put(urlInventory, item.current, config)
                         .then(response => {
                             if (response.status < 299) {
                                 console.log(response.data);

@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import {UpdateItem } from "./UpdateItem.js"
 import { HeaderManager } from "./HeaderManager.js";
+import { getToken } from "./TockenService.js";
 
 export function EditInventory() {
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -19,7 +20,10 @@ export function EditInventory() {
     const updatingItem = useRef(null);
 
     const getInventory = async () => {
-        await axios.get(urlInventory + "/all")
+        var config = {
+            headers: { Authorization: `Bearer ${getToken()}` }
+        };
+        await axios.get(urlInventory + "/all", config)
             .then(response => {
                 if (response.status < 299) {
                     console.log(response.data);
@@ -42,7 +46,7 @@ export function EditInventory() {
             {updateState == false &&
             <>
             <p>עדכון מלאי</p>
-            <button class="btn btn-primary" onClick={() =>{
+            <button class="btn btn-outline-dark btn-lg" onClick={() =>{
                 updatingItem.current = {
                     code: "",
                     description: "",
