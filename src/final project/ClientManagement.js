@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 // import "./cssFiles/orders.css";
 import { Button, Collapse } from 'react-bootstrap';
 import { HeaderManager } from './HeaderManager.js';
+import { getToken } from './TockenService.js';
 
 
 export function ClientManagement() {
@@ -17,12 +18,14 @@ export function ClientManagement() {
 
 
     const res = async () => {
-        await axios.get(urlUsers)
+        var config = {
+            headers: { Authorization: `Bearer ${getToken()}` }
+        };
+        await axios.get(urlUsers, config)
             .then(response => {
                 if (response.status < 299) {
                     console.log("response- ", response.data);
                     users.current = response.data;
-
                 }
 
             })

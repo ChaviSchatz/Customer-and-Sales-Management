@@ -5,6 +5,7 @@ import { urlOrders } from "./endpoints.ts";
 import "./cssFiles/orders.css";
 import { Button, Collapse } from 'react-bootstrap';
 import { HeaderManager } from "./HeaderManager.js";
+import { getToken } from "./TockenService.js";
 
 export function OrdersByDates() {
     const current = new Date();
@@ -34,13 +35,16 @@ export function OrdersByDates() {
     }
     const getOrdersAndPeople = async () => {
         debugger
-        await axios.get(urlOrders + "/search",
+        var config = {
+            headers: { Authorization: `Bearer ${getToken()}` }
+        };
+        await axios.get(urlOrders ,
             {
                 params: {
                     from: fromDate,
                     to: toDate
                 }
-            })
+            }, config)
             .then(response => {
                 response.data = response.data.sort(function (a, b) {
                     return new Date(b.orderDetails.date) - new Date(a.orderDetails.date);
