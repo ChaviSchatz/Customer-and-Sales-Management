@@ -7,6 +7,8 @@ import { Button, Collapse } from 'react-bootstrap';
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { HeaderUser } from "./HeaderUser";
+import { getToken } from "./TockenService.js";
+
 
 export function UserOrders() {
     const user = useSelector((state) => state.usersReducer);
@@ -27,7 +29,10 @@ export function UserOrders() {
 
     const getOrders = async () => {
         console.log("DD", details.id);
-        await axios.get(urlOrders + `/${details.id}`)
+        var config = {
+            headers: { Authorization: `Bearer ${getToken()}` }
+        };
+        await axios.get(urlOrders + `/${details.id}`,config)
             .then(response => {
                 if (response.status < 299) {
                     orders.current = response.data.sort(function (a, b) {

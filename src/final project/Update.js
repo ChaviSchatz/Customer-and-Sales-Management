@@ -8,7 +8,7 @@ import { urlUsers } from "./endpoints.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "./redax/actions/usersActions";
 import { useNavigate } from "react-router-dom";
-import { getToken, refreshAndUpdateTokens } from "./TockenService.js";
+import { getToken } from "./TockenService.js";
 
 
 const schema = yup.object().shape({
