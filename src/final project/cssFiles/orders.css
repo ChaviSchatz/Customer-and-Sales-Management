@@ -1,10 +1,10 @@
 
 *{
-    
+    background: linear-gradient(110deg,#f2d7dd 60%, #cd8393 60%);
 }
 
 .collapse.show{
     
-    grid-area: "false";
+
 }
 

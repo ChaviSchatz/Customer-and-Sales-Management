@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { HeaderUser } from "./HeaderUser";
+import { getToken } from "./TockenService.js";
 
 
 
@@ -33,8 +34,10 @@ export function CreateOrder() {
 
     const submit = async (order) => {
         console.log("order: ", order);
-        debugger
-        await axios.post(urlOrders, order)
+        var config = {
+            headers: { Authorization: `Bearer ${getToken()}` }
+        };
+        await axios.post(urlOrders, order, config)
             .then((response) => {
                 if (response.status < 300) {
                     console.log("re.data", response.data);
@@ -110,7 +113,10 @@ export function CreateOrder() {
 
     const getInventory = async () => {
         debugger
-        await axios.get(urlInventory + "/all")
+        var config = {
+            headers: { Authorization: `Bearer ${getToken()}` }
+        };
+        await axios.get(urlInventory, config)
             .then(response => {
                 if (response.status < 299) {
                     console.log(response.data);
@@ -132,8 +138,6 @@ export function CreateOrder() {
             <html dir="rtl">
                 {updateState == false &&
                     <>
-
-
                         {inventory.current != null &&
                             <table class="table table-striped">
                                 <thead>
@@ -180,7 +184,7 @@ export function CreateOrder() {
                                                                 item.colors.map((c, i) => {
                                                                     return (
                                                                         <><li>
-                                                                            <input id="form2Example1"// class="form-control"
+                                                                            <input 
                                                                                 type="number"
                                                                                 name="amount"
                                                                                 defaultValue={0}

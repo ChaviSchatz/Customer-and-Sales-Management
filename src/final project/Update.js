@@ -71,6 +71,7 @@ export function Update() {
             .then((response) => {
                 if (response.status < 299) {
                     dispatch(updateUser(data));
+                    navigate(`/helper/home-page`);
                 }
             })
             .then(setIsTokenExpierd(true))
