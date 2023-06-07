@@ -51,7 +51,10 @@ export function OrdersByDates() {
                 });
                 if (response.status < 299) {
                     response.data.forEach(async o => {
-                        const res = await axios.get(urlUsers + `/${o.userId}`)
+                        var config = {
+                            headers: { Authorization: `Bearer ${getToken()}` }
+                        };
+                        const res = await axios.get(urlUsers + `/${o.userId}`,config)
                             .then(response => {
                                 if (response.status < 299) {
                                     console.log(response.data);
