@@ -59,12 +59,12 @@ export function ClientManagement() {
         <header>
             <HeaderManager></HeaderManager>
         </header>
-
+        <br></br>
+        <br></br>
         {r != false &&
             users.current.map((d, i) => {
                 return (
                     <>
-                        <html>
                             <div className="card">
                                 <table dir='rtl'>
                                     <tbody >
@@ -74,7 +74,8 @@ export function ClientManagement() {
                                     </tbody>
                                 </table>
                                 <div style={{ "margin": "20px" }}>
-                                    <Button variant="success" onClick={() => handleClick(i)} >
+                                    <Button variant="Light" style={{border: "2px solid #95532f", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}
+                                     onClick={() => handleClick(i)} >
                                         פרטי כתובת
                                     </Button>
                                 </div>
@@ -91,8 +92,6 @@ export function ClientManagement() {
                                     </Collapse>
                                 </div>
                             </div>
-                        </html>
-
                     </>
                 )
             })

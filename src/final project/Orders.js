@@ -86,7 +86,7 @@ export function Orders() {
                 <HeaderManager></HeaderManager>
             </header>
             <br></br>
-            <h4>הזמנות אחרונות</h4>
+            <h4 style={{background: "linear-gradient(110deg,#f2d7dd 60%, #cd8393 60%)"}}>הזמנות אחרונות</h4>
             <br></br>
             {r != false &&
                 <>
@@ -100,7 +100,7 @@ export function Orders() {
                                 <>
                                     <html dir="rtl">
                                         <div className="card" >
-                                            <div className="card-header" style={{background: "linear-gradient(110deg,#f2d7dd 60%, #cd8393 60%)"}}>
+                                            <div className="card-header" style={{}}>
                                                 {
                                                     o.status == false &&
                                                     <p>הזמנה ממתינה
@@ -123,7 +123,8 @@ export function Orders() {
                                                 {peuple.current[i].storeName}
                                             </div>
                                             <div className="card-body">
-                                                <Button variant="Light" style={{border: "2px solid #95532f", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}} className="mb-4" onClick={() => handleClick(i)}>
+                                                <Button variant="Light" style={{border: "2px solid #95532f", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}} 
+                                                className="mb-4" onClick={() => handleClick(i)}>
                                                     פרטי הזמנה
                                                 </Button>
                                                 <Collapse key={i} in={open && openIndex == i}>

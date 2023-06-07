@@ -76,9 +76,10 @@ export function OrdersByDates() {
                 <HeaderManager></HeaderManager>
             </header>
             <html dir="rtl">
-                <h4>הזמנות בטווח תאריכים:</h4>
                 <br></br>
-                <div style={{ display: "flex", width: "40%", margin: "auto" }}>
+                <h4 style={{background: "linear-gradient(110deg,#f2d7dd 60%, #cd8393 60%)"}}>הזמנות בטווח תאריכים:</h4>
+                <br></br>
+                <div style={{ display: "flex", width: "40%", margin: "auto", background: "linear-gradient(110deg,#f2d7dd 60%, #cd8393 60%)"}}>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">מתאריך: </span>
@@ -138,7 +139,7 @@ export function OrdersByDates() {
                                                         {
                                                             o.status == true &&
                                                             <p>הזמנה הושלמה
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check" viewBox="0 0 16 16">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" style={{"marginRight" : "10px"}} width="23" height="23" fill="currentColor" class="bi bi-bookmark-check" viewBox="0 0 16 16">
                                                                     <path fill-rule="evenodd" d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
                                                                     <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
                                                                 </svg>
@@ -147,7 +148,8 @@ export function OrdersByDates() {
                                                         {peuple.current[i].storeName}
                                                     </div>
                                                     <div className="card-body">
-                                                        <Button variant="success" className="mb-4" onClick={() => handleClick(i)}>
+                                                        <Button variant="Light" style={{border: "2px solid #95532f", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}
+                                                         className="mb-4" onClick={() => handleClick(i)}>
                                                             פרטי הזמנה
                                                         </Button>
                                                         <Collapse key={i} in={open && openIndex == i}>
