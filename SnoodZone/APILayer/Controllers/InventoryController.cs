@@ -10,19 +10,18 @@
     {
         this.inventoryActions = inventoryActions;
     }
+    [Authorize(Roles = "Admin, User")]
+    [HttpGet]
+    public async Task<List<ItemDTO>> GetInventory()
+    {
+        return await inventoryActions.GetInventory();
+    }
 
     //[HttpGet]
-    //[Route("all")]///חובה לשנות url!!!
-    //public async Task<List<ItemDTO>> GetInventory()
+    //public async Task<List<ItemDTO>> GetInventoryInStock()
     //{
-    //    return await inventoryActions.GetInventory();
+    //    return await inventoryActions.GetInventoryInStock();
     //}
-
-    [HttpGet]
-    public async Task<List<ItemDTO>> GetInventoryInStock()
-    {
-        return await inventoryActions.GetInventoryInStock();
-    }
 
     [Authorize(Roles = "Admin")]
     [HttpPost]

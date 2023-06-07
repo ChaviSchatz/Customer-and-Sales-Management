@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qYlEcbjV08gTVgB4yyLe3njiB2aHqMOJGXRRGdDswYIBj5BfKAw8PuseSzm0MelnrEC3ulNGq52EiYVl/cBeAg==",
+  "dgSpecHash": "aCw1moiHwb5sMuEonPXKJPHQUWrVqeiW1b62yzZPoPkerEX4NE672pH+G46IIDPArHoaxomlePyKjVt215Taaw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\WIN-10\\source\\repos\\project11\\SnoodZone\\APILayer\\APILayer.csproj",
+  "projectFilePath": "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\APILayer\\APILayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\WIN-10\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\WIN-10\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

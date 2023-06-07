@@ -23,7 +23,8 @@ public class OrdersController : ControllerBase
     [HttpGet]
     public async Task<List<OrderDTO>> GetAllOrders(DateTime from, DateTime to)
     {
-        if(from != null && to != null)
+        DateTime dt = new DateTime();
+        if (from != dt && to != dt)
         {
             return await _orderActions.GetOrdersByDatesAsync(from, to);
         }

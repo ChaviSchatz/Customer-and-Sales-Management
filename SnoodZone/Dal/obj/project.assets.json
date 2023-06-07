@@ -892,11 +892,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\WIN-10\\source\\repos\\project11\\SnoodZone\\Dal\\Dal.csproj",
+      "projectUniqueName": "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\Dal\\Dal.csproj",
       "projectName": "Dal",
-      "projectPath": "C:\\Users\\WIN-10\\source\\repos\\project11\\SnoodZone\\Dal\\Dal.csproj",
+      "projectPath": "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\Dal\\Dal.csproj",
       "packagesPath": "C:\\Users\\WIN-10\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\WIN-10\\source\\repos\\project11\\SnoodZone\\Dal\\obj\\",
+      "outputPath": "C:\\Users\\WIN-10\\source\\repos\\project\\SnoodZone\\Dal\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\WIN-10\\AppData\\Roaming\\NuGet\\NuGet.Config",
