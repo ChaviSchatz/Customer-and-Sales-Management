@@ -38,20 +38,20 @@ export function OrdersByDates() {
         var config = {
             headers: { Authorization: `Bearer ${getToken()}` }
         };
-        await axios.get(urlOrders ,
+        await axios.get(urlOrders ,config,
             {
                 params: {
                     from: fromDate,
                     to: toDate
                 }
-            }, config)
+            })
             .then(response => {
                 response.data = response.data.sort(function (a, b) {
                     return new Date(b.orderDetails.date) - new Date(a.orderDetails.date);
                 });
                 if (response.status < 299) {
                     response.data.forEach(async o => {
-                        const res = await axios.get(urlUsers + `/${o.userId}`)
+                        const res = await axios.get(urlUsers + `/${o.userId}`, config)
                             .then(response => {
                                 if (response.status < 299) {
                                     console.log(response.data);
