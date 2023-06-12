@@ -49,7 +49,7 @@ export function EditInventory() {
                         {/* <br></br>
                         <h4>עדכון מלאי</h4> */}
                         <br></br>
-                        <button class="btn btn btn-outline-dark btn-lg btn-block" style={{background: "linear-gradient(100deg,#cd8393 40%,#f2d7dd 60%)"}}
+                        <button class="btn btn btn-outline-dark btn-lg btn-block" style={{width: "40%", margin: "auto", background: "linear-gradient(100deg,#cd8393 40%,#f2d7dd 60%)"}}
                         onClick={() => {
                             updatingItem.current = {
                                 code: "",
