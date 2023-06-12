@@ -34,11 +34,10 @@ export function Footer() {
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 
               <h6 class="text-uppercase fw-bold mb-4">
-                <i class="fas fa-gem me-3"></i>Company name
+                <i class="fas fa-gem me-3"></i>Dacees snoods and accessories
               </h6>
               <p>
-                Here you can use rows and columns to organize your footer content. Lorem ipsum
-                dolor sit amet, consectetur adipisicing elit.
+                
               </p>
             </div>
 
@@ -66,8 +65,8 @@ export function Footer() {
                 Categories
               </h6>
               <p>Snoods</p>
-              <p>בנדנות : לכתוב פה את הפריטים</p>
-              <p>אקססוריז : לכתוב פה את הפריטים</p>
+              <p>Preyieds</p>
+              <p>Headscarves</p>
             </div>
 
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
@@ -75,8 +74,8 @@ export function Footer() {
               <p><i class="fas fa-home me-3"></i> Bait Shemesh , Hakishon 12, Israel</p>
               <p>
                 <i class="fas fa-envelope me-3"></i>
-                לבדוק האם זה יכול באמת לשלוח מייל ואם בכלל צריך
-                daccee@gmail.com
+                {/* לבדוק האם זה יכול באמת לשלוח מייל ואם בכלל צריך */}
+                snooddacee@gmail.com
               </p>
               <p><i class="fas fa-phone me-3"></i> 050-425-4269</p>
               <p><i class="fas fa-print me-3"></i> 050-389-7255</p>
@@ -86,8 +85,8 @@ export function Footer() {
       </section>
 
       <div class="text-center p-4" style={{ "background-color": "rgba(0, 0, 0, 0.05);" }}>
-        © 2021 Copyright:
-        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        © 2023 Copyright: Chavi&Bat7.com
+        {/* <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a> */}
       </div>
     </footer>
   );
