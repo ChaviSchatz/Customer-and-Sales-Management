@@ -2,7 +2,6 @@ import axios from "axios";
 import { urlInventory } from "./endpoints.ts";
 import { useRef, useState } from "react";
 import { useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { UpdateItem } from "./UpdateItem.js"
 import { HeaderManager } from "./HeaderManager.js";
 import { getToken } from "./TockenService.js";
@@ -17,7 +16,6 @@ export function EditInventory() {
         var config = {
             headers: { Authorization: `Bearer ${getToken()}` }
         };
-        debugger
         await axios.get(urlInventory, config)
             .then(response => {
                 if (response.status < 299) {
@@ -37,11 +35,11 @@ export function EditInventory() {
             <header>
                 <HeaderManager></HeaderManager>
             </header>
-            <html dir="rtl">
+            <div dir="rtl">
                 {updateState == false &&
                     <>
                         <br></br>
-                        <button class="btn btn btn-outline-dark btn-lg btn-block" style={{width: "40%", margin: "auto", background: "linear-gradient(100deg,#cd8393 40%,#f2d7dd 60%)"}}
+                        <button className="btn btn btn-outline-dark btn-lg btn-block" style={{width: "40%", margin: "auto", background: "linear-gradient(110deg,#cd8393 60%,#f2d7dd 60%)"}}
                         onClick={() => {
                             updatingItem.current = {
                                 code: "",
@@ -54,7 +52,7 @@ export function EditInventory() {
                         }}>להוספת מוצר</button>
                         <br></br>
                         {inventory.current != null &&
-                            <table class="table table-striped">
+                            <table className="table table-striped">
                                 <thead>
                                     <tr style={{borderBottom: "3px solid #cd8393"}}>
                                         <th scope="col">#</th>
@@ -91,7 +89,7 @@ export function EditInventory() {
 
                                                     </td>
                                                     <td>
-                                                        <button class="btn btn-outline-dark" onClick={() => {
+                                                        <button className="btn btn-outline-dark" onClick={() => {
                                                             updatingItem.current = inventory.current[index];
                                                             setUpdateState(true);
                                                         }}>לעדכון פריט</button>
@@ -105,14 +103,13 @@ export function EditInventory() {
                         }
                     </>
                 }
-            </html>
-
             {
                 updateState == true &&
                 <>
                     <UpdateItem prop={updatingItem.current}></UpdateItem>
                 </>
             }
+            </div>
         </>
     )
 }

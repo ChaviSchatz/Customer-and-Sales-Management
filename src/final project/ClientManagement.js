@@ -64,7 +64,7 @@ export function ClientManagement() {
                     <>
                             <div className="card">
                                 <table dir='rtl'>
-                                    <tbody >
+                                    <tbody>
                                         <tr scope="col"><span style={{ fontWeight: 'bold' }}> שם:  </span>{d.name}</tr>
                                         <tr scope="col"><span style={{ fontWeight: 'bold' }}> טלפון:  </span>{d.phoneNumber}</tr>
                                         <tr scope="col"><span style={{ fontWeight: 'bold' }}> שם החנות:  </span>{d.storeName}</tr>

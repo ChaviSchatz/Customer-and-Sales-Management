@@ -73,13 +73,13 @@ export function OrdersByDates() {
                 <h4 style={{ background: "linear-gradient(110deg,#f2d7dd 60%, #cd8393 60%)" }}>הזמנות בטווח תאריכים:</h4>
                 <br></br>
                 <div style={{ display: "flex", width: "40%", margin: "auto", background: "linear-gradient(110deg,#f2d7dd 60%, #cd8393 60%)" }}>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">מתאריך: </span>
+                    <div className="input-group mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-default">מתאריך: </span>
                         </div>
                         <input
                             type="date"
-                            class="form-control"
+                            className="form-control"
                             aria-label="Default"
                             value={fromDate}
                             min="2017-01-01"
@@ -90,13 +90,13 @@ export function OrdersByDates() {
                             }}
                         />
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">ועד תאריך: </span>
+                    <div className="input-group mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-default">ועד תאריך: </span>
                         </div>
                         <input
                             type="date"
-                            class="form-control"
+                            className="form-control"
                             aria-label="Default"
                             value={toDate}
                             min="2017-01-01"
@@ -108,7 +108,7 @@ export function OrdersByDates() {
                         />
                     </div>
                 </div>
-                <button type="button" class="btn btn-outline-dark"
+                <button type="button" className="btn btn-outline-dark"
                     onClick={getOrders}
                 >קבל הזמנות בטווח זה</button>
                 <br></br>
@@ -132,8 +132,8 @@ export function OrdersByDates() {
                                                         {
                                                             o.status == true &&
                                                             <p>הזמנה הושלמה
-                                                                <svg xmlns="http://www.w3.org/2000/svg" style={{ "marginRight": "10px" }} width="23" height="23" fill="currentColor" class="bi bi-bookmark-check" viewBox="0 0 16 16">
-                                                                    <path fill-rule="evenodd" d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                                                <svg xmlns="http://www.w3.org/2000/svg" style={{ "marginRight": "10px" }} width="23" height="23" fill="currentColor" className="bi bi-bookmark-check" viewBox="0 0 16 16">
+                                                                    <path fillRule="evenodd" d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
                                                                     <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
                                                                 </svg>
                                                             </p>
@@ -162,7 +162,7 @@ export function OrdersByDates() {
                                                         </Button>
                                                         <Collapse key={i} in={open && openIndex == i}>
                                                             <div id="collapsePanel">
-                                                                <table class="table table-striped">
+                                                                <table className="table table-striped">
                                                                     <thead>
                                                                         <tr>
                                                                             <th scope="col">#</th>
@@ -246,7 +246,7 @@ export function OrdersByDates() {
                                                             </div>
                                                         </Collapse>
                                                     </div>
-                                                    <div class="card-footer text-muted">
+                                                    <div className="card-footer text-muted">
                                                         {formattedDate}
                                                     </div>
                                                 </div>

@@ -18,7 +18,7 @@ export function UpdateItem(prop) {
         <br></br>
             <html dir="rtl" style={{"width" : "60%", margin: "auto"}}>
                 {item.current != null &&
-                    <table class="table table-striped">
+                    <table classname="table table-striped">
                         <thead>
                             <tr>
                                 <th scope="col">תאור</th>
@@ -31,7 +31,7 @@ export function UpdateItem(prop) {
                             <>
                                 <tr>
                                     <td><input
-                                        class="form-control"
+                                        classname="form-control"
                                         type="text"
                                         name="description"
                                         onChange={(e) => {
@@ -40,7 +40,7 @@ export function UpdateItem(prop) {
                                         defaultValue={item.current.description}
                                     /></td>
                                     <td><input
-                                        class="form-control"
+                                        classname="form-control"
                                         type="text"
                                         name="code"
                                         onChange={(e) => {
@@ -49,7 +49,7 @@ export function UpdateItem(prop) {
                                         defaultValue={item.current.code}
                                     /></td>
                                     <td><input
-                                        class="form-control"
+                                        classname="form-control"
                                         type="number"
                                         name="price"
                                         onChange={(e) => {
@@ -67,8 +67,8 @@ export function UpdateItem(prop) {
                                                             <div>
 
                                                                 <li>
-                                                                    <div class="input-group mb-3">
-                                                                        <input class="form-control"
+                                                                    <div classname="input-group mb-3">
+                                                                        <input classname="form-control"
                                                                             type="text"
                                                                             name="color"
                                                                             aria-label="" aria-describedby="basic-addon1"
@@ -77,8 +77,8 @@ export function UpdateItem(prop) {
                                                                             }}
                                                                             defaultValue={color}
                                                                         />
-                                                                        <div class="input-group-prepend">
-                                                                            <button class="btn btn-outline-danger" type="button" onClick={async () => {
+                                                                        <div classname="input-group-prepend">
+                                                                            <button classname="btn btn-outline-danger" type="button" onClick={async () => {
                                                                                 delete item.current.colors[i];
                                                                                 setForRendering(forRendering + 1);
                                                                             }}>למחיקה</button></div></div>
@@ -89,7 +89,7 @@ export function UpdateItem(prop) {
                                                         </>
                                                     );
                                                 })}
-                                                <button class="btn btn-outline-dark" onClick={() => {
+                                                <button classname="btn btn-outline-dark" onClick={() => {
                                                     item.current.colors.push("");
                                                     setForRendering(forRendering + 1);
                                                 }}>הוסף צבע</button>
@@ -102,7 +102,7 @@ export function UpdateItem(prop) {
                     </table>
 
                 }
-                <button class="btn btn btn-outline-dark btn-lg btn-block" style={{ background: "linear-gradient(100deg,#cd8393 40%,#f2d7dd 60%)" }}
+                <button classname="btn btn btn-outline-dark btn-lg btn-block" style={{ background: "linear-gradient(100deg,#cd8393 40%,#f2d7dd 60%)" }}
                     onClick={async () => {
                         item.current.colors = await item.current.colors.filter(c => c != undefined);
                         var config = {
