@@ -44,12 +44,14 @@ export function OrdersByDates() {
                     peuple.current = response.data;
                 }
             }).catch(err => { console.log(err); });
-        await axios.get(urlOrders, config,
+            var c ={Authorization: `Bearer ${getToken()}`}
+        await axios.get(urlOrders,
             {
                 params: {
                     from: fromDate,
                     to: toDate
-                }
+                },
+                headers: c
             })
             .then(response => {
                 response.data = response.data.sort(function (a, b) {

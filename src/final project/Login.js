@@ -105,14 +105,14 @@ export function Login() {
                                                         </div></div>
                                                 </div>
                                                 <div className="pt-1 mb-4">
-                                                    <button className="btn btn-dark btn-lg btn-block">Login</button>
+                                                    <button className="btn btn-dark btn-lg btn-block">כניסה</button>
                                                     {UserAuthentication == false &&
                                                         <small className="text-danger">
                                                             שם משתמש או סיסמא שגויים, נסה שוב
                                                         </small>}
                                                 </div>
 
-                                                <a className="small text-muted" href="">Forgot password?</a>
+                                                <a className="small text-muted" href="">שכחת סיסמה?</a>
                                                 <p className="mb-5 pb-lg-2" style={{ "color": "#393f81" }}>אין לך חשבון?<Link to="Signup">הרשם כאן</Link></p>
                                             </form>
                                         </div>
