@@ -2,33 +2,20 @@ import axios from "axios";
 import { urlInventory, urlOrders } from "./endpoints.ts";
 import { useRef, useState } from "react";
 import { useEffect } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import { UpdateItem } from "./UpdateItem.js"
-import { render } from "@testing-library/react";
-// import { ChooseAColors } from "./ChooseAColors";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { HeaderUser } from "./HeaderUser";
 import { getToken } from "./TockenService.js";
+import { Footer } from "./Footer";
 
 
 
 
 export function CreateOrder() {
-
-
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        // resolver: yupResolver(schema),
-    });
-
     const user = useSelector((state) => state.usersReducer);
-
     const inventory = useRef(null);
     const [r, setR] = useState(false);
-    const [addItem, setItem] = useState(false);
     const [updateState, setUpdateState] = useState(false);
     const navigate = useNavigate();
 
@@ -46,7 +33,6 @@ export function CreateOrder() {
                     setTimeout(() => {
                         navigate("/users-orders");
                     }, 2000)
-                    // dispatch(pushNewUser(response.data));
                 }
             })
             .catch((error) => console.log(error));
@@ -66,12 +52,10 @@ export function CreateOrder() {
             }
         });
 
-    // console.log("1", updateState)
 
     const orderItem = (e, index, index2) => {
 
 
-        //parse to int = parseInt(e.target.value)
         console.log("current", parseInt(e.target.value))
         debugger
         var b = false;
@@ -96,7 +80,6 @@ export function CreateOrder() {
 
             }
             if (co == true) {
-                // console.log("current current",parseInt(e.target.value));
                 itemsToOrder.current.orderDetails.details[i].colorAmount[indexColor].amount = parseInt(e.target.value);
             }
             else {
@@ -214,8 +197,6 @@ export function CreateOrder() {
             </html>
             <button class="btn btn-outline-dark" onClick={() => {
                 console.log("itemsToOrder", itemsToOrder.current)
-                // alert("??האם את/ה רןצה לסגור את ההזמנה");
-                //axios.post of the use ref
                 submit(itemsToOrder.current);
 
             }}>סגירת הזמנה</button>
@@ -232,11 +213,8 @@ export function CreateOrder() {
                         </svg>
                     </h4>
                 </div>
-                //     <p style={{"fontSize": "100px","color":"green"}}><svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="green" class="bi bi-check" viewBox="0 0 16 16">
-                //     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
-                //   </svg> הזמנתך התקבלה</p> 
-
             }
+            <Footer></Footer>
         </>
 
     )

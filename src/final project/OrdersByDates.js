@@ -42,7 +42,6 @@ export function OrdersByDates() {
             .then(response => {
                 if (response.status <= 299) {
                     peuple.current = response.data;
-                    // P. = response.data;
                 }
             }).catch(err => { console.log(err); });
         await axios.get(urlOrders, config,
@@ -57,19 +56,6 @@ export function OrdersByDates() {
                     return new Date(b.orderDetails.date) - new Date(a.orderDetails.date);
                 });
                 if (response.status < 299) {
-                    // response.data.forEach(async o => {
-                    //     var config = {
-                    //         headers: { Authorization: `Bearer ${getToken()}` }
-                    //     };
-                    //     const res = await axios.get(urlUsers + `/${o.userId}`,config)
-                    //         .then(response => {
-                    //             if (response.status < 299) {
-                    //                 console.log(response.data);
-                    //                 peuple.current.push(response.data);
-                    //             }
-                    //         })
-                    //         .catch((error) => console.log(error));
-                    // });
                     console.log("response.data", response.data);
                     orders.current = response.data;
                 }

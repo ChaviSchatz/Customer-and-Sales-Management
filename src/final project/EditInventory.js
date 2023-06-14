@@ -8,15 +8,9 @@ import { HeaderManager } from "./HeaderManager.js";
 import { getToken } from "./TockenService.js";
 
 export function EditInventory() {
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        // resolver: yupResolver(schema),
-    });
-
     const inventory = useRef(null);
     const [r, setR] = useState(false);
-    const [addItem, setItem] = useState(false);
     const [updateState, setUpdateState] = useState(false);
-    console.log("1", updateState)
     const updatingItem = useRef(null);
 
     const getInventory = async () => {
@@ -46,8 +40,6 @@ export function EditInventory() {
             <html dir="rtl">
                 {updateState == false &&
                     <>
-                        {/* <br></br>
-                        <h4>עדכון מלאי</h4> */}
                         <br></br>
                         <button class="btn btn btn-outline-dark btn-lg btn-block" style={{width: "40%", margin: "auto", background: "linear-gradient(100deg,#cd8393 40%,#f2d7dd 60%)"}}
                         onClick={() => {
@@ -90,9 +82,7 @@ export function EditInventory() {
                                                                 item.colors.map((color, i) => {
                                                                     return (
                                                                         <>
-                                                                            {/* <div style={{textAlign: "right", marginRight: "130px"}}> */}
                                                                             <li>{color}</li>
-                                                                            {/* </div> */}
                                                                         </>
                                                                     )
                                                                 })
@@ -112,7 +102,6 @@ export function EditInventory() {
                                     })}
                                 </tbody>
                             </table>
-
                         }
                     </>
                 }

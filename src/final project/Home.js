@@ -12,11 +12,10 @@ export function Home() {
     const [details, setdetails] = useState(null);
     const [serverError, setserverError] = useState(false);
     const [navToUpdate, setnavToUpdate] = useState(false);
-    const navigate = useNavigate();
 
     useEffect(() => {
         debugger
-        console.log("hhh", user);
+        console.log("user: ", user);
         setdetails(user);
     }, []);
 
@@ -64,11 +63,6 @@ export function Home() {
                                     <br></br>
                                     <br></br>
                                     <br></br>
-                                    {/* <button type="button" class="btn btn-outline-dark btn-lg" onClick={() => {
-                                        setnavToUpdate(true);
-                                    }}>
-                                        לעדכון פרטים
-                                    </button> */}
                                 </div>
                             </div>
                         </div>

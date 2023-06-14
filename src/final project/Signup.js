@@ -1,17 +1,15 @@
-// import './signup.css'; need to create
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { urlUsers } from "./endpoints.ts";
-import { async } from "q";
 import { useDispatch } from "react-redux";
-import { pushNewUser } from "./redax/actions/usersActions";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import img1 from './images/לוגו.jpg';
 import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 
 
@@ -110,10 +108,6 @@ export function Singup() {
                                         <div class="card-body p-md-5 text-black">
                                             <form className="form" onSubmit={handleSubmit(onSubmit)}>
                                             <div style={{"display" : "flex"}}>
-                                                    {/* <div class="d-flex align-items-center mb-3 pb-1">
-                                                        <i class="fas fa-cubes fa-2x me-3" style={{ "color": "#ff6219" }}></i>
-                                                        <img width={"30%"} src={img1}></img>
-                                                    </div> */}
                                                     <img width={"30%"} src={img1}></img>
                                                     <h3 class="fw-normal mb-3 pb-3" style={{ "letter-spacing": "1px", "marginLeft" : "100px", "marginTop" : "35px" }}>הרשמה לאתר</h3>
                                                     </div>
@@ -124,7 +118,6 @@ export function Singup() {
                                                         type="text"
                                                         name="name"
                                                         {...register('name')}
-                                                    // placeholder="Your first name"
                                                     />
                                                     <small className="text-danger">
                                                         {errors?.name && errors.name.message}
@@ -137,7 +130,6 @@ export function Singup() {
                                                         type="text"
                                                         name="phoneNumber"
                                                         {...register('phoneNumber')}
-                                                    // placeholder="Your phone number"
                                                     />
                                                     <small className="text-danger">
                                                         {errors?.phoneNumber && errors.phoneNumber.message}
@@ -150,7 +142,6 @@ export function Singup() {
                                                         type="text"
                                                         name="storeName"
                                                         {...register('storeName')}
-                                                    // placeholder="Your store name"
                                                     />
                                                     <small className="text-danger">
                                                         {errors?.storeName && errors.storeName.message}
@@ -169,7 +160,7 @@ export function Singup() {
                                                 </div>
 
                                                 <div class="form-group md-6">
-                                                    <label /*class="form-label"*/ for="inputPassword4">סיסמה</label>
+                                                    <label for="inputPassword4">סיסמה</label>
                                                     <div style={{ display: "flex" }}>
                                                         <input id="inputPassword4" class="form-control"
                                                             name="password"
@@ -204,7 +195,6 @@ export function Singup() {
                                                                 type="text"
                                                                 name="city"
                                                                 {...register('address.city')}
-                                                            // Maybe to add a placeHolder
                                                             />
                                                             <small className="text-danger">
                                                                 {errors.address?.city && errors.address.city.message}
@@ -216,7 +206,6 @@ export function Singup() {
                                                                 type="text"
                                                                 name="street"
                                                                 {...register('address.street')}
-                                                            //Maybe to add a placeHolder
                                                             />
                                                             <small className="text-danger">
                                                                 {errors.address?.street && errors.address.street.message}
@@ -271,6 +260,7 @@ export function Singup() {
                     </div>
                 </div>
             </section>
+            <Footer></Footer>
         </>
     );
 }

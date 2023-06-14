@@ -29,8 +29,7 @@ export function Orders() {
     }
 
     const getOrders = async () => {
-        // var O = Array(0);
-        // var P = Array(0);
+
         var config = {
             headers: { Authorization: `Bearer ${getToken()}` }
         };
@@ -38,7 +37,6 @@ export function Orders() {
             .then(response => {
                 if (response.status <= 299) {
                     peuple.current = response.data;
-                    // P. = response.data;
                 }
             }).catch(err => { console.log(err); });
         await axios.get(urlOrders, config)
@@ -47,33 +45,10 @@ export function Orders() {
                     return new Date(b.orderDetails.date) - new Date(a.orderDetails.date);
                 });
                 if (response.status < 299) {
-                    // var g = [];
-                    // response.data.forEach(async o => {
-                    //     const res = await axios.get(urlUsers + `/${o.userId}`, config)
-                    //         .then(response => {
-                    //             if (response.status < 299) {
-                    //                 console.log(response.data);
-                    //                 g.push(response.data);
-                    //             }
-                    //         })
-                    //         .catch((error) => console.log(error));
-                    // });
-                    // console.log("response.data", response.data);
-                    // O = response.data;
                     orders.current = response.data;
-                    // peuple.current = g;
                 }
             })
             .catch((error) => console.log(error));
-        // var g = [];
-        //     O.forEech(o =>{
-        //     P.forEech(p => {
-        //         if(o.userId == p.id){
-        //             g.push(p);
-        //         }
-        //     })
-        // })
-        // peuple.current = g;
     }
 
     useEffect(() => {

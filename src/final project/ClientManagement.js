@@ -12,10 +12,7 @@ export function ClientManagement() {
     const temp = useRef(null);
     const [open, setOpen] = useState(false);
     const [openIndex, setOpenIndex] = useState();
-
     const [r, setR] = useState(false);
-    const [add, setAdd] = useState(false);
-
 
     const res = async () => {
         var config = {

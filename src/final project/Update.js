@@ -1,4 +1,3 @@
-// import './signup.css'; need to create
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -110,7 +109,6 @@ export function Update() {
                                     name="name"
                                     {...register('name')}
                                     defaultValue={user.name}
-                                // placeholder="Your first name"
                                 />
                                 <small className="text-danger">
                                     {errors?.name && errors.name.message}
@@ -124,7 +122,6 @@ export function Update() {
                                     name="phoneNumber"
                                     {...register('phoneNumber')}
                                     defaultValue={user.phoneNumber}
-                                // placeholder="Your phone number"
                                 />
                                 <small className="text-danger">
                                     {errors?.phoneNumber && errors.phoneNumber.message}
@@ -138,7 +135,6 @@ export function Update() {
                                     name="storeName"
                                     {...register('storeName')}
                                     defaultValue={user.storeName}
-                                // placeholder="Your store name"
                                 />
                                 <small className="text-danger">
                                     {errors?.storeName && errors.storeName.message}
@@ -158,7 +154,7 @@ export function Update() {
                             </div>
 
                             <div class="form-group md-6">
-                                <label /*class="form-label"*/ for="inputPassword4">סיסמה</label>
+                                <label for="inputPassword4">סיסמה</label>
                                 <div style={{ display: "flex" }}>
                                     <input id="inputPassword4" class="form-control"
                                         name="password"
@@ -194,7 +190,6 @@ export function Update() {
                                             name="city"
                                             {...register('address.city')}
                                             defaultValue={user.address.city}
-                                        // Maybe to add a placeHolder
                                         />
                                         <small className="text-danger">
                                             {errors.address?.city && errors.address.city.message}
@@ -207,7 +202,6 @@ export function Update() {
                                             name="street"
                                             {...register('address.street')}
                                             defaultValue={user.address.street}
-                                        //Maybe to add a placeHolder
                                         />
                                         <small className="text-danger">
                                             {errors.address?.street && errors.address.street.message}

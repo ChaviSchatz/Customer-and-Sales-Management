@@ -10,6 +10,7 @@ import { pushNewUser } from "./redax/actions/usersActions";
 import img1 from './images/לוגו.jpg';
 import { Header } from "./Header";
 import { setTokens } from "./TockenService";
+import { Footer } from "./Footer";
 
 export function Login() {
     const navigate = useNavigate();
@@ -18,7 +19,7 @@ export function Login() {
 
     const dispatch = useDispatch();
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const handleRegistration = async (d) => {
         debugger
@@ -111,7 +112,7 @@ export function Login() {
                                                         </small>}
                                                 </div>
 
-                                                {/* <a class="small text-muted" href="#!">Forgot password?</a> */}
+                                                <a class="small text-muted" href="">Forgot password?</a>//we have to implements
                                                 <p class="mb-5 pb-lg-2" style={{ "color": "#393f81" }}>אין לך חשבון?<Link to="Signup">הרשם כאן</Link></p>
                                             </form>
                                         </div>
@@ -122,6 +123,7 @@ export function Login() {
                     </div>
                 </div>
             </section>
+            <Footer></Footer>
         </>
     );
 }
