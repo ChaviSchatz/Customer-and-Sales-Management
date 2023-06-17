@@ -11,7 +11,7 @@ public class InventoryService : IInventoryService
     {
         return await inventory.Find(_ => true).ToListAsync();
     }
-    public Task CreateNewItem(Item item)//לזכור הצפנת סיסמה
+    public Task CreateNewItem(Item item)
     {
         Item itemWithMongoId = new Item() { Code = item.Code,
         Colors = item.Colors, Description = item.Description, 
