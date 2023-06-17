@@ -91,13 +91,13 @@ export function CreateOrder() {
                 itemsToOrder.current.orderDetails.details[i].colorAmount[indexColor].amount = parseInt(e.target.value);
             }
             else {
-                if (e.target.value != 0) {
+                if (parseInt(e.target.value != 0)) {
                     itemsToOrder.current.orderDetails.details[i].colorAmount.push({ color: inventory.current[index].colors[index2], amount: parseInt(e.target.value) })
                 }
             }
         }
         else {
-            if (e.target.value != 0) {
+            if (parseInt(e.target.value != 0)) {
             itemsToOrder.current.orderDetails.details.push({ code: inventory.current[index].code, description: inventory.current[index].description, price: parseInt(inventory.current[index].price), colorAmount: [{ color: inventory.current[index].colors[index2], amount: parseInt(e.target.value) }] })
         }}
     }
