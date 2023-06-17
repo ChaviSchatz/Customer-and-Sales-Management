@@ -26,23 +26,23 @@ export function CreateOrder() {
         var config = {
             headers: { Authorization: `Bearer ${getToken()}` }
         };
-        if(order.orderDetails.details.length == 0){
+        if (order.orderDetails.details.length == 0) {
             setIsEmptyOrder(true);
         }
-        else{
+        else {
             await axios.post(urlOrders, order, config)
-            .then((response) => {
-                if (response.status < 300) {
-                    console.log("re.data", response.data);
-                    
-                    setUpdateState(true);
+                .then((response) => {
+                    if (response.status < 300) {
+                        console.log("re.data", response.data);
 
-                    setTimeout(() => {
-                        navigate("/users-orders");
-                    }, 2000)
-                }
-            })
-            .catch((error) => console.log(error));
+                        setUpdateState(true);
+
+                        setTimeout(() => {
+                            navigate("/users-orders");
+                        }, 2000)
+                    }
+                })
+                .catch((error) => console.log(error));
         }
     }
 
@@ -91,13 +91,15 @@ export function CreateOrder() {
                 itemsToOrder.current.orderDetails.details[i].colorAmount[indexColor].amount = parseInt(e.target.value);
             }
             else {
-                itemsToOrder.current.orderDetails.details[i].colorAmount.push({ color: inventory.current[index].colors[index2], amount: parseInt(e.target.value) })
+                if (e.target.value != 0) {
+                    itemsToOrder.current.orderDetails.details[i].colorAmount.push({ color: inventory.current[index].colors[index2], amount: parseInt(e.target.value) })
+                }
             }
         }
         else {
-
+            if (e.target.value != 0) {
             itemsToOrder.current.orderDetails.details.push({ code: inventory.current[index].code, description: inventory.current[index].description, price: parseInt(inventory.current[index].price), colorAmount: [{ color: inventory.current[index].colors[index2], amount: parseInt(e.target.value) }] })
-        }
+        }}
     }
 
 
@@ -123,7 +125,7 @@ export function CreateOrder() {
 
     return (
         <>
-        <header className="App-header">
+            <header className="App-header">
                 <HeaderUser></HeaderUser>
             </header>
             <html dir="rtl">
@@ -175,7 +177,7 @@ export function CreateOrder() {
                                                                 item.colors.map((c, i) => {
                                                                     return (
                                                                         <><li>
-                                                                            <input 
+                                                                            <input
                                                                                 type="number"
                                                                                 name="amount"
                                                                                 defaultValue={0}
@@ -210,10 +212,10 @@ export function CreateOrder() {
             }}>סגירת הזמנה</button>
             <br></br>
             {
-                isEmptyOrder == true && 
+                isEmptyOrder == true &&
                 <p>Please choose items...</p>
             }
-             {
+            {
                 updateState == true &&
                 <div style={{ margin: "auto", textAlign: "center" }}>
                     <h4>
